@@ -4,9 +4,9 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.example.app1.R
 
-class Feed : AppCompatActivity() {
+class recover : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_feed)
+        setContentView(R.layout.activity_recover)
     }
 }
