@@ -11,29 +11,102 @@
     android:background="@color/white"
     tools:context=".MainActivity">
 
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="120dp"
-        android:fillViewport="true"
-        xmlns:android="http://schemas.android.com/apk/res/android">
+
 
         <View
+            android:id="@+id/car1"
             style="@style/carrosel"
             android:layout_marginTop="30dp"
             android:layout_width="90dp"
-            android:layout_height="90dp"/>
+            android:layout_height="90dp"
+            android:background="@drawable/ellipse_1"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
 
+        <View
+            android:id="@+id/car2"
+            style="@style/carrosel1"
+            android:layout_marginTop="30dp"
+            android:layout_width="90dp"
+            android:layout_height="90dp"
+            android:background="@drawable/ellipse_2"
+            app:layout_constraintStart_toEndOf="@id/car1"
+            app:layout_constraintTop_toTopOf="parent"/>
 
+        <View
+            android:id="@+id/car3"
+            style="@style/carrosel1"
+            android:layout_marginTop="30dp"
+            android:layout_width="90dp"
+            android:layout_height="90dp"
+            android:background="@drawable/ellipse_3"
+            app:layout_constraintStart_toEndOf="@id/car2"
+            app:layout_constraintTop_toTopOf="parent"/>
 
+        <View
+            android:id="@+id/car4"
+            style="@style/carrosel1"
+            android:layout_marginTop="30dp"
+            android:layout_width="90dp"
+            android:layout_height="90dp"
+            android:background="@drawable/ellipse_4"
+            app:layout_constraintStart_toEndOf="@id/car3"
+            app:layout_constraintTop_toTopOf="parent"/>
 
+        <View
+            android:id="@+id/car5"
+            style="@style/carrosel1"
+            android:layout_marginTop="30dp"
+            android:layout_width="90dp"
+            android:layout_height="90dp"
+            android:background="@drawable/ellipse_5"
+            app:layout_constraintStart_toEndOf="@id/car4"
+            app:layout_constraintTop_toTopOf="parent"/>
+        <View
+            android:id="@+id/car6"
+            style="@style/carrosel1"
+            android:layout_marginTop="30dp"
+            android:layout_width="90dp"
+            android:background="@drawable/ellipse_6"
+            android:layout_height="90dp"
+            app:layout_constraintStart_toEndOf="@id/car5"
+            app:layout_constraintTop_toTopOf="parent"/>
 
-    </ScrollView>
+        <View
+            android:id="@+id/car7"
+            style="@style/carrosel1"
+            android:layout_marginTop="30dp"
+            android:layout_width="90dp"
+            android:layout_height="90dp"
+            android:background="@drawable/ellipse_7"
+            app:layout_constraintStart_toEndOf="@id/car6"
+            app:layout_constraintTop_toTopOf="parent"/>
+    <View
+        android:id="@+id/car8"
+        style="@style/carrosel1"
+        android:layout_marginTop="30dp"
+        android:layout_width="90dp"
+        android:layout_height="90dp"
+        android:background="@drawable/ellipse_8"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toEndOf="@id/car7"/>
+    <View
+        android:id="@+id/car9"
+        style="@style/carrosel1"
+        android:layout_marginTop="30dp"
+        android:layout_width="90dp"
+        android:layout_height="90dp"
+        android:background="@drawable/ellipse_9"
+        app:layout_constraintStart_toEndOf="@id/car8"
+        app:layout_constraintTop_toTopOf="parent"/>
 
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:fillViewport="true">
+        android:fillViewport="true"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="0dp">
 
 
     </androidx.core.widget.NestedScrollView>
