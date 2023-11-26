@@ -30,8 +30,8 @@ fun SliderBanner(
     val pagerState = rememberPagerState(initialPage = 0)
     val imageSlider = listOf(
         painterResource(id = R.drawable.backlogin),
-        painterResource(id = R.drawable.backlogin),
-        painterResource(id = R.drawable.backlogin)
+        painterResource(id = R.drawable.post1),
+        painterResource(id = R.drawable.post2)
     )
 
     LaunchedEffect(Unit) {
@@ -50,7 +50,7 @@ fun SliderBanner(
             state = pagerState,
             contentPadding = PaddingValues(horizontal = 16.dp),
             modifier = modifier
-                .height(400.dp)
+                .height(600.dp)
                 .fillMaxWidth()
         ) { page ->
             Card(

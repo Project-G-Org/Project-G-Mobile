@@ -20,6 +20,7 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.Icon
@@ -49,68 +50,67 @@ fun Feed(modifier: Modifier = Modifier.background(Color.White)){
             .background(Color(0xFFEBEBEB))
     ) {
 
-
-        Row(modifier = Modifier
-            .padding(0.dp, 10.dp)
-            .horizontalScroll(rememberScrollState())
-        ) {
-            Image(
-                bitmap = ImageBitmap.imageResource(id = R.drawable.carr1),
-                contentDescription = null,
-                Modifier
-                    .size(80.dp)
-            )
-            Image(
-                bitmap = ImageBitmap.imageResource(id = R.drawable.carr2),
-                contentDescription = null,
-                Modifier
-                    .size(80.dp)
-            )
-            Image(
-                bitmap = ImageBitmap.imageResource(id = R.drawable.carr3),
-                contentDescription = null,
-                Modifier
-                    .size(80.dp)
-            )
-            Image(
-                bitmap = ImageBitmap.imageResource(id = R.drawable.carr4),
-                contentDescription = null,
-                Modifier
-                    .size(80.dp)
-            )
-            Image(
-                bitmap = ImageBitmap.imageResource(id = R.drawable.carr5),
-                contentDescription = null,
-                Modifier
-                    .size(80.dp)
-            )
-            Image(
-                bitmap = ImageBitmap.imageResource(id = R.drawable.carr6),
-                contentDescription = null,
-                Modifier
-                    .size(80.dp)
-            )
-            Image(
-                bitmap = ImageBitmap.imageResource(id = R.drawable.carr7),
-                contentDescription = null,
-                Modifier
-                    .size(80.dp)
-            )
-            Image(
-                bitmap = ImageBitmap.imageResource(id = R.drawable.carr8),
-                contentDescription = null,
-                Modifier
-                    .size(80.dp)
-            )
-        }
-
         Column(
             Modifier
-                .padding(10.dp)
+                .verticalScroll(rememberScrollState())
                 .fillMaxSize(),
             verticalArrangement = Arrangement.spacedBy(16.dp, alignment = Alignment.Top),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
+
+            Row(modifier = Modifier
+                .padding(0.dp, 5.dp)
+                .horizontalScroll(rememberScrollState())
+            ) {
+                Image(
+                    bitmap = ImageBitmap.imageResource(id = R.drawable.carr1),
+                    contentDescription = null,
+                    Modifier
+                        .size(80.dp)
+                )
+                Image(
+                    bitmap = ImageBitmap.imageResource(id = R.drawable.carr2),
+                    contentDescription = null,
+                    Modifier
+                        .size(80.dp)
+                )
+                Image(
+                    bitmap = ImageBitmap.imageResource(id = R.drawable.carr3),
+                    contentDescription = null,
+                    Modifier
+                        .size(80.dp)
+                )
+                Image(
+                    bitmap = ImageBitmap.imageResource(id = R.drawable.carr4),
+                    contentDescription = null,
+                    Modifier
+                        .size(80.dp)
+                )
+                Image(
+                    bitmap = ImageBitmap.imageResource(id = R.drawable.carr5),
+                    contentDescription = null,
+                    Modifier
+                        .size(80.dp)
+                )
+                Image(
+                    bitmap = ImageBitmap.imageResource(id = R.drawable.carr6),
+                    contentDescription = null,
+                    Modifier
+                        .size(80.dp)
+                )
+                Image(
+                    bitmap = ImageBitmap.imageResource(id = R.drawable.carr7),
+                    contentDescription = null,
+                    Modifier
+                        .size(80.dp)
+                )
+                Image(
+                    bitmap = ImageBitmap.imageResource(id = R.drawable.carr8),
+                    contentDescription = null,
+                    Modifier
+                        .size(80.dp)
+                )
+            }
 
             Card(
                 elevation = CardDefaults.cardElevation(defaultElevation = 6.dp),
@@ -118,6 +118,7 @@ fun Feed(modifier: Modifier = Modifier.background(Color.White)){
                     containerColor = Color.White,
                 ),
                 modifier = Modifier
+                    .padding(10.dp)
                     .fillMaxWidth(),
             ) {
                 Row(
@@ -141,7 +142,7 @@ fun Feed(modifier: Modifier = Modifier.background(Color.White)){
                         Text(
                             "marcelo",
                             color = Color(0xFFE5684A),
-                            fontSize = 16.sp,
+                            fontSize = 20.sp,
                             fontWeight = FontWeight.Bold,
                         )
 
@@ -149,8 +150,10 @@ fun Feed(modifier: Modifier = Modifier.background(Color.White)){
                             text = "MARANHAO",
                             color = Color.Black,
                             fontSize = 12.sp,
+                            fontWeight = FontWeight.Bold,
                         )
                     }
+
                 }
                 SliderBanner()
 //                LazyRow(
@@ -216,10 +219,12 @@ fun Feed(modifier: Modifier = Modifier.background(Color.White)){
                 Row(modifier = Modifier
                     .height(40.dp)
                     .fillMaxWidth()
-                    .background(color = Color.White)
+                    .background(color = Color.White),
+                    verticalAlignment = Alignment.Top,
+                    horizontalArrangement = Arrangement.SpaceAround
                 ) {
 
-                    Icon(painterResource(id = R.drawable.baseline_thumb_up_24),
+                    Icon(painterResource(id = R.drawable.baseline_mode_comment_24),
                         contentDescription = null,
                         Modifier.size(30.dp),
                         tint = Color(0xFFE5684A))
@@ -229,14 +234,238 @@ fun Feed(modifier: Modifier = Modifier.background(Color.White)){
                         Modifier.size(30.dp),
                         tint = Color(0xFFE5684A))
 
-                    Icon(painterResource(id = R.drawable.baseline_thumb_up_24),
+                    Icon(painterResource(id = R.drawable.baseline_share_24),
+                        contentDescription = null,
+                        Modifier.size(30.dp),
+                        tint = Color(0xFFE5684A))
+
+                    Icon(painterResource(id = R.drawable.baseline_save_alt_24),
                         contentDescription = null,
                         Modifier.size(30.dp),
                         tint = Color(0xFFE5684A))
 
                 }
             }
+
+            Card(
+                elevation = CardDefaults.cardElevation(defaultElevation = 6.dp),
+                colors = CardDefaults.cardColors(
+                    containerColor = Color.White,
+                ),
+                modifier = Modifier
+                    .padding(10.dp, 5.dp)
+                    .fillMaxWidth(),
+            ) {
+                Row(
+                    modifier = Modifier
+                        .padding(all = 10.dp)
+                        .horizontalScroll(rememberScrollState())
+                        .fillMaxWidth()
+                ) {
+                    Image(
+                        bitmap = ImageBitmap.imageResource(id = R.drawable.perf2),
+                        contentDescription = null,
+                        Modifier
+                            .size(60.dp)
+                    )
+
+                    Column(
+                        modifier = Modifier
+                            .padding(3.dp, 10.dp)
+                    ){
+
+                        Text(
+                            "dojavam",
+                            color = Color(0xFFE5684A),
+                            fontSize = 20.sp,
+                            fontWeight = FontWeight.Bold,
+                        )
+
+                        Text(
+                            text = "EUA CALIFORMIA",
+                            color = Color.Black,
+                            fontSize = 12.sp,
+                        )
+                    }
+
+                }
+
+                Column(
+                    modifier = Modifier
+                        .padding(25.dp,5.dp)
+                        .fillMaxWidth()
+                ) {
+
+                    Text(
+                        text = "Et eius voluptate dolorum debitis ducimus fugit molestiae dolor. Eum et dolores aut reprehenderit dignissimos nihil error. Ducimus voluptas velit laboriosam provident. Labore est quis ad eum sed. Ratione quibusdam fugiat. Qui labore quisquam dolorum maiores deserunt dolores nihil.Et eius voluptate dolorum debitis ducimus fugit molestiae dolor. Eum et dolores aut reprehenderit dignissimos nihil error. Ducimus voluptas velit laboriosam provident. Labore est quis ad eum sed. Ratione quibusdam fugiat. Qui labore quisquam dolorum maiores deserunt dolores nihil.",
+                        color = Color.Black,
+                        fontSize = 12.sp,
+                    )
+
+                }
+
+                Column(
+                    modifier = Modifier
+                        .padding(15.dp)
+                        .clip(RoundedCornerShape(18.dp))
+                        .fillMaxWidth()
+                ) {
+
+                        Image(
+                            painter = painterResource(id = R.drawable.post4),
+                            contentDescription = null,
+                            contentScale = ContentScale.FillBounds,
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .height(600.dp)
+
+                        )
+                }
+                
+                Row(modifier = Modifier
+                    .height(40.dp)
+                    .fillMaxWidth()
+                    .background(color = Color.White),
+                    verticalAlignment = Alignment.Top,
+                    horizontalArrangement = Arrangement.SpaceAround
+                ) {
+
+                    Icon(painterResource(id = R.drawable.baseline_mode_comment_24),
+                        contentDescription = null,
+                        Modifier.size(30.dp),
+                        tint = Color(0xFFE5684A))
+
+                    Icon(painterResource(id = R.drawable.baseline_thumb_up_24),
+                        contentDescription = null,
+                        Modifier.size(30.dp),
+                        tint = Color(0xFFE5684A))
+
+                    Icon(painterResource(id = R.drawable.baseline_share_24),
+                        contentDescription = null,
+                        Modifier.size(30.dp),
+                        tint = Color(0xFFE5684A))
+
+                    Icon(painterResource(id = R.drawable.baseline_save_alt_24),
+                        contentDescription = null,
+                        Modifier.size(30.dp),
+                        tint = Color(0xFFE5684A))
+                }
+            }
+
+            Card(
+                elevation = CardDefaults.cardElevation(defaultElevation = 6.dp),
+                colors = CardDefaults.cardColors(
+                    containerColor = Color.White,
+                ),
+                modifier = Modifier
+                    .padding(10.dp, 5.dp)
+                    .fillMaxWidth(),
+            ) {
+                Row(
+                    modifier = Modifier
+                        .padding(all = 10.dp)
+                        .horizontalScroll(rememberScrollState())
+                        .fillMaxWidth()
+                ) {
+                    Image(
+                        bitmap = ImageBitmap.imageResource(id = R.drawable.perf2),
+                        contentDescription = null,
+                        Modifier
+                            .size(60.dp)
+                    )
+
+                    Column(
+                        modifier = Modifier
+                            .padding(3.dp, 10.dp)
+                    ){
+
+                        Text(
+                            "dojavam",
+                            color = Color(0xFFE5684A),
+                            fontSize = 20.sp,
+                            fontWeight = FontWeight.Bold,
+                        )
+
+                        Text(
+                            text = "EUA CALIFORMIA",
+                            color = Color.Black,
+                            fontSize = 12.sp,
+                            fontWeight = FontWeight.Bold,
+                        )
+                    }
+
+                }
+
+                Column(
+                    modifier = Modifier
+                        .padding(25.dp,5.dp)
+                        .fillMaxWidth()
+                ) {
+
+                    Text(
+                        text = "Et eius voluptate dolorum debitis ducimus fugit molestiae dolor. Eum et dolores aut reprehenderit dignissimos nihil error. Ducimus voluptas velit laboriosam provident. Labore est quis ad eum sed. Ratione quibusdam fugiat. Qui labore quisquam dolorum maiores deserunt dolores nihil.Et eius voluptate dolorum debitis ducimus fugit molestiae dolor. Eum et dolores aut reprehenderit dignissimos nihil error. Ducimus voluptas velit laboriosam provident. Labore est quis ad eum sed. Ratione quibusdam fugiat. Qui labore quisquam dolorum maiores deserunt dolores nihil.",
+                        color = Color.Black,
+                        fontSize = 12.sp,
+                    )
+
+                }
+
+                Row(modifier = Modifier
+                    .height(40.dp)
+                    .fillMaxWidth()
+                    .background(color = Color.White),
+                    verticalAlignment = Alignment.Top,
+                    horizontalArrangement = Arrangement.SpaceAround
+                ) {
+
+                    Icon(painterResource(id = R.drawable.baseline_mode_comment_24),
+                        contentDescription = null,
+                        Modifier.size(30.dp),
+                        tint = Color(0xFFE5684A))
+
+                    Icon(painterResource(id = R.drawable.baseline_thumb_up_24),
+                        contentDescription = null,
+                        Modifier.size(30.dp),
+                        tint = Color(0xFFE5684A))
+
+                    Icon(painterResource(id = R.drawable.baseline_share_24),
+                        contentDescription = null,
+                        Modifier.size(30.dp),
+                        tint = Color(0xFFE5684A))
+
+                    Icon(painterResource(id = R.drawable.baseline_save_alt_24),
+                        contentDescription = null,
+                        Modifier.size(30.dp),
+                        tint = Color(0xFFE5684A))
+                }
+            }
         }
+
+    }
+
+    Row(modifier = Modifier
+        .padding(bottom = 1.dp)
+        .height(60.dp)
+        .fillMaxWidth()
+        .background(color = Color(0xFF202020)),
+        verticalAlignment = Alignment.CenterVertically,
+        horizontalArrangement = Arrangement.SpaceAround
+    ) {
+
+        Icon(painterResource(id = R.drawable.baseline_add_24),
+            contentDescription = null,
+            Modifier.size(50.dp),
+            tint = Color(0xFFE5684A))
+
+        Icon(painterResource(id = R.drawable.baseline_share_24),
+            contentDescription = null,
+            Modifier.size(30.dp),
+            tint = Color(0xFFE5684A))
+
+        Icon(painterResource(id = R.drawable.baseline_person_24),
+            contentDescription = null,
+            Modifier.size(40.dp),
+            tint = Color(0xFFE5684A))
     }
 }
 
