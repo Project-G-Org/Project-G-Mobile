@@ -22,6 +22,7 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
+import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -145,7 +146,7 @@ fun Feed(modifier: Modifier = Modifier.background(Color.White)){
                         )
 
                         Text(
-                            text = "pedreiro",
+                            text = "MARANHAO",
                             color = Color.Black,
                             fontSize = 12.sp,
                         )
@@ -217,7 +218,22 @@ fun Feed(modifier: Modifier = Modifier.background(Color.White)){
                     .fillMaxWidth()
                     .background(color = Color.White)
                 ) {
-                    VectorDrawable()
+
+                    Icon(painterResource(id = R.drawable.baseline_thumb_up_24),
+                        contentDescription = null,
+                        Modifier.size(30.dp),
+                        tint = Color(0xFFE5684A))
+
+                    Icon(painterResource(id = R.drawable.baseline_thumb_up_24),
+                        contentDescription = null,
+                        Modifier.size(30.dp),
+                        tint = Color(0xFFE5684A))
+
+                    Icon(painterResource(id = R.drawable.baseline_thumb_up_24),
+                        contentDescription = null,
+                        Modifier.size(30.dp),
+                        tint = Color(0xFFE5684A))
+
                 }
             }
         }
