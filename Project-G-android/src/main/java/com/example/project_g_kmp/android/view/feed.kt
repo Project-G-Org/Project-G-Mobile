@@ -3,6 +3,9 @@ package com.example.project_g_kmp.android.view
 import android.graphics.drawable.VectorDrawable
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.gestures.Orientation
+import androidx.compose.foundation.gestures.rememberScrollableState
+import androidx.compose.foundation.gestures.scrollable
 import androidx.compose.foundation.horizontalScroll
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -13,6 +16,8 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Card
@@ -32,6 +37,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.project_g_kmp.android.R
+import com.example.project_g_kmp.android.presentation.components.SliderBanner
 
 @Composable
 fun Feed(modifier: Modifier = Modifier.background(Color.White)){
@@ -45,7 +51,8 @@ fun Feed(modifier: Modifier = Modifier.background(Color.White)){
 
         Row(modifier = Modifier
             .padding(0.dp, 10.dp)
-            .horizontalScroll(rememberScrollState())) {
+            .horizontalScroll(rememberScrollState())
+        ) {
             Image(
                 bitmap = ImageBitmap.imageResource(id = R.drawable.carr1),
                 contentDescription = null,
@@ -112,61 +119,107 @@ fun Feed(modifier: Modifier = Modifier.background(Color.White)){
                 modifier = Modifier
                     .fillMaxWidth(),
             ) {
-                Row(modifier = Modifier
-                    .padding(10.dp, 10.dp)
-                    .horizontalScroll(rememberScrollState()))
-                    {
-                        Image(
-                            bitmap = ImageBitmap.imageResource(id = R.drawable.carr1),
-                            contentDescription = null,
-                            Modifier
-                                .size(60.dp)
-                        )
-
-                            Column(modifier = Modifier
-                                .padding(3.dp, 10.dp)){
-
-                                Text(
-                                    "marcelo",
-                                    color = Color(0xFFE5684A),
-                                    fontSize = 16.sp,
-                                    fontWeight = FontWeight.Bold,
-                                )
-
-                                Text(
-                                    "pedreiro",
-                                    color = Color.Black,
-                                    fontSize = 12.sp,
-                                )
-                             }
-
-                     }
-                Box( modifier = Modifier
-                        .padding(10.dp)
-                        .clip(RoundedCornerShape(18.dp))
-                        ){
-
+                Row(
+                    modifier = Modifier
+                        .padding(all = 10.dp)
+                        .horizontalScroll(rememberScrollState())
+                        .fillMaxWidth()
+                ) {
                     Image(
-                        painter = painterResource(id = R.drawable.backlogin),
+                        bitmap = ImageBitmap.imageResource(id = R.drawable.carr1),
                         contentDescription = null,
-                        contentScale = ContentScale.FillBounds,
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .height(500.dp)
-                            .background(Color.Red)
+                        Modifier
+                            .size(60.dp)
                     )
 
+                    Column(
+                        modifier = Modifier
+                        .padding(3.dp, 10.dp)
+                    ){
+
+                        Text(
+                            "marcelo",
+                            color = Color(0xFFE5684A),
+                            fontSize = 16.sp,
+                            fontWeight = FontWeight.Bold,
+                        )
+
+                        Text(
+                            text = "pedreiro",
+                            color = Color.Black,
+                            fontSize = 12.sp,
+                        )
                     }
-                        Row(modifier = Modifier
-                            .height(40.dp)
-                            .fillMaxWidth()
-                            .background(color = Color.White)) {
-
-                            VectorDrawable()
-
-                        }
                 }
+                SliderBanner()
+//                LazyRow(
+//                    modifier = Modifier
+//                        .padding(all = 10.dp)
+//                        .clip(RoundedCornerShape(18.dp))
+////                        .horizontalScroll(rememberScrollState())
+//                        .fillMaxWidth()
+//                ) {
+//                    item {
+//                        Image(
+//                            painter = painterResource(id = R.drawable.backlogin),
+//                            contentDescription = null,
+//                            contentScale = ContentScale.FillBounds,
+//                            modifier = Modifier
+//                                .width(300.dp)
+//                                .height(500.dp)
+//                                .padding(horizontal = 15.dp)
+//                        )
+//                    }
+//                    item {
+//                        Image(
+//                            painter = painterResource(id = R.drawable.backlogin),
+//                            contentDescription = null,
+//                            contentScale = ContentScale.FillBounds,
+//                            modifier = Modifier
+//                                .width(300.dp)
+//                                .height(500.dp)
+//                                .padding(horizontal = 15.dp)
+//                        )
+//                    }
+//                }
+//                Box(
+//                    modifier = Modifier
+//                        .padding(all = 10.dp)
+//                        .clip(RoundedCornerShape(18.dp))
+////                        .horizontalScroll(rememberScrollState())
+//                        .fillMaxWidth()
+//                        .scrollable(rememberScrollableState {
+//                            it
+//                        }, Orientation.Horizontal)
+//                ) {
+//                    Image(
+//                        painter = painterResource(id = R.drawable.backlogin),
+//                        contentDescription = null,
+//                        contentScale = ContentScale.FillBounds,
+//                        modifier = Modifier
+//                            .width(300.dp)
+//                            .height(500.dp)
+//                            .background(Color.Red)
+//                    )
+//                    Image(
+//                        painter = painterResource(id = R.drawable.backlogin),
+//                        contentDescription = null,
+//                        contentScale = ContentScale.FillBounds,
+//                        modifier = Modifier
+//                            .width(300.dp)
+//                            .height(500.dp)
+//                            .background(Color.Red)
+//                    )
+//                }
 
+                Row(modifier = Modifier
+                    .height(40.dp)
+                    .fillMaxWidth()
+                    .background(color = Color.White)
+                ) {
+                    VectorDrawable()
+                }
+            }
         }
     }
 }
