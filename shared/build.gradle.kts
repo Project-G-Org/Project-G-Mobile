@@ -33,6 +33,27 @@ kotlin {
         }
         val commonTest by getting {
             dependencies {
+                implementation("io.coil-kt:coil-compose:2.4.0")
+
+                implementation("com.google.accompanist:accompanist-insets:0.23.1")
+
+                implementation("androidx.constraintlayout:constraintlayout-compose:1.0.1")
+
+                implementation("com.google.android.exoplayer:exoplayer-core:2.19.1")
+                implementation("com.google.android.exoplayer:exoplayer-ui:2.19.1")
+
+                implementation ("com.google.accompanist:accompanist-pager:0.28.0")
+                implementation ("com.google.accompanist:accompanist-pager-indicators:0.28.0")
+
+                implementation("androidx.navigation:navigation-compose:2.5.3")
+                implementation("androidx.lifecycle:lifecycle-runtime-compose:2.6.1")
+
+
+                implementation(projects.shared)
+                implementation(libs.compose.ui)
+                implementation(libs.compose.ui.tooling.preview)
+                implementation(libs.compose.material3)
+                implementation(libs.androidx.activity.compose)
                 implementation(libs.kotlin.test)
             }
         }

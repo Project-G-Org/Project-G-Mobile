@@ -1,3 +1,5 @@
+@file:OptIn(ExperimentalMaterial3Api::class)
+
 package com.example.project_g_kmp.android.view
 
 import android.graphics.drawable.VectorDrawable
@@ -21,16 +23,37 @@ import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
+import androidx.compose.material.Scaffold
+import androidx.compose.material.Surface
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Add
+import androidx.compose.material.icons.filled.Home
+import androidx.compose.material.icons.filled.Person
+import androidx.compose.material.icons.filled.Search
+import androidx.compose.material.icons.outlined.Add
+import androidx.compose.material.icons.outlined.Home
+import androidx.compose.material.icons.outlined.Person
+import androidx.compose.material.icons.outlined.Search
+import androidx.compose.material3.BadgedBox
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
+import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.NavigationBar
+import androidx.compose.material3.NavigationBarItem
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.setValue
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.ImageBitmap
+import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.imageResource
 import androidx.compose.ui.res.painterResource
@@ -41,20 +64,29 @@ import androidx.compose.ui.unit.sp
 import com.example.project_g_kmp.android.R
 import com.example.project_g_kmp.android.presentation.components.SliderBanner
 
-@Composable
-fun Feed(modifier: Modifier = Modifier.background(Color.White)){
+data class BottomNavigatioItem(
 
-    Column (
+    val selectedIcon: ImageVector,
+    val unselectedIcon: ImageVector,
+    val hasNews: Boolean
+)
+
+
+
+@Composable
+fun Feed(modifier: Modifier = Modifier.background(Color(0xFFEBEBEB))){
+
+    Column(
         Modifier
             .fillMaxSize()
-            .background(Color(0xFFEBEBEB))
+            .background(color = Color(0xFFEBEBEB))
     ) {
 
         Column(
             Modifier
                 .verticalScroll(rememberScrollState())
                 .fillMaxSize(),
-            verticalArrangement = Arrangement.spacedBy(16.dp, alignment = Alignment.Top),
+            verticalArrangement = Arrangement.spacedBy(10.dp, alignment = Alignment.Top),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
 
@@ -292,7 +324,7 @@ fun Feed(modifier: Modifier = Modifier.background(Color.White)){
 
                 Column(
                     modifier = Modifier
-                        .padding(25.dp,5.dp)
+                        .padding(25.dp, 5.dp)
                         .fillMaxWidth()
                 ) {
 
@@ -398,7 +430,7 @@ fun Feed(modifier: Modifier = Modifier.background(Color.White)){
 
                 Column(
                     modifier = Modifier
-                        .padding(25.dp,5.dp)
+                        .padding(25.dp, 5.dp)
                         .fillMaxWidth()
                 ) {
 
@@ -443,8 +475,13 @@ fun Feed(modifier: Modifier = Modifier.background(Color.White)){
 
     }
 
+    Column(Modifier
+        .fillMaxSize(),
+        verticalArrangement = Arrangement.Bottom){
+
+
+
     Row(modifier = Modifier
-        .padding(bottom = 1.dp)
         .height(60.dp)
         .fillMaxWidth()
         .background(color = Color(0xFF202020)),
@@ -452,20 +489,34 @@ fun Feed(modifier: Modifier = Modifier.background(Color.White)){
         horizontalArrangement = Arrangement.SpaceAround
     ) {
 
-        Icon(painterResource(id = R.drawable.baseline_add_24),
-            contentDescription = null,
-            Modifier.size(50.dp),
-            tint = Color(0xFFE5684A))
-
-        Icon(painterResource(id = R.drawable.baseline_share_24),
+        Icon(
+            painterResource(id = R.drawable.baseline_add_24),
             contentDescription = null,
             Modifier.size(30.dp),
-            tint = Color(0xFFE5684A))
+            tint = Color(0xFFE5684A)
+        )
 
-        Icon(painterResource(id = R.drawable.baseline_person_24),
+        Icon(
+            painterResource(id = R.drawable.baseline_home_24),
             contentDescription = null,
-            Modifier.size(40.dp),
-            tint = Color(0xFFE5684A))
+            Modifier.size(30.dp),
+            tint = Color(0xFFE5684A)
+        )
+
+        Icon(
+            painterResource(id = R.drawable.baseline_search_24),
+            contentDescription = null,
+            Modifier.size(30.dp),
+            tint = Color(0xFFE5684A)
+        )
+
+        Icon(
+            painterResource(id = R.drawable.baseline_person_24),
+            contentDescription = null,
+            Modifier.size(30.dp),
+            tint = Color(0xFFE5684A)
+        )
+      }
     }
 }
 
