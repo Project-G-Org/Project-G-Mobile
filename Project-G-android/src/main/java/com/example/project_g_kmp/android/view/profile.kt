@@ -45,16 +45,18 @@ fun Profile (modifier: Modifier = Modifier.background(Color(0xFFEBEBEB))){
 
     ) {
 
-        Box(Modifier
-            .){
-            Image(painter = painterResource(id = R.drawable.post4), contentDescription = )
-        }
-
         Column(modifier = Modifier
             .fillMaxWidth()
             .height(300.dp)
             .background(color = Color(0xFF202020)),
             verticalArrangement = Arrangement.Center) {
+
+            Box(Modifier
+                .fillMaxWidth()
+                .height(150.dp)){
+                Image(painter = painterResource(id = R.drawable.post4), contentDescription = null)
+            }
+
             Row(
                 modifier = Modifier
                     .padding(all = 10.dp)

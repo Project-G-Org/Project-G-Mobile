@@ -5,6 +5,7 @@ package com.example.project_g_kmp.android.view
 import android.graphics.drawable.VectorDrawable
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.border
 import androidx.compose.foundation.gestures.Orientation
 import androidx.compose.foundation.gestures.rememberScrollableState
 import androidx.compose.foundation.gestures.scrollable
@@ -23,6 +24,9 @@ import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
+import androidx.compose.material.BottomNavigation
+import androidx.compose.material.Button
+import androidx.compose.material.IconButton
 import androidx.compose.material.Scaffold
 import androidx.compose.material.Surface
 import androidx.compose.material.icons.Icons
@@ -43,6 +47,7 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.NavigationBar
 import androidx.compose.material3.NavigationBarItem
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
@@ -156,33 +161,52 @@ fun Feed(modifier: Modifier = Modifier.background(Color(0xFFEBEBEB))){
                 Row(
                     modifier = Modifier
                         .padding(all = 10.dp)
-                        .horizontalScroll(rememberScrollState())
-                        .fillMaxWidth()
+                        .fillMaxWidth(),
+                    verticalAlignment = Alignment.CenterVertically,
+                    horizontalArrangement = Arrangement.SpaceBetween
                 ) {
-                    Image(
-                        bitmap = ImageBitmap.imageResource(id = R.drawable.carr1),
-                        contentDescription = null,
-                        Modifier
-                            .size(60.dp)
-                    )
 
-                    Column(
-                        modifier = Modifier
-                        .padding(3.dp, 10.dp)
-                    ){
+                    Row(verticalAlignment = Alignment.CenterVertically,) {
 
-                        Text(
-                            "marcelo",
-                            color = Color(0xFFE5684A),
-                            fontSize = 20.sp,
-                            fontWeight = FontWeight.Bold,
+                        Image(
+                            bitmap = ImageBitmap.imageResource(id = R.drawable.carr1),
+                            contentDescription = null,
+                            Modifier
+                                .size(60.dp),
+
                         )
 
-                        Text(
-                            text = "MARANHAO",
-                            color = Color.Black,
-                            fontSize = 12.sp,
-                            fontWeight = FontWeight.Bold,
+                        Column(
+                            verticalArrangement = Arrangement.Top,
+                            horizontalAlignment = Alignment.CenterHorizontally
+                        ) {
+
+                            TextButton(onClick = { /*TODO*/ },
+                                modifier = Modifier.padding(0.dp)) {
+                                Text(
+                                    "marcelo",
+                                    color = Color(0xFFE5684A),
+                                    fontSize = 20.sp,
+                                    fontWeight = FontWeight.Bold,
+                                )
+                            }
+
+                            Text(
+                                text = "MARANHAO",
+                                color = Color.Black,
+                                fontSize = 12.sp,
+                                fontWeight = FontWeight.Bold,
+                            )
+                        }
+                    }
+
+                    IconButton(onClick = { /*TODO*/ }) {
+
+                        Icon(
+                            painterResource(id = R.drawable.baseline_more_vert_24),
+                            contentDescription = null,
+                            Modifier.size(30.dp),
+                            tint = Color.Black
                         )
                     }
 
@@ -249,33 +273,43 @@ fun Feed(modifier: Modifier = Modifier.background(Color(0xFFEBEBEB))){
 //                }
 
                 Row(modifier = Modifier
-                    .height(40.dp)
+                    .height(50.dp)
                     .fillMaxWidth()
                     .background(color = Color.White),
                     verticalAlignment = Alignment.Top,
                     horizontalArrangement = Arrangement.SpaceAround
                 ) {
 
-                    Icon(painterResource(id = R.drawable.baseline_mode_comment_24),
-                        contentDescription = null,
-                        Modifier.size(30.dp),
-                        tint = Color(0xFFE5684A))
+                    IconButton(onClick = { /*TODO*/ }) {
+                        Icon(painterResource(id = R.drawable.baseline_mode_comment_24),
+                            contentDescription = null,
+                            Modifier.size(30.dp),
+                            tint = Color(0xFFE5684A))
+                    }
 
-                    Icon(painterResource(id = R.drawable.baseline_thumb_up_24),
-                        contentDescription = null,
-                        Modifier.size(30.dp),
-                        tint = Color(0xFFE5684A))
+                    IconButton(onClick = { /*TODO*/ }) {
+                        Icon(
+                            painterResource(id = R.drawable.baseline_thumb_up_24),
+                            contentDescription = null,
+                            Modifier.size(30.dp),
+                            tint = Color(0xFFE5684A)
+                        )
+                    }
 
-                    Icon(painterResource(id = R.drawable.baseline_share_24),
-                        contentDescription = null,
-                        Modifier.size(30.dp),
-                        tint = Color(0xFFE5684A))
+                    IconButton(onClick = { /*TODO*/ }) {
+                        Icon(
+                            painterResource(id = R.drawable.baseline_share_24),
+                            contentDescription = null,
+                            Modifier.size(30.dp),
+                            tint = Color(0xFFE5684A))}
 
-                    Icon(painterResource(id = R.drawable.baseline_save_alt_24),
-                        contentDescription = null,
-                        Modifier.size(30.dp),
-                        tint = Color(0xFFE5684A))
-
+                    IconButton(onClick = { /*TODO*/ }) {
+                        Icon(
+                            painterResource(id = R.drawable.baseline_save_alt_24),
+                            contentDescription = null,
+                            Modifier.size(30.dp),
+                            tint = Color(0xFFE5684A))
+                    }
                 }
             }
 
@@ -291,35 +325,48 @@ fun Feed(modifier: Modifier = Modifier.background(Color(0xFFEBEBEB))){
                 Row(
                     modifier = Modifier
                         .padding(all = 10.dp)
-                        .horizontalScroll(rememberScrollState())
-                        .fillMaxWidth()
+                        .fillMaxWidth(),
+                    verticalAlignment = Alignment.CenterVertically,
+                    horizontalArrangement = Arrangement.SpaceBetween
                 ) {
-                    Image(
-                        bitmap = ImageBitmap.imageResource(id = R.drawable.perf2),
-                        contentDescription = null,
-                        Modifier
-                            .size(60.dp)
-                    )
 
-                    Column(
-                        modifier = Modifier
-                            .padding(3.dp, 10.dp)
-                    ){
+                    Row {
 
-                        Text(
-                            "dojavam",
-                            color = Color(0xFFE5684A),
-                            fontSize = 20.sp,
-                            fontWeight = FontWeight.Bold,
+                        Image(
+                            bitmap = ImageBitmap.imageResource(id = R.drawable.carr1),
+                            contentDescription = null,
+                            Modifier
+                                .size(60.dp)
                         )
 
-                        Text(
-                            text = "EUA CALIFORMIA",
-                            color = Color.Black,
-                            fontSize = 12.sp,
+                        Column(
+                            modifier = Modifier
+                                .padding(3.dp, 10.dp)
+                        ) {
+
+                            Text(
+                                "marcelo",
+                                color = Color(0xFFE5684A),
+                                fontSize = 20.sp,
+                                fontWeight = FontWeight.Bold,
+                            )
+
+                            Text(
+                                text = "MARANHAO",
+                                color = Color.Black,
+                                fontSize = 12.sp,
+                                fontWeight = FontWeight.Bold,
+                            )
+                        }
+                    }
+                    IconButton(onClick = { /*TODO*/ }) {
+                        Icon(
+                            painterResource(id = R.drawable.baseline_more_vert_24),
+                            contentDescription = null,
+                            Modifier.size(30.dp),
+                            tint = Color.Black
                         )
                     }
-
                 }
 
                 Column(
@@ -353,34 +400,45 @@ fun Feed(modifier: Modifier = Modifier.background(Color(0xFFEBEBEB))){
 
                         )
                 }
-                
+
                 Row(modifier = Modifier
-                    .height(40.dp)
+                    .height(50.dp)
                     .fillMaxWidth()
                     .background(color = Color.White),
                     verticalAlignment = Alignment.Top,
                     horizontalArrangement = Arrangement.SpaceAround
                 ) {
 
-                    Icon(painterResource(id = R.drawable.baseline_mode_comment_24),
-                        contentDescription = null,
-                        Modifier.size(30.dp),
-                        tint = Color(0xFFE5684A))
+                    IconButton(onClick = { /*TODO*/ }) {
+                        Icon(painterResource(id = R.drawable.baseline_mode_comment_24),
+                            contentDescription = null,
+                            Modifier.size(30.dp),
+                            tint = Color(0xFFE5684A))
+                    }
 
-                    Icon(painterResource(id = R.drawable.baseline_thumb_up_24),
-                        contentDescription = null,
-                        Modifier.size(30.dp),
-                        tint = Color(0xFFE5684A))
+                    IconButton(onClick = { /*TODO*/ }) {
+                        Icon(
+                            painterResource(id = R.drawable.baseline_thumb_up_24),
+                            contentDescription = null,
+                            Modifier.size(30.dp),
+                            tint = Color(0xFFE5684A)
+                        )
+                    }
 
-                    Icon(painterResource(id = R.drawable.baseline_share_24),
-                        contentDescription = null,
-                        Modifier.size(30.dp),
-                        tint = Color(0xFFE5684A))
+                    IconButton(onClick = { /*TODO*/ }) {
+                        Icon(
+                            painterResource(id = R.drawable.baseline_share_24),
+                            contentDescription = null,
+                            Modifier.size(30.dp),
+                            tint = Color(0xFFE5684A))}
 
-                    Icon(painterResource(id = R.drawable.baseline_save_alt_24),
-                        contentDescription = null,
-                        Modifier.size(30.dp),
-                        tint = Color(0xFFE5684A))
+                    IconButton(onClick = { /*TODO*/ }) {
+                        Icon(
+                            painterResource(id = R.drawable.baseline_save_alt_24),
+                            contentDescription = null,
+                            Modifier.size(30.dp),
+                            tint = Color(0xFFE5684A))
+                    }
                 }
             }
 
@@ -396,33 +454,47 @@ fun Feed(modifier: Modifier = Modifier.background(Color(0xFFEBEBEB))){
                 Row(
                     modifier = Modifier
                         .padding(all = 10.dp)
-                        .horizontalScroll(rememberScrollState())
-                        .fillMaxWidth()
+                        .fillMaxWidth(),
+                    verticalAlignment = Alignment.CenterVertically,
+                    horizontalArrangement = Arrangement.SpaceBetween
                 ) {
-                    Image(
-                        bitmap = ImageBitmap.imageResource(id = R.drawable.perf2),
-                        contentDescription = null,
-                        Modifier
-                            .size(60.dp)
-                    )
 
-                    Column(
-                        modifier = Modifier
-                            .padding(3.dp, 10.dp)
-                    ){
+                    Row {
 
-                        Text(
-                            "dojavam",
-                            color = Color(0xFFE5684A),
-                            fontSize = 20.sp,
-                            fontWeight = FontWeight.Bold,
+                        Image(
+                            bitmap = ImageBitmap.imageResource(id = R.drawable.carr1),
+                            contentDescription = null,
+                            Modifier
+                                .size(60.dp)
                         )
 
-                        Text(
-                            text = "EUA CALIFORMIA",
-                            color = Color.Black,
-                            fontSize = 12.sp,
-                            fontWeight = FontWeight.Bold,
+                        Column(
+                            modifier = Modifier
+                                .padding(3.dp, 10.dp)
+                        ) {
+
+                            Text(
+                                "marcelo",
+                                color = Color(0xFFE5684A),
+                                fontSize = 20.sp,
+                                fontWeight = FontWeight.Bold,
+                            )
+
+                            Text(
+                                text = "MARANHAO",
+                                color = Color.Black,
+                                fontSize = 12.sp,
+                                fontWeight = FontWeight.Bold,
+                            )
+                        }
+                    }
+
+                    IconButton(onClick = { /*TODO*/ }) {
+                        Icon(
+                            painterResource(id = R.drawable.baseline_more_vert_24),
+                            contentDescription = null,
+                            Modifier.size(30.dp),
+                            tint = Color.Black
                         )
                     }
 
@@ -443,32 +515,43 @@ fun Feed(modifier: Modifier = Modifier.background(Color(0xFFEBEBEB))){
                 }
 
                 Row(modifier = Modifier
-                    .height(40.dp)
+                    .height(50.dp)
                     .fillMaxWidth()
                     .background(color = Color.White),
                     verticalAlignment = Alignment.Top,
                     horizontalArrangement = Arrangement.SpaceAround
                 ) {
 
-                    Icon(painterResource(id = R.drawable.baseline_mode_comment_24),
-                        contentDescription = null,
-                        Modifier.size(30.dp),
-                        tint = Color(0xFFE5684A))
+                    IconButton(onClick = { /*TODO*/ }) {
+                        Icon(painterResource(id = R.drawable.baseline_mode_comment_24),
+                            contentDescription = null,
+                            Modifier.size(30.dp),
+                            tint = Color(0xFFE5684A))
+                    }
 
-                    Icon(painterResource(id = R.drawable.baseline_thumb_up_24),
-                        contentDescription = null,
-                        Modifier.size(30.dp),
-                        tint = Color(0xFFE5684A))
+                    IconButton(onClick = { /*TODO*/ }) {
+                            Icon(
+                                painterResource(id = R.drawable.baseline_thumb_up_24),
+                                contentDescription = null,
+                                Modifier.size(30.dp),
+                                tint = Color(0xFFE5684A)
+                            )
+                        }
 
-                    Icon(painterResource(id = R.drawable.baseline_share_24),
+                    IconButton(onClick = { /*TODO*/ }) {
+                    Icon(
+                        painterResource(id = R.drawable.baseline_share_24),
                         contentDescription = null,
                         Modifier.size(30.dp),
-                        tint = Color(0xFFE5684A))
+                        tint = Color(0xFFE5684A))}
 
-                    Icon(painterResource(id = R.drawable.baseline_save_alt_24),
+                    IconButton(onClick = { /*TODO*/ }) {
+                    Icon(
+                        painterResource(id = R.drawable.baseline_save_alt_24),
                         contentDescription = null,
                         Modifier.size(30.dp),
                         tint = Color(0xFFE5684A))
+                    }
                 }
             }
         }
@@ -479,7 +562,36 @@ fun Feed(modifier: Modifier = Modifier.background(Color(0xFFEBEBEB))){
         .fillMaxSize(),
         verticalArrangement = Arrangement.Bottom){
 
+        Column(){
 
+            Box(
+                modifier = Modifier
+                    .padding(10.dp,10.dp),
+                contentAlignment = Alignment.Center
+
+            ) {
+
+                IconButton(onClick = { /*TODO*/ }) {
+
+                Icon(
+                    painterResource(id = R.drawable.baseline_circle_24),
+                    contentDescription = null,
+                    Modifier
+                        .size(80.dp),
+                    tint = Color(0xFF202020)
+                )
+
+                    Icon(
+                        painterResource(id = R.drawable.baseline_add_24),
+                        contentDescription = null,
+                        Modifier
+                            .padding(10.dp)
+                            .size(40.dp),
+                        tint = Color(0xFFE5684A)
+                    )
+                }
+            }
+        }
 
     Row(modifier = Modifier
         .height(60.dp)
@@ -489,33 +601,35 @@ fun Feed(modifier: Modifier = Modifier.background(Color(0xFFEBEBEB))){
         horizontalArrangement = Arrangement.SpaceAround
     ) {
 
-        Icon(
-            painterResource(id = R.drawable.baseline_add_24),
-            contentDescription = null,
-            Modifier.size(30.dp),
-            tint = Color(0xFFE5684A)
-        )
+        IconButton(onClick = { /*TODO*/ }) {
+            Icon(
+                painterResource(id = R.drawable.baseline_home_24),
+                contentDescription = null,
+                Modifier.size(30.dp),
+                tint = Color(0xFFE5684A)
+            )
+        }
 
-        Icon(
-            painterResource(id = R.drawable.baseline_home_24),
-            contentDescription = null,
-            Modifier.size(30.dp),
-            tint = Color(0xFFE5684A)
-        )
 
-        Icon(
-            painterResource(id = R.drawable.baseline_search_24),
-            contentDescription = null,
-            Modifier.size(30.dp),
-            tint = Color(0xFFE5684A)
-        )
+            IconButton(onClick = { /*TODO*/ }) {
 
-        Icon(
-            painterResource(id = R.drawable.baseline_person_24),
-            contentDescription = null,
-            Modifier.size(30.dp),
-            tint = Color(0xFFE5684A)
-        )
+                Icon(
+                    painterResource(id = R.drawable.baseline_search_24),
+                    contentDescription = null,
+                    Modifier.size(30.dp),
+                    tint = Color(0xFFE5684A)
+                )
+            }
+
+
+        IconButton(onClick = { /*TODO*/ }) {
+            Icon(
+                painterResource(id = R.drawable.baseline_person_24),
+                contentDescription = null,
+                Modifier.size(30.dp),
+                tint = Color(0xFFE5684A)
+            )
+        }
       }
     }
 }

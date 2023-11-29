@@ -8,6 +8,7 @@ import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Email
@@ -15,6 +16,7 @@ import androidx.compose.material.icons.filled.Lock
 import androidx.compose.material.icons.filled.Person
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
+import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
@@ -43,7 +45,6 @@ fun Rec(){
         modifier = Modifier
             .fillMaxWidth()
             .fillMaxHeight()
-            .background(Color.Red)
     )
 
     Column (
@@ -76,6 +77,8 @@ fun Rec(){
 
     }
 
+
+
 }
 
 sealed class InputTypeRec(
@@ -101,6 +104,8 @@ sealed class InputTypeRec(
             keyboardType = KeyboardType.Password),
         visualTransformation = PasswordVisualTransformation()
     )
+
+
 
 
 }
