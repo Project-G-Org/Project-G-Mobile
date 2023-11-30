@@ -27,6 +27,7 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.Button
 import androidx.compose.material.ButtonDefaults
+import androidx.compose.material.CircularProgressIndicator
 import androidx.compose.material.Divider
 import androidx.compose.material.Icon
 import androidx.compose.material.Text
@@ -38,6 +39,7 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -46,19 +48,22 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.unit.dp
+import com.arkivanov.decompose.extensions.compose.jetbrains.subscribeAsState
+import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 import model.InputType
+import navigation.screencomponents.LoginScreenComponent
 import org.jetbrains.compose.resources.ExperimentalResourceApi
 import org.jetbrains.compose.resources.painterResource
 import presentation.Components.CustomTextInput
 
 @OptIn(ExperimentalResourceApi::class)
 @Composable
-fun LoginScreen() {
+fun LoginScreen(component: LoginScreenComponent) {
 
-    var showContent by remember{
-        mutableStateOf(false)
-    }
+    val showContent by component.showAnimation.subscribeAsState()
+    val coroutineScope = rememberCoroutineScope()
 
     val valueLogin = remember {
         mutableStateOf("")
@@ -72,6 +77,10 @@ fun LoginScreen() {
         mutableStateOf(Color(0xFFE5684A))
     }
 
+    var showProgressBar by remember {
+        mutableStateOf(false)
+    }
+
     Box(
       modifier = Modifier
           .fillMaxSize()
@@ -80,8 +89,19 @@ fun LoginScreen() {
               contentScale = ContentScale.FillBounds
           )
     ) {
+        if(showProgressBar) {
+            Column(
+                modifier = Modifier.fillMaxSize(),
+                verticalArrangement = Arrangement.Center,
+                horizontalAlignment = Alignment.CenterHorizontally
+            ) {
+                CircularProgressIndicator(
+                    color = Color(0xFF74CC3D)
+                )
+            }
+        }
         LaunchedEffect(Unit) {
-            showContent = true
+            component.updateShowAnimation(true)
         }
         AnimatedVisibility(
             visible = showContent,
@@ -105,7 +125,14 @@ fun LoginScreen() {
                 CustomTextInput(inputType = InputType.Name, value = valueLogin)
                 CustomTextInput(inputType = InputType.Password, value = valuePass)
                 Button(
-                    onClick = { buttonColor.value = Color(0xFFE5684A) },
+                    onClick = {
+                        //buttonColor.value = Color(0xFFE5684A)
+                        showProgressBar = true
+                        coroutineScope.launch {
+                            delay(2000)
+                            component.goToFeed()
+                        }
+                    },
                     colors = ButtonDefaults.buttonColors(
                         Color(0xFFE5684A)
                     )
@@ -140,7 +167,9 @@ fun LoginScreen() {
                     verticalAlignment = Alignment.CenterVertically
                 ) {
                     Text("Não tem conta?", color = Color.White)
-                    TextButton(onClick = {}) {
+                    TextButton(onClick = {
+                        component.goToCadastroScreen()
+                    }) {
                         Text("Cadastre-se agora", color = Color(0xFFE5684A))
                     }
                 }

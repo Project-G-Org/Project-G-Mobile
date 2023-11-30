@@ -33,13 +33,14 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import navigation.screencomponents.FeedScreenComponent
 import org.jetbrains.compose.resources.ExperimentalResourceApi
 import org.jetbrains.compose.resources.painterResource
 import presentation.Components.SliderBanner
 
 @OptIn(ExperimentalResourceApi::class)
 @Composable
-fun FeedScreen(modifier: Modifier = Modifier.background(Color(0xFFEBEBEB))){
+fun FeedScreen(component: FeedScreenComponent, modifier: Modifier = Modifier.background(Color(0xFFEBEBEB))){
 
     Scaffold(
         modifier = Modifier.fillMaxSize(),

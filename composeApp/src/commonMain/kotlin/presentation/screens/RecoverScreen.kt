@@ -22,13 +22,14 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.unit.dp
 import model.InputType
+import navigation.screencomponents.RecoverScreenComponent
 import org.jetbrains.compose.resources.ExperimentalResourceApi
 import org.jetbrains.compose.resources.painterResource
 import presentation.Components.CustomTextInput
 
 @OptIn(ExperimentalResourceApi::class)
 @Composable
-fun RecoverScreen() {
+fun RecoverScreen(component: RecoverScreenComponent) {
 
     val valueGmail = remember {
         mutableStateOf("")

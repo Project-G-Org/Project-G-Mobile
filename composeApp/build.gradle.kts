@@ -5,6 +5,7 @@ plugins {
     alias(libs.plugins.kotlinMultiplatform)
     alias(libs.plugins.androidApplication)
     alias(libs.plugins.jetbrainsCompose)
+    kotlin("plugin.serialization") version "1.9.21"
 }
 
 kotlin {
@@ -33,6 +34,7 @@ kotlin {
             implementation(libs.compose.ui)
             implementation(libs.compose.ui.tooling.preview)
             implementation(libs.androidx.activity.compose)
+            implementation(libs.decompose)
         }
         commonMain.dependencies {
             implementation(compose.runtime)
@@ -43,6 +45,13 @@ kotlin {
 
             implementation ("com.google.accompanist:accompanist-pager:0.28.0")
             implementation ("com.google.accompanist:accompanist-pager-indicators:0.28.0")
+
+            // Decompose
+            implementation(libs.decompose)
+            implementation(libs.decompose.jetbrains)
+
+            // Kotlinx Serialization
+            implementation(libs.kotlinx.serialization.json)
         }
     }
 }
@@ -81,16 +90,9 @@ android {
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8
         targetCompatibility = JavaVersion.VERSION_1_8
-
-        isCoreLibraryDesugaringEnabled = true
     }
     dependencies {
         debugImplementation(libs.compose.ui.tooling)
-
-        coreLibraryDesugaring(libs.desugar.jdk.libs)
     }
-}
-dependencies {
-    implementation("androidx.core:core-ktx:+")
 }
 

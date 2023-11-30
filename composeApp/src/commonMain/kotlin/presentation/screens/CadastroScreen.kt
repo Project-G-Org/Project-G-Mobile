@@ -44,13 +44,14 @@ import androidx.compose.ui.unit.IntOffset
 import androidx.compose.ui.unit.center
 import androidx.compose.ui.unit.dp
 import model.InputType
+import navigation.screencomponents.CadastroScreenComponent
 import org.jetbrains.compose.resources.ExperimentalResourceApi
 import org.jetbrains.compose.resources.painterResource
 import presentation.Components.CustomTextInput
 
 @OptIn(ExperimentalResourceApi::class)
 @Composable
-fun CadastroScreen() {
+fun CadastroScreen(component: CadastroScreenComponent) {
 
     var showContent by remember {
         mutableStateOf(false)
@@ -112,7 +113,9 @@ fun CadastroScreen() {
                         horizontalAlignment = Alignment.Start)
                     {
                         Button(
-                            onClick = {},
+                            onClick = {
+                                component.goBack()
+                            },
                             colors = ButtonDefaults.buttonColors(
                                 Color(0xE5684A),
                             ),
@@ -156,7 +159,9 @@ fun CadastroScreen() {
                     )
                     Row(verticalAlignment = Alignment.CenterVertically){
                         Text("Já tem uma conta?", color = Color.White)
-                        TextButton(onClick = {}) {
+                        TextButton(onClick = {
+                            component.goBack()
+                        }) {
                             Text("Clique aqui", color = Color(0xFFE5684A),)
                         }
                     }
