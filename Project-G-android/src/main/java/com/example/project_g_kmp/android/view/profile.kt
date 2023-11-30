@@ -168,10 +168,16 @@ fun Profile (modifier: Modifier = Modifier.background(Color(0xFFEBEBEB))){
                                fontSize = 15.sp,
                            )
 
-                           Divider(color = Color.Black.copy(alpha = 0.3f),thickness = 1.dp,
-                           )
+                           Divider(modifier = Modifier
+                               .height(1.dp)
+                               .fillMaxWidth(), color = Color.Black)
 
-                           
+                           Icon(painterResource(id = R.drawable.baseline_mode_comment_24),
+                               contentDescription = null,
+                               Modifier.size(30.dp),
+                               tint = Color(0xFFE5684A))
+
+
 
                        }
 
