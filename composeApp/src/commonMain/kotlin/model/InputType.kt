@@ -44,4 +44,10 @@ sealed class InputType(
             keyboardType = KeyboardType.Password),
         visualTransformation = PasswordVisualTransformation()
     )
+
+    object VC : InputType(label = "Verification Code",
+        icon = Icons.Default.Person,
+        KeyboardOptions(imeAction = ImeAction.Next),
+        visualTransformation = VisualTransformation.None
+    )
 }

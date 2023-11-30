@@ -40,6 +40,9 @@ kotlin {
             implementation(compose.material)
             @OptIn(ExperimentalComposeLibrary::class)
             implementation(compose.components.resources)
+
+            implementation ("com.google.accompanist:accompanist-pager:0.28.0")
+            implementation ("com.google.accompanist:accompanist-pager-indicators:0.28.0")
         }
     }
 }

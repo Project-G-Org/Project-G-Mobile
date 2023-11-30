@@ -1,5 +1,11 @@
 package presentation.screens
 
+import androidx.compose.animation.AnimatedVisibility
+import androidx.compose.animation.EnterTransition
+import androidx.compose.animation.core.tween
+import androidx.compose.animation.fadeIn
+import androidx.compose.animation.scaleIn
+import androidx.compose.animation.slideInVertically
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -28,8 +34,11 @@ import androidx.compose.material.TextButton
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ExitToApp
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.paint
@@ -37,6 +46,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.unit.dp
+import kotlinx.coroutines.delay
 import model.InputType
 import org.jetbrains.compose.resources.ExperimentalResourceApi
 import org.jetbrains.compose.resources.painterResource
@@ -45,6 +55,10 @@ import presentation.Components.CustomTextInput
 @OptIn(ExperimentalResourceApi::class)
 @Composable
 fun LoginScreen() {
+
+    var showContent by remember{
+        mutableStateOf(false)
+    }
 
     val valueLogin = remember {
         mutableStateOf("")
@@ -66,61 +80,69 @@ fun LoginScreen() {
               contentScale = ContentScale.FillBounds
           )
     ) {
-        Column(
-            modifier = Modifier
-                .padding(24.dp)
-                .fillMaxSize()
-                .verticalScroll(rememberScrollState()),
-            verticalArrangement = Arrangement.spacedBy(16.dp, alignment = Alignment.Bottom),
-            horizontalAlignment = Alignment.CenterHorizontally
+        LaunchedEffect(Unit) {
+            showContent = true
+        }
+        AnimatedVisibility(
+            visible = showContent,
+            enter = slideInVertically(animationSpec = tween(700))
         ) {
-            Image(
-                painter = painterResource("logo.png"),
-                contentDescription = null,
+            Column(
                 modifier = Modifier
-                    .width(400.dp)
-                    .height(200.dp),
-            )
-            CustomTextInput(inputType = InputType.Name, value = valueLogin)
-            CustomTextInput(inputType = InputType.Password, value = valuePass)
-            Button(
-                onClick = { buttonColor.value = Color(0xFFE5684A) },
-                colors = ButtonDefaults.buttonColors(
-                    Color(0xFFE5684A)
+                    .padding(24.dp)
+                    .fillMaxSize()
+                    .verticalScroll(rememberScrollState()),
+                verticalArrangement = Arrangement.spacedBy(16.dp, alignment = Alignment.Bottom),
+                horizontalAlignment = Alignment.CenterHorizontally
+            ) {
+                Image(
+                    painter = painterResource("logo.png"),
+                    contentDescription = null,
+                    modifier = Modifier
+                        .width(400.dp)
+                        .height(200.dp),
                 )
-            ) {
-                Row(
-                    horizontalArrangement = Arrangement.Center,
-                    verticalAlignment = Alignment.CenterVertically,
-                    modifier = Modifier.padding(horizontal = 30.dp)
+                CustomTextInput(inputType = InputType.Name, value = valueLogin)
+                CustomTextInput(inputType = InputType.Password, value = valuePass)
+                Button(
+                    onClick = { buttonColor.value = Color(0xFFE5684A) },
+                    colors = ButtonDefaults.buttonColors(
+                        Color(0xFFE5684A)
+                    )
                 ) {
-                    Icon(
-                        imageVector = Icons.Filled.ExitToApp,
-                        contentDescription = null,
-                        tint = Color.White,
-                        modifier = Modifier.size(18.dp)
-                    )
-                    Spacer(modifier = Modifier.width(10.dp))
-                    Text(
-                        text = "Login",
-                        modifier = Modifier
-                            .padding(vertical = 8.dp),
-                        color = Color.White
-                    )
-                }
+                    Row(
+                        horizontalArrangement = Arrangement.Center,
+                        verticalAlignment = Alignment.CenterVertically,
+                        modifier = Modifier.padding(horizontal = 30.dp)
+                    ) {
+                        Icon(
+                            imageVector = Icons.Filled.ExitToApp,
+                            contentDescription = null,
+                            tint = Color.White,
+                            modifier = Modifier.size(18.dp)
+                        )
+                        Spacer(modifier = Modifier.width(10.dp))
+                        Text(
+                            text = "Login",
+                            modifier = Modifier
+                                .padding(vertical = 8.dp),
+                            color = Color.White
+                        )
+                    }
 
-            }
-            Divider(
-                color = Color.White.copy(alpha = 0.3f),
-                thickness = 1.dp,
-                modifier = Modifier.padding(top = 16.dp)
-            )
-            Row(
-                verticalAlignment = Alignment.CenterVertically
-            ) {
-                Text("Não tem conta?", color = Color.White)
-                TextButton(onClick = {}) {
-                    Text("Cadastre-se agora", color = Color(0xFFE5684A))
+                }
+                Divider(
+                    color = Color.White.copy(alpha = 0.3f),
+                    thickness = 1.dp,
+                    modifier = Modifier.padding(top = 16.dp)
+                )
+                Row(
+                    verticalAlignment = Alignment.CenterVertically
+                ) {
+                    Text("Não tem conta?", color = Color.White)
+                    TextButton(onClick = {}) {
+                        Text("Cadastre-se agora", color = Color(0xFFE5684A))
+                    }
                 }
             }
         }

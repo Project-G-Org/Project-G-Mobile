@@ -15,12 +15,14 @@ import androidx.compose.ui.Modifier
 import org.jetbrains.compose.resources.ExperimentalResourceApi
 import org.jetbrains.compose.resources.painterResource
 import presentation.screens.CadastroScreen
+import presentation.screens.FeedScreen
 import presentation.screens.LoginScreen
+import presentation.screens.RecoverScreen
 
 @OptIn(ExperimentalResourceApi::class)
 @Composable
 fun App() {
     MaterialTheme {
-        LoginScreen()
+        FeedScreen()
     }
 }
