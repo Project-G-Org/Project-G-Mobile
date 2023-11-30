@@ -133,7 +133,35 @@ fun Profile (modifier: Modifier = Modifier.background(Color(0xFFEBEBEB))){
                 Modifier.height(150.dp),
                 verticalArrangement = Arrangement.Bottom) {
 
-                    Card {
+                    Card(
+                        elevation = CardDefaults.cardElevation(defaultElevation = 6.dp),
+                        colors = CardDefaults.cardColors(
+                            containerColor = Color.White,
+                        ),
+                        modifier = Modifier
+                            .padding(10.dp, 5.dp)
+                            .fillMaxWidth(),) {
+
+                        Row (
+                            Modifier
+                                .fillMaxWidth(),
+                            horizontalArrangement = Arrangement.SpaceAround) {
+
+                            Text(
+                                "Seguidores",
+                                color = Color(0xFFE5684A),
+                                fontSize = 20.sp,
+                                fontWeight = FontWeight.Bold,
+                            )
+
+                            Text(
+                                "Suguindo",
+                                color = Color(0xFFE5684A),
+                                fontSize = 20.sp,
+                                fontWeight = FontWeight.Bold,
+                            )
+
+                        }
 
                     }
 
