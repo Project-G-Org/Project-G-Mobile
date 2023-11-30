@@ -14,18 +14,25 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
+import androidx.compose.material.IconButton
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
+import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.ElevatedCard
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.ImageBitmap
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.imageResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
@@ -48,20 +55,26 @@ fun Profile (modifier: Modifier = Modifier.background(Color(0xFFEBEBEB))){
         Column(modifier = Modifier
             .fillMaxWidth()
             .height(300.dp)
-            .background(color = Color(0xFF202020)),
-            verticalArrangement = Arrangement.Center) {
+            .background(color = Color(0xFFEBEBEB)),
+            ) {
 
-            Box(Modifier
-                .fillMaxWidth()
-                .height(150.dp)){
-                Image(painter = painterResource(id = R.drawable.post4), contentDescription = null)
-            }
+            Box(){
+
+                Image(painter = painterResource(id = R.drawable.post1),
+                    contentDescription = null,
+                    Modifier
+                        .fillMaxWidth()
+                        .height(150.dp),
+                    contentScale = ContentScale.FillBounds,
+                    )
 
             Row(
                 modifier = Modifier
                     .padding(all = 10.dp)
                     .horizontalScroll(rememberScrollState())
-                    .fillMaxWidth()
+                    .fillMaxWidth(),
+
+                horizontalArrangement = Arrangement.Center
             ) {
                 Image(
                     bitmap = ImageBitmap.imageResource(id = R.drawable.carr1),
@@ -70,27 +83,77 @@ fun Profile (modifier: Modifier = Modifier.background(Color(0xFFEBEBEB))){
                         .size(60.dp)
                 )
 
-                Column(
-                    modifier = Modifier
-                        .padding(3.dp, 10.dp)
-                ){
+                    Column(
+                        modifier = Modifier
+                            .padding(3.dp, 10.dp)
+                    ) {
 
-                    Text(
-                        "marcelo",
-                        color = Color.White,
-                        fontSize = 30.sp,
-                        fontWeight = FontWeight.Bold,
-                    )
+                        Text(
+                            "marcelo",
+                            color = Color.White,
+                            fontSize = 30.sp,
+                            fontWeight = FontWeight.Bold,
+                        )
 
-                    Text(
-                        "maranhao",
-                        color = Color.White,
-                        fontSize = 20.sp,
+                        Row {
 
-                    )
+                            val buttonColor = remember {
+                                mutableStateOf(Color(0xFFE5684A))
+
+                            }
+                            Button(
+                                onClick = {buttonColor.value = Color(0xFFE5684A) },
+                                Modifier.padding(5.dp),
+                                colors = ButtonDefaults.buttonColors(
+                                    Color(0xFFE5684A))
+                            )
+                            {
+                                Text("Sequir",)
+
+                            }
+
+                            Button(
+                                onClick = {buttonColor.value = Color(0xFFE5684A) },
+                                Modifier.padding(5.dp),
+                                colors = ButtonDefaults.buttonColors(Color(0xFFE5684A)),
+                            )
+                            {
+                                Text("Enviar mensagem")
+
+                            }
+
+                        }
+
+                    }
 
                 }
+            }
 
+            Column(
+                Modifier.height(150.dp),
+                verticalArrangement = Arrangement.Bottom) {
+
+                    Card {
+
+                    }
+
+                Row (
+                    Modifier
+                        .fillMaxWidth(),
+                    horizontalArrangement = Arrangement.SpaceAround){
+                    Text(
+                        "poste",
+                        color = Color(0xFFE5684A),
+                        fontSize = 20.sp,
+                        fontWeight = FontWeight.Bold,
+                    )
+                    Text(
+                        "projetos",
+                        color = Color(0xFFE5684A),
+                        fontSize = 20.sp,
+                        fontWeight = FontWeight.Bold,
+                    )
+                }
             }
         }
 
@@ -113,33 +176,52 @@ fun Profile (modifier: Modifier = Modifier.background(Color(0xFFEBEBEB))){
                 Row(
                     modifier = Modifier
                         .padding(all = 10.dp)
-                        .horizontalScroll(rememberScrollState())
-                        .fillMaxWidth()
+                        .fillMaxWidth(),
+                    verticalAlignment = Alignment.CenterVertically,
+                    horizontalArrangement = Arrangement.SpaceBetween
                 ) {
-                    Image(
-                        bitmap = ImageBitmap.imageResource(id = R.drawable.carr1),
-                        contentDescription = null,
-                        Modifier
-                            .size(60.dp)
-                    )
 
-                    Column(
-                        modifier = Modifier
-                            .padding(3.dp, 10.dp)
-                    ){
+                    Row(verticalAlignment = Alignment.CenterVertically,) {
 
-                        Text(
-                            "marcelo",
-                            color = Color(0xFFE5684A),
-                            fontSize = 20.sp,
-                            fontWeight = FontWeight.Bold,
-                        )
+                        Image(
+                            bitmap = ImageBitmap.imageResource(id = R.drawable.carr1),
+                            contentDescription = null,
+                            Modifier
+                                .size(60.dp),
 
-                        Text(
-                            text = "MARANHAO",
-                            color = Color.Black,
-                            fontSize = 12.sp,
-                            fontWeight = FontWeight.Bold,
+                            )
+
+                        Column(
+                            verticalArrangement = Arrangement.Top,
+                            horizontalAlignment = Alignment.CenterHorizontally
+                        ) {
+
+                            TextButton(onClick = { /*TODO*/ },
+                                modifier = Modifier.padding(0.dp)) {
+                                Text(
+                                    "marcelo",
+                                    color = Color(0xFFE5684A),
+                                    fontSize = 20.sp,
+                                    fontWeight = FontWeight.Bold,
+                                )
+                            }
+
+                            Text(
+                                text = "MARANHAO",
+                                color = Color.Black,
+                                fontSize = 12.sp,
+                                fontWeight = FontWeight.Bold,
+                            )
+                        }
+                    }
+
+                    IconButton(onClick = { /*TODO*/ }) {
+
+                        Icon(
+                            painterResource(id = R.drawable.baseline_more_vert_24),
+                            contentDescription = null,
+                            Modifier.size(30.dp),
+                            tint = Color.Black
                         )
                     }
 
@@ -206,37 +288,43 @@ fun Profile (modifier: Modifier = Modifier.background(Color(0xFFEBEBEB))){
 //                }
 
                 Row(modifier = Modifier
-                    .height(40.dp)
+                    .height(50.dp)
                     .fillMaxWidth()
                     .background(color = Color.White),
                     verticalAlignment = Alignment.Top,
                     horizontalArrangement = Arrangement.SpaceAround
                 ) {
 
-                    Icon(
-                        painterResource(id = R.drawable.baseline_mode_comment_24),
-                        contentDescription = null,
-                        Modifier.size(30.dp),
-                        tint = Color(0xFFE5684A))
+                    IconButton(onClick = { /*TODO*/ }) {
+                        Icon(painterResource(id = R.drawable.baseline_mode_comment_24),
+                            contentDescription = null,
+                            Modifier.size(30.dp),
+                            tint = Color(0xFFE5684A))
+                    }
 
-                    Icon(
-                        painterResource(id = R.drawable.baseline_thumb_up_24),
-                        contentDescription = null,
-                        Modifier.size(30.dp),
-                        tint = Color(0xFFE5684A))
+                    IconButton(onClick = { /*TODO*/ }) {
+                        Icon(
+                            painterResource(id = R.drawable.baseline_thumb_up_24),
+                            contentDescription = null,
+                            Modifier.size(30.dp),
+                            tint = Color(0xFFE5684A)
+                        )
+                    }
 
-                    Icon(
-                        painterResource(id = R.drawable.baseline_share_24),
-                        contentDescription = null,
-                        Modifier.size(30.dp),
-                        tint = Color(0xFFE5684A))
+                    IconButton(onClick = { /*TODO*/ }) {
+                        Icon(
+                            painterResource(id = R.drawable.baseline_share_24),
+                            contentDescription = null,
+                            Modifier.size(30.dp),
+                            tint = Color(0xFFE5684A))}
 
-                    Icon(
-                        painterResource(id = R.drawable.baseline_save_alt_24),
-                        contentDescription = null,
-                        Modifier.size(30.dp),
-                        tint = Color(0xFFE5684A))
-
+                    IconButton(onClick = { /*TODO*/ }) {
+                        Icon(
+                            painterResource(id = R.drawable.baseline_save_alt_24),
+                            contentDescription = null,
+                            Modifier.size(30.dp),
+                            tint = Color(0xFFE5684A))
+                    }
                 }
             }
 

@@ -9,6 +9,7 @@ import androidx.navigation.compose.rememberNavController
 import com.example.project_g_kmp.android.navigation.MainNavigation
 import com.example.project_g_kmp.android.view.Feed
 import com.example.project_g_kmp.android.view.Login
+import com.example.project_g_kmp.android.view.Profile
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -24,6 +25,5 @@ class MainActivity : ComponentActivity() {
 @Preview
 private fun Preview(){
 
-
-    Login()
+    Profile()
 }
