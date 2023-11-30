@@ -7,11 +7,13 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.IconButton
@@ -21,6 +23,7 @@ import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
+import androidx.compose.material3.Divider
 import androidx.compose.material3.ElevatedCard
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
@@ -130,8 +133,51 @@ fun Profile (modifier: Modifier = Modifier.background(Color(0xFFEBEBEB))){
             }
 
             Column(
-                Modifier.height(150.dp),
                 verticalArrangement = Arrangement.Bottom) {
+
+                Card(
+                    elevation = CardDefaults.cardElevation(defaultElevation = 6.dp),
+                    colors = CardDefaults.cardColors(
+                        containerColor = Color.White,
+                    ),
+                    modifier = Modifier
+                        .padding(10.dp, 5.dp)
+                        .fillMaxWidth(),) {
+
+                    Column (
+                        Modifier
+                            .fillMaxWidth(),
+                        horizontalAlignment = Alignment.CenterHorizontally,
+                        verticalArrangement = Arrangement.Top) {
+
+                        Text(
+                            "Sobre min",
+                            color = Color.Black,
+                            fontSize = 20.sp,
+                            fontWeight = FontWeight.Bold,
+                        )
+
+                       Column(Modifier
+                           .fillMaxWidth()
+                           .padding(10.dp),
+                       horizontalAlignment = Alignment.Start) {
+
+                           Text(
+                               "PEDREIRO NO MARANHAO 20 ANOS, SOLTEIRO ¨~¨",
+                               color = Color.Black,
+                               fontSize = 15.sp,
+                           )
+
+                           Divider(color = Color.Black.copy(alpha = 0.3f),thickness = 1.dp,
+                           )
+
+                           
+
+                       }
+
+                    }
+
+                }
 
                     Card(
                         elevation = CardDefaults.cardElevation(defaultElevation = 6.dp),
@@ -145,19 +191,24 @@ fun Profile (modifier: Modifier = Modifier.background(Color(0xFFEBEBEB))){
                         Row (
                             Modifier
                                 .fillMaxWidth(),
-                            horizontalArrangement = Arrangement.SpaceAround) {
+                            horizontalArrangement = Arrangement.SpaceAround,
+                            verticalAlignment = Alignment.CenterVertically) {
 
                             Text(
-                                "Seguidores",
-                                color = Color(0xFFE5684A),
-                                fontSize = 20.sp,
+                                 " 3 Seguidores",
+                                color = Color.Black,
+                                fontSize = 15.sp,
                                 fontWeight = FontWeight.Bold,
                             )
 
+                            Divider(modifier = Modifier
+                                .height(10.dp)
+                                .width(1.dp), color = Color.Black)
+
                             Text(
-                                "Suguindo",
-                                color = Color(0xFFE5684A),
-                                fontSize = 20.sp,
+                                "Suguindo 184",
+                                color = Color.Black,
+                                fontSize = 15.sp,
                                 fontWeight = FontWeight.Bold,
                             )
 
