@@ -22,6 +22,7 @@ import org.jetbrains.compose.resources.painterResource
 import presentation.screens.CadastroScreen
 import presentation.screens.FeedScreen
 import presentation.screens.LoginScreen
+import presentation.screens.ProfileScreen
 import presentation.screens.RecoverScreen
 import presentation.screens.ScreenA
 import presentation.screens.ScreenB
@@ -42,6 +43,7 @@ fun App(root: RootComponent) {
                 is RootComponent.Child.CadastroScreen -> CadastroScreen(component = instance.component)
                 is RootComponent.Child.FeedScreen -> FeedScreen(component = instance.component)
                 is RootComponent.Child.RecoverScreen -> RecoverScreen(component = instance.component)
+                is RootComponent.Child.ProfileScreen -> ProfileScreen(component = instance.component)
             }
         }
     }

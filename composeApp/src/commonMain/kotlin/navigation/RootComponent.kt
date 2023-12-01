@@ -10,6 +10,7 @@ import kotlinx.serialization.Serializable
 import navigation.screencomponents.CadastroScreenComponent
 import navigation.screencomponents.FeedScreenComponent
 import navigation.screencomponents.LoginScreenComponent
+import navigation.screencomponents.ProfileScreenComponent
 import navigation.screencomponents.RecoverScreenComponent
 
 class RootComponent(
@@ -19,7 +20,7 @@ class RootComponent(
     val childStack = childStack(
         source = navigation,
         serializer = Configuration.serializer(),
-        initialConfiguration = Configuration.LoginScreen,
+        initialConfiguration = Configuration.ProfileScreen,
         handleBackButton = true,
         childFactory = ::createChild
     )
@@ -80,6 +81,12 @@ class RootComponent(
                     componentContext = context
                 )
             )
+
+            Configuration.ProfileScreen -> Child.ProfileScreen(
+                ProfileScreenComponent(
+                    componentContext = context
+                )
+            )
         }
     }
 
@@ -90,6 +97,7 @@ class RootComponent(
         data class CadastroScreen(val component: CadastroScreenComponent) : Child()
         data class FeedScreen(val component: FeedScreenComponent) : Child()
         data class RecoverScreen(val component: RecoverScreenComponent) : Child()
+        data class ProfileScreen(val component: ProfileScreenComponent) : Child()
     }
 
     @Serializable
@@ -112,5 +120,8 @@ class RootComponent(
 
         @Serializable
         data object FeedScreen: Configuration()
+
+        @Serializable
+        data object ProfileScreen: Configuration()
     }
 }
