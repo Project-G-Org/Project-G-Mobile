@@ -1,5 +1,6 @@
 package presentation.screens
 
+import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.horizontalScroll
@@ -13,6 +14,9 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.layout.wrapContentHeight
+import androidx.compose.foundation.pager.HorizontalPager
+import androidx.compose.foundation.pager.rememberPagerState
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.Button
@@ -21,11 +25,19 @@ import androidx.compose.material.Card
 import androidx.compose.material.Divider
 import androidx.compose.material.Icon
 import androidx.compose.material.IconButton
+import androidx.compose.material.Scaffold
+import androidx.compose.material.Tab
+import androidx.compose.material.TabRow
 import androidx.compose.material.Text
 import androidx.compose.material.TextButton
+import androidx.compose.material.TopAppBar
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.paint
@@ -42,22 +54,30 @@ import presentation.Components.SliderBanner
 @OptIn(ExperimentalResourceApi::class)
 @Composable
 fun ProfileScreen(component: ProfileScreenComponent) {
+    Scaffold(
+        topBar = {
+            Header()
+        }
+    ) { paddingValues ->
+
     Column(
         modifier = Modifier
             .background(color = Color(0xFFEBEBEB))
             .verticalScroll(rememberScrollState())
-            .fillMaxSize(),
-
-        ) {
-
-        Column(
-            modifier = Modifier
             .fillMaxWidth()
-            .height(300.dp)
-            .background(color = Color(0xFFEBEBEB)),
+            .padding(paddingValues = paddingValues)
+            .wrapContentHeight(),
+
         ) {
 
-            Header()
+//        Column(
+//            modifier = Modifier
+//            .fillMaxWidth()
+//            .height(300.dp)
+//            .background(color = Color(0xFFEBEBEB)),
+//        ) {
+
+//            Header()
 
 //            Column(
 //                verticalArrangement = Arrangement.Bottom
@@ -67,10 +87,16 @@ fun ProfileScreen(component: ProfileScreenComponent) {
 
                 Followers()
 
+//                TabLayouts(
+//                    component,
+//                    modifier = Modifier
+//                        .fillMaxSize()
+//                )
+
                 Row (
                     modifier = Modifier
                         .fillMaxWidth()
-                        .height(15.dp),
+                        .wrapContentHeight(),
                     horizontalArrangement = Arrangement.SpaceAround
                 ) {
                     Text(
@@ -87,7 +113,7 @@ fun ProfileScreen(component: ProfileScreenComponent) {
                     )
                 }
 //            }
-        }
+//        }
 
         Column(
             modifier = Modifier
@@ -96,6 +122,60 @@ fun ProfileScreen(component: ProfileScreenComponent) {
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
             CardPosts()
+        }
+    }
+    }
+}
+
+@OptIn(ExperimentalFoundationApi::class)
+@Composable
+fun TabLayouts(component: ProfileScreenComponent, modifier: Modifier = Modifier) {
+    var tabIndex by remember {
+        mutableIntStateOf(0)
+    }
+    val tabs = listOf("Feed", "Cadastro", "Login")
+
+    val pagerState = rememberPagerState {
+        tabs.size
+    }
+
+    LaunchedEffect(tabIndex) {
+        pagerState.animateScrollToPage(tabIndex)
+    }
+    LaunchedEffect(pagerState.currentPage, pagerState.isScrollInProgress) {
+        if(!pagerState.isScrollInProgress) {
+            tabIndex = pagerState.currentPage
+        }
+    }
+
+    Column(modifier = modifier) {
+        TabRow(selectedTabIndex = tabIndex) {
+            tabs.forEachIndexed { index, title ->
+                Tab(
+                    selected = tabIndex == index,
+                    onClick = { tabIndex = index },
+                    text = { Text(title) }
+                )
+            }
+        }
+
+        HorizontalPager(
+            state = pagerState,
+            modifier = Modifier
+                .fillMaxSize()
+        ) {index ->
+            Box(
+                modifier = Modifier.fillMaxSize(),
+                contentAlignment = Alignment.Center
+            ) {
+                when(index) {
+                    //0 -> FeedScreen()
+
+                    1 -> component.goToCadastro()
+
+                    2 -> component.goToLogin()
+                }
+            }
         }
     }
 }
@@ -282,11 +362,12 @@ private fun Followers() {
         elevation = 6.dp,
         backgroundColor = Color.White,
         modifier = Modifier
-            .padding(10.dp, 5.dp)
-            .fillMaxWidth(),
+            .fillMaxWidth()
+            .padding(10.dp, 5.dp),
     ) {
         Column(
-            modifier = Modifier.fillMaxSize(),
+            modifier = Modifier.fillMaxWidth()
+                .padding(10.dp, 5.dp),
             verticalArrangement = Arrangement.Center
         ) {
             Row(
@@ -368,8 +449,9 @@ private fun SobreMim() {
                 Icon(
                     painter = painterResource("baseline_mode_comment_24.xml"),
                     contentDescription = null,
-                    modifier = Modifier.size(30.dp),
-                    tint = Color(0xFFE5684A)
+                    modifier = Modifier
+                        .size(30.dp),
+                    tint = Color(0xFFE5684A),
                 )
             }
         }
@@ -384,7 +466,7 @@ private fun Header() {
             .fillMaxWidth()
             .height(150.dp)
             .paint(
-                painter = painterResource("post1.jpg"),
+                painter = painterResource("post2.png"),
                 contentScale = ContentScale.FillBounds
             )
     ) {

@@ -89,20 +89,9 @@ fun LoginScreen(component: LoginScreenComponent) {
               contentScale = ContentScale.FillBounds
           )
     ) {
-        if(showProgressBar) {
-            Column(
-                modifier = Modifier.fillMaxSize(),
-                verticalArrangement = Arrangement.Center,
-                horizontalAlignment = Alignment.CenterHorizontally
-            ) {
-                CircularProgressIndicator(
-                    color = Color(0xFF74CC3D)
-                )
-            }
-        }
-        LaunchedEffect(Unit) {
-            component.updateShowAnimation(true)
-        }
+
+        ShowLoader(showProgressBar, component)
+
         AnimatedVisibility(
             visible = showContent,
             enter = slideInVertically(animationSpec = tween(700))
@@ -175,5 +164,26 @@ fun LoginScreen(component: LoginScreenComponent) {
                 }
             }
         }
+    }
+}
+
+@Composable
+private fun ShowLoader(
+    showProgressBar: Boolean,
+    component: LoginScreenComponent
+) {
+    if (showProgressBar) {
+        Column(
+            modifier = Modifier.fillMaxSize(),
+            verticalArrangement = Arrangement.Center,
+            horizontalAlignment = Alignment.CenterHorizontally
+        ) {
+            CircularProgressIndicator(
+                color = Color(0xFF74CC3D)
+            )
+        }
+    }
+    LaunchedEffect(Unit) {
+        component.updateShowAnimation(true)
     }
 }

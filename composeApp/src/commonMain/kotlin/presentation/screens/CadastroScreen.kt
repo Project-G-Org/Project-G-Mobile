@@ -30,6 +30,7 @@ import androidx.compose.material.Text
 import androidx.compose.material.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -91,83 +92,100 @@ fun CadastroScreen(component: CadastroScreenComponent) {
             enter = slideInHorizontally(animationSpec = tween(800))
         ) {
 
-            Card(
-                shape = RoundedCornerShape(14.dp),
-                modifier = Modifier
-                    .fillMaxSize(),
-                backgroundColor = Color(0xFF202020)
-            ) {
+            CardFields(component, name, gmail, pass, passConfirm)
+        }
+    }
+}
+
+@OptIn(ExperimentalResourceApi::class)
+@Composable
+private fun CardFields(
+    component: CadastroScreenComponent,
+    name: MutableState<String>,
+    gmail: MutableState<String>,
+    pass: MutableState<String>,
+    passConfirm: MutableState<String>
+) {
+    Card(
+        shape = RoundedCornerShape(14.dp),
+        modifier = Modifier
+            .fillMaxSize(),
+        backgroundColor = Color(0xFF202020)
+    ) {
 
 
-                Column (
-                    Modifier
-                        .fillMaxSize()
-                        .verticalScroll(rememberScrollState()),
-                    verticalArrangement = Arrangement.spacedBy(16.dp, alignment = Alignment.CenterVertically),
-                    horizontalAlignment = Alignment.CenterHorizontally
-                ){
+        Column(
+            Modifier
+                .fillMaxSize()
+                .verticalScroll(rememberScrollState()),
+            verticalArrangement = Arrangement.spacedBy(
+                16.dp,
+                alignment = Alignment.CenterVertically
+            ),
+            horizontalAlignment = Alignment.CenterHorizontally
+        ) {
 
-                    Column(
+            Column(
+                Modifier
+                    .fillMaxWidth(),
+                horizontalAlignment = Alignment.Start
+            )
+            {
+                Button(
+                    onClick = {
+                        component.goBack()
+                    },
+                    colors = ButtonDefaults.buttonColors(
+                        Color(0xE5684A),
+                    ),
+                    modifier = Modifier
+                        .padding(start = 20.dp, top = 20.dp)
+                ) {
+                    Icon(
+                        painter = painterResource("baseline_back_24.xml"),
+                        contentDescription = null,
                         Modifier
-                            .fillMaxWidth(),
-                        horizontalAlignment = Alignment.Start)
-                    {
-                        Button(
-                            onClick = {
-                                component.goBack()
-                            },
-                            colors = ButtonDefaults.buttonColors(
-                                Color(0xE5684A),
-                            ),
-                            modifier = Modifier
-                                .padding(start = 20.dp, top = 20.dp)
-                        ) {
-                            Icon(
-                                painter = painterResource("baseline_back_24.xml"),
-                                contentDescription = null,
-                                Modifier
-                                    .size(30.dp),
-                                tint = Color.White
-                            )
-                        }
-                    }
-
-
-
-                    CustomTextInput(inputType = InputType.Name, value = name)
-                    CustomTextInput(inputType = InputType.Gmail, value = gmail)
-                    CustomTextInput(inputType = InputType.Password, value = pass)
-                    CustomTextInput(inputType = InputType.CPassword, value = passConfirm)
-                    val buttonColor = remember {
-                        mutableStateOf(Color.Red)
-                    }
-                    Button(
-                        onClick = {buttonColor.value = Color.Gray },
-                        colors = ButtonDefaults.buttonColors(
-                            Color(0xFFE5684A),
-                        )
+                            .size(30.dp),
+                        tint = Color.White
                     )
-                    {
-                        Text("Cadastrar-se",
-                            Modifier.padding(vertical = 8.dp, horizontal = 50.dp),
-                            color = Color.White
-                        )
-                    }
-                    Divider(color = Color.White.copy(alpha = 0.3f),
-                        thickness = 1.dp,
-                        modifier = Modifier.padding(top = 30.dp,)
-                    )
-                    Row(verticalAlignment = Alignment.CenterVertically){
-                        Text("Já tem uma conta?", color = Color.White)
-                        TextButton(onClick = {
-                            component.goBack()
-                        }) {
-                            Text("Clique aqui", color = Color(0xFFE5684A),)
-                        }
-                    }
                 }
             }
 
+
+
+            CustomTextInput(inputType = InputType.Name, value = name)
+            CustomTextInput(inputType = InputType.Gmail, value = gmail)
+            CustomTextInput(inputType = InputType.Password, value = pass)
+            CustomTextInput(inputType = InputType.CPassword, value = passConfirm)
+
+            val buttonColor = remember {
+                mutableStateOf(Color.Red)
+            }
+            Button(
+                onClick = { buttonColor.value = Color.Gray },
+                colors = ButtonDefaults.buttonColors(
+                    Color(0xFFE5684A),
+                )
+            ) {
+                Text(
+                    "Cadastrar-se",
+                    Modifier.padding(vertical = 8.dp, horizontal = 50.dp),
+                    color = Color.White
+                )
+            }
+            Divider(
+                color = Color.White.copy(alpha = 0.3f),
+                thickness = 1.dp,
+                modifier = Modifier.padding(top = 30.dp)
+            )
+            Row(verticalAlignment = Alignment.CenterVertically) {
+                Text("Já tem uma conta?", color = Color.White)
+                TextButton(onClick = {
+                    component.goBack()
+                }) {
+                    Text("Clique aqui", color = Color(0xFFE5684A))
+                }
+            }
         }
     }
 }

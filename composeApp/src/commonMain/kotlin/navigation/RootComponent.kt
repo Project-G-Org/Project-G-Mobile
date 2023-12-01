@@ -4,7 +4,10 @@ import com.arkivanov.decompose.ComponentContext
 import com.arkivanov.decompose.ExperimentalDecomposeApi
 import com.arkivanov.decompose.router.stack.StackNavigation
 import com.arkivanov.decompose.router.stack.childStack
+import com.arkivanov.decompose.router.stack.navigate
 import com.arkivanov.decompose.router.stack.pop
+import com.arkivanov.decompose.router.stack.popTo
+import com.arkivanov.decompose.router.stack.push
 import com.arkivanov.decompose.router.stack.pushNew
 import kotlinx.serialization.Serializable
 import navigation.screencomponents.CadastroScreenComponent
@@ -12,6 +15,7 @@ import navigation.screencomponents.FeedScreenComponent
 import navigation.screencomponents.LoginScreenComponent
 import navigation.screencomponents.ProfileScreenComponent
 import navigation.screencomponents.RecoverScreenComponent
+import presentation.screens.FeedScreen
 
 class RootComponent(
     componentContext: ComponentContext
@@ -20,7 +24,7 @@ class RootComponent(
     val childStack = childStack(
         source = navigation,
         serializer = Configuration.serializer(),
-        initialConfiguration = Configuration.ProfileScreen,
+        initialConfiguration = Configuration.LoginScreen,
         handleBackButton = true,
         childFactory = ::createChild
     )
@@ -72,7 +76,10 @@ class RootComponent(
 
             Configuration.FeedScreen -> Child.FeedScreen(
                 FeedScreenComponent(
-                    componentContext = context
+                    componentContext = context,
+                    goToProfileScreen = {
+                        navigation.pushNew(Configuration.ProfileScreen)
+                    }
                 )
             )
 
@@ -84,7 +91,19 @@ class RootComponent(
 
             Configuration.ProfileScreen -> Child.ProfileScreen(
                 ProfileScreenComponent(
-                    componentContext = context
+                    componentContext = context,
+                    onGoToCadastro = {
+                        Configuration.CadastroScreen
+//                        navigation.push(Configuration.CadastroScreen)
+                    },
+                    onGoToFeed = {
+//                                 Configuration.FeedScreen
+                        //navigation.push(Configuration.FeedScreen)
+                    },
+                    onGoToLogin = {
+                        Configuration.LoginScreen
+//                        navigation.push(Configuration.LoginScreen)
+                    }
                 )
             )
         }

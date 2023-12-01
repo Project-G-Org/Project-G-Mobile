@@ -53,7 +53,8 @@ fun SliderBanner(
 
     val imageSlider = listOf(
         painterResource("backlogin.png"),
-        painterResource("post1_copy.webp"),
+        painterResource("backlogin.png"),
+//        painterResource("post1_copy.webp"),
         painterResource("post2.png")
     )
 
