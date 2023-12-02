@@ -2,6 +2,7 @@ package com.example.project_g_kmp.android.view
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.gestures.ModifierLocalScrollableContainerProvider.value
 import androidx.compose.foundation.horizontalScroll
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -214,6 +215,7 @@ fun Profile (modifier: Modifier = Modifier.background(Color(0xFFEBEBEB))){
                                            unfocusedSuffixColor = Color.White,
                                            focusedIndicatorColor = Color.White,
                                            focusedSuffixColor = Color.White,
+                                           containerColor = Color.White
                                        )
                                    )
 
@@ -235,7 +237,11 @@ fun Profile (modifier: Modifier = Modifier.background(Color(0xFFEBEBEB))){
                                        color = Color.Black,
                                        fontSize = 15.sp,
                                        fontWeight = FontWeight.Bold,
-                                   )
+
+                                       )
+
+                                       TextField(InputType.)
+
 
                                }
 
