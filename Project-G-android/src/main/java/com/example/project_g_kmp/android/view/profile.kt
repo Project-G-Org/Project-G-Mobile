@@ -19,6 +19,7 @@ import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.IconButton
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
+import androidx.compose.material.TextField
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Card
@@ -29,8 +30,10 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -44,7 +47,27 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.project_g_kmp.android.R
 import com.example.project_g_kmp.android.presentation.components.SliderBanner
-
+@Composable
+fun Text(inputType: InputType) {
+    var value by remember { mutableStateOf("")}
+    androidx.compose.material3.TextField(
+        value = value,
+        onValueChange = { value = it },
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(vertical = 10.dp, horizontal = 20.dp),
+        leadingIcon = {
+            Icon(
+                imageVector = inputType.icon,
+                null
+            )
+        },
+        label = { Text(text = inputType.label) },
+        singleLine = true,
+        keyboardOptions = inputType.keyboardOptions,
+        visualTransformation = inputType.visualTransformation,
+    )
+}
 @Composable
 fun Profile (modifier: Modifier = Modifier.background(Color(0xFFEBEBEB))){
 
@@ -55,9 +78,16 @@ fun Profile (modifier: Modifier = Modifier.background(Color(0xFFEBEBEB))){
 
     ) {
 
+        Column(
+            Modifier
+                .verticalScroll(rememberScrollState())
+                .fillMaxSize(),
+            verticalArrangement = Arrangement.spacedBy(10.dp, alignment = Alignment.Top),
+            horizontalAlignment = Alignment.CenterHorizontally
+        ) {
+
         Column(modifier = Modifier
             .fillMaxWidth()
-            .height(300.dp)
             .background(color = Color(0xFFEBEBEB)),
             ) {
 
@@ -157,9 +187,10 @@ fun Profile (modifier: Modifier = Modifier.background(Color(0xFFEBEBEB))){
                             fontWeight = FontWeight.Bold,
                         )
 
-                       Column(Modifier
-                           .fillMaxWidth()
-                           .padding(10.dp),
+                       Column(
+                           Modifier
+                               .fillMaxWidth()
+                               .padding(10.dp),
                        horizontalAlignment = Alignment.Start) {
 
                            Text(
@@ -172,12 +203,22 @@ fun Profile (modifier: Modifier = Modifier.background(Color(0xFFEBEBEB))){
                                .height(1.dp)
                                .fillMaxWidth(), color = Color.Black)
 
-                           Icon(painterResource(id = R.drawable.baseline_mode_comment_24),
-                               contentDescription = null,
-                               Modifier.size(30.dp),
-                               tint = Color(0xFFE5684A))
+                           Column {
+
+                               Row {
 
 
+                               Icon(
+                                   painterResource(id = R.drawable.baseline_location_on_24),
+                                   contentDescription = null,
+                                   Modifier.size(30.dp),
+                                   tint = Color(0xFFE5684A)
+                               )
+
+
+
+                                }
+                           }
 
                        }
 
@@ -227,7 +268,7 @@ fun Profile (modifier: Modifier = Modifier.background(Color(0xFFEBEBEB))){
                         .fillMaxWidth(),
                     horizontalArrangement = Arrangement.SpaceAround){
                     Text(
-                        "poste",
+                        "post",
                         color = Color(0xFFE5684A),
                         fontSize = 20.sp,
                         fontWeight = FontWeight.Bold,
@@ -242,13 +283,7 @@ fun Profile (modifier: Modifier = Modifier.background(Color(0xFFEBEBEB))){
             }
         }
 
-        Column(
-            Modifier
-                .verticalScroll(rememberScrollState())
-                .fillMaxSize(),
-            verticalArrangement = Arrangement.spacedBy(10.dp, alignment = Alignment.Top),
-            horizontalAlignment = Alignment.CenterHorizontally
-        ) {
+
             Card(
                 elevation = CardDefaults.cardElevation(defaultElevation = 6.dp),
                 colors = CardDefaults.cardColors(
