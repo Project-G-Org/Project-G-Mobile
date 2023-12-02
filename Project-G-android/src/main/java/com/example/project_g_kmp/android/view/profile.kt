@@ -16,11 +16,15 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.IconButton
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
 import androidx.compose.material.TextField
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Lock
+import androidx.compose.material.icons.filled.Person
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Card
@@ -41,10 +45,15 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.ImageBitmap
+import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.imageResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.input.ImeAction
+import androidx.compose.ui.text.input.KeyboardType
+import androidx.compose.ui.text.input.PasswordVisualTransformation
+import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -218,6 +227,25 @@ fun Profile (modifier: Modifier = Modifier.background(Color(0xFFEBEBEB))){
                                            containerColor = Color.White
                                        )
                                    )
+
+                                   sealed class InputType(
+                                       val label:String,
+                                       val icon: ImageVector,
+                                       val keyboardOptions: KeyboardOptions,
+                                       val visualTransformation: VisualTransformation
+                                   ) {
+                                       object Local : InputType(label = "User Name",
+                                           KeyboardOptions(imeAction = ImeAction.Next),
+                                           visualTransformation = VisualTransformation.None
+                                       )
+                                       object De : InputType(label = "Password",
+
+                                           KeyboardOptions(imeAction = ImeAction.Done,
+                                           visualTransformation = PasswordVisualTransformation()
+                                       )
+
+
+                                   }
 
                                 }
 
