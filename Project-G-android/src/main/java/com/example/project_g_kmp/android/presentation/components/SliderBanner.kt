@@ -30,7 +30,7 @@ fun SliderBanner(
     val pagerState = rememberPagerState(initialPage = 0)
     val imageSlider = listOf(
         painterResource(id = R.drawable.backlogin),
-        painterResource(id = R.drawable.post1),
+        painterResource(id = R.drawable.post4),
         painterResource(id = R.drawable.post2)
     )
 

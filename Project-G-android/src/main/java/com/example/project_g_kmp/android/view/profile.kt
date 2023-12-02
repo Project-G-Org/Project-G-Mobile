@@ -48,27 +48,6 @@ import androidx.compose.ui.unit.sp
 import com.example.project_g_kmp.android.R
 import com.example.project_g_kmp.android.presentation.components.SliderBanner
 @Composable
-fun Text(inputType: InputType) {
-    var value by remember { mutableStateOf("")}
-    androidx.compose.material3.TextField(
-        value = value,
-        onValueChange = { value = it },
-        modifier = Modifier
-            .fillMaxWidth()
-            .padding(vertical = 10.dp, horizontal = 20.dp),
-        leadingIcon = {
-            Icon(
-                imageVector = inputType.icon,
-                null
-            )
-        },
-        label = { Text(text = inputType.label) },
-        singleLine = true,
-        keyboardOptions = inputType.keyboardOptions,
-        visualTransformation = inputType.visualTransformation,
-    )
-}
-@Composable
 fun Profile (modifier: Modifier = Modifier.background(Color(0xFFEBEBEB))){
 
     Column(
@@ -205,7 +184,8 @@ fun Profile (modifier: Modifier = Modifier.background(Color(0xFFEBEBEB))){
 
                            Column {
 
-                               Row(Modifier.padding(10.dp)) {
+                               Row(Modifier.padding(10.dp)
+                               ver) {
 
 
                                Icon(
@@ -214,6 +194,13 @@ fun Profile (modifier: Modifier = Modifier.background(Color(0xFFEBEBEB))){
                                    Modifier.size(30.dp),
                                    tint = Color(0xFFE5684A)
                                )
+
+                                   Text(
+                                       "LOCAL",
+                                       color = Color.Black,
+                                       fontSize = 20.sp,
+                                       fontWeight = FontWeight.Bold,
+                                   )
 
                                 }
                            }
