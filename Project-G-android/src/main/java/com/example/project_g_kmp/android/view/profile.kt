@@ -26,6 +26,7 @@ import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.Divider
 import androidx.compose.material3.ElevatedCard
+import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
@@ -48,6 +49,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.project_g_kmp.android.R
 import com.example.project_g_kmp.android.presentation.components.SliderBanner
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun Profile (modifier: Modifier = Modifier.background(Color(0xFFEBEBEB))){
 
@@ -207,6 +209,12 @@ fun Profile (modifier: Modifier = Modifier.background(Color(0xFFEBEBEB))){
                                    androidx.compose.material3.TextField(
                                        value = value,
                                        onValueChange = { value = it },
+                                       colors = TextFieldDefaults.textFieldColors(
+                                           unfocusedIndicatorColor = Color.White,
+                                           unfocusedSuffixColor = Color.White,
+                                           focusedIndicatorColor = Color.White,
+                                           focusedSuffixColor = Color.White,
+                                       )
                                    )
 
                                 }
