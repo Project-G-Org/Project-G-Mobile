@@ -29,6 +29,7 @@ import androidx.compose.material3.ElevatedCard
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
+import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -206,7 +207,6 @@ fun Profile (modifier: Modifier = Modifier.background(Color(0xFFEBEBEB))){
                                    androidx.compose.material3.TextField(
                                        value = value,
                                        onValueChange = { value = it },
-                                       singleLine = true,
                                    )
 
                                 }
