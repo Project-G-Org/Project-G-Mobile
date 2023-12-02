@@ -93,7 +93,7 @@ fun Profile (modifier: Modifier = Modifier.background(Color(0xFFEBEBEB))){
 
             Box(){
 
-                Image(painter = painterResource(id = R.drawable.post1),
+                Image(painter = painterResource(id = R.drawable.post2),
                     contentDescription = null,
                     Modifier
                         .fillMaxWidth()
@@ -205,7 +205,7 @@ fun Profile (modifier: Modifier = Modifier.background(Color(0xFFEBEBEB))){
 
                            Column {
 
-                               Row {
+                               Row(Modifier.padding(10.dp)) {
 
 
                                Icon(
@@ -214,8 +214,6 @@ fun Profile (modifier: Modifier = Modifier.background(Color(0xFFEBEBEB))){
                                    Modifier.size(30.dp),
                                    tint = Color(0xFFE5684A)
                                )
-
-
 
                                 }
                            }
