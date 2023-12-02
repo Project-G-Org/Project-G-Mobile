@@ -184,8 +184,8 @@ fun Profile (modifier: Modifier = Modifier.background(Color(0xFFEBEBEB))){
 
                            Column {
 
-                               Row(Modifier.padding(10.dp)
-                               ver) {
+                               Row(Modifier.padding(10.dp),
+                               verticalAlignment = Alignment.CenterVertically) {
 
 
                                Icon(
@@ -198,11 +198,39 @@ fun Profile (modifier: Modifier = Modifier.background(Color(0xFFEBEBEB))){
                                    Text(
                                        "LOCAL",
                                        color = Color.Black,
-                                       fontSize = 20.sp,
+                                       fontSize = 15.sp,
                                        fontWeight = FontWeight.Bold,
                                    )
 
+                                   var value by remember { mutableStateOf("")}
+                                   androidx.compose.material3.TextField(
+                                       value = value,
+                                       onValueChange = { value = it },
+                                       singleLine = true,
+                                   )
+
                                 }
+
+                               Row(Modifier.padding(10.dp),
+                                   verticalAlignment = Alignment.CenterVertically) {
+
+
+                                   Icon(
+                                       painterResource(id = R.drawable.baseline_home_24),
+                                       contentDescription = null,
+                                       Modifier.size(30.dp),
+                                       tint = Color(0xFFE5684A)
+                                   )
+
+                                   Text(
+                                       "DE",
+                                       color = Color.Black,
+                                       fontSize = 15.sp,
+                                       fontWeight = FontWeight.Bold,
+                                   )
+
+                               }
+
                            }
 
                        }
