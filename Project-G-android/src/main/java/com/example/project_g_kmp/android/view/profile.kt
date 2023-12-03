@@ -188,6 +188,7 @@ fun Profile (modifier: Modifier = Modifier.background(Color(0xFFEBEBEB))){
                            androidx.compose.material3.TextField(
                                value = sobre,
                                onValueChange = { sobre = it },
+                               Modifier.fillMaxWidth(),
                                colors = TextFieldDefaults.textFieldColors(
                                    unfocusedIndicatorColor = Color.White,
                                    unfocusedSuffixColor = Color.White,
@@ -324,6 +325,12 @@ fun Profile (modifier: Modifier = Modifier.background(Color(0xFFEBEBEB))){
                         fontSize = 20.sp,
                         fontWeight = FontWeight.Bold,
                     )
+
+                    Divider(modifier = Modifier
+                        .height(1.dp)
+                        .width(50.dp),
+                        color = Color.Black)
+
                     Text(
                         "projetos",
                         color = Color(0xFFE5684A),
