@@ -2,7 +2,6 @@ package com.example.project_g_kmp.android.view
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
-import androidx.compose.foundation.gestures.ModifierLocalScrollableContainerProvider.value
 import androidx.compose.foundation.horizontalScroll
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -185,10 +184,17 @@ fun Profile (modifier: Modifier = Modifier.background(Color(0xFFEBEBEB))){
                                .padding(10.dp),
                        horizontalAlignment = Alignment.Start) {
 
-                           Text(
-                               "PEDREIRO NO MARANHAO 20 ANOS, SOLTEIRO ¨~¨",
-                               color = Color.Black,
-                               fontSize = 15.sp,
+                           var sobre by remember { mutableStateOf("")}
+                           androidx.compose.material3.TextField(
+                               value = sobre,
+                               onValueChange = { sobre = it },
+                               colors = TextFieldDefaults.textFieldColors(
+                                   unfocusedIndicatorColor = Color.White,
+                                   unfocusedSuffixColor = Color.White,
+                                   focusedIndicatorColor = Color.White,
+                                   focusedSuffixColor = Color.White,
+                                   containerColor = Color.White
+                               )
                            )
 
                            Divider(modifier = Modifier
@@ -215,10 +221,10 @@ fun Profile (modifier: Modifier = Modifier.background(Color(0xFFEBEBEB))){
                                        fontWeight = FontWeight.Bold,
                                    )
 
-                                   var value by remember { mutableStateOf("")}
+                                   var local by remember { mutableStateOf("")}
                                    androidx.compose.material3.TextField(
-                                       value = value,
-                                       onValueChange = { value = it },
+                                       value = local,
+                                       onValueChange = { local = it },
                                        colors = TextFieldDefaults.textFieldColors(
                                            unfocusedIndicatorColor = Color.White,
                                            unfocusedSuffixColor = Color.White,
@@ -227,22 +233,6 @@ fun Profile (modifier: Modifier = Modifier.background(Color(0xFFEBEBEB))){
                                            containerColor = Color.White
                                        )
                                    )
-
-                                   sealed class InputType(
-                                       val label:String,
-                                       val icon: ImageVector,
-                                       val keyboardOptions: KeyboardOptions,
-                                       val visualTransformation: VisualTransformation
-                                   ) {
-                                       object Local : InputType(label = "User Name",
-                                           KeyboardOptions(imeAction = ImeAction.Next),
-                                           visualTransformation = VisualTransformation.None
-                                       )
-                                       object De : InputType(label = "Password",
-
-                                           KeyboardOptions(imeAction = ImeAction.Done,
-                                           visualTransformation = PasswordVisualTransformation()
-                                       )
 
 
                                    }
@@ -267,11 +257,17 @@ fun Profile (modifier: Modifier = Modifier.background(Color(0xFFEBEBEB))){
                                        fontWeight = FontWeight.Bold,
 
                                        )
+                                   var de by remember { mutableStateOf("")}
+                                   androidx.compose.material3.TextField(
+                                       value = de,
+                                       onValueChange = { de = it },
+                                       colors = TextFieldDefaults.textFieldColors(
+                                           unfocusedIndicatorColor = Color.White,
+                                           unfocusedSuffixColor = Color.White,
+                                           focusedIndicatorColor = Color.White,
+                                           focusedSuffixColor = Color.White,
+                                           containerColor = Color.White))
 
-                                       TextField(InputType.)
-
-
-                               }
 
                            }
 
