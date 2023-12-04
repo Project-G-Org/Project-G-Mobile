@@ -66,9 +66,7 @@ fun Profile (modifier: Modifier = Modifier.background(Color(0xFFEBEBEB))){
         Modifier
             .background(color = Color(0xFFEBEBEB))
             .fillMaxSize(),
-
     ) {
-
         Column(
             Modifier
                 .verticalScroll(rememberScrollState())
@@ -76,14 +74,11 @@ fun Profile (modifier: Modifier = Modifier.background(Color(0xFFEBEBEB))){
             verticalArrangement = Arrangement.spacedBy(10.dp, alignment = Alignment.Top),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
-
         Column(modifier = Modifier
             .fillMaxWidth()
             .background(color = Color(0xFFEBEBEB)),
             ) {
-
             Box(){
-
                 Image(painter = painterResource(id = R.drawable.post2),
                     contentDescription = null,
                     Modifier
@@ -91,7 +86,6 @@ fun Profile (modifier: Modifier = Modifier.background(Color(0xFFEBEBEB))){
                         .height(150.dp),
                     contentScale = ContentScale.FillBounds,
                     )
-
             Row(
                 modifier = Modifier
                     .padding(all = 10.dp)
@@ -106,24 +100,19 @@ fun Profile (modifier: Modifier = Modifier.background(Color(0xFFEBEBEB))){
                     Modifier
                         .size(60.dp)
                 )
-
                     Column(
                         modifier = Modifier
                             .padding(3.dp, 10.dp)
                     ) {
-
                         Text(
                             "marcelo",
                             color = Color.White,
                             fontSize = 30.sp,
                             fontWeight = FontWeight.Bold,
                         )
-
                         Row {
-
                             val buttonColor = remember {
                                 mutableStateOf(Color(0xFFE5684A))
-
                             }
                             Button(
                                 onClick = {buttonColor.value = Color(0xFFE5684A) },
@@ -133,9 +122,7 @@ fun Profile (modifier: Modifier = Modifier.background(Color(0xFFEBEBEB))){
                             )
                             {
                                 Text("Sequir",)
-
                             }
-
                             Button(
                                 onClick = {buttonColor.value = Color(0xFFE5684A) },
                                 Modifier.padding(5.dp),
@@ -143,16 +130,11 @@ fun Profile (modifier: Modifier = Modifier.background(Color(0xFFEBEBEB))){
                             )
                             {
                                 Text("Enviar mensagem")
-
                             }
-
                         }
-
                     }
-
                 }
             }
-
             Column(
                 verticalArrangement = Arrangement.Bottom) {
 
@@ -164,20 +146,57 @@ fun Profile (modifier: Modifier = Modifier.background(Color(0xFFEBEBEB))){
                     modifier = Modifier
                         .padding(10.dp, 5.dp)
                         .fillMaxWidth(),) {
+                    Row (
+                        Modifier
+                            .fillMaxWidth(),
+                        horizontalArrangement = Arrangement.SpaceAround,
+                        verticalAlignment = Alignment.CenterVertically) {
 
+                        Column {
+
+                        }
+
+                        Text(
+                            " 3 Seguidores",
+                            Modifier.padding(10.dp),
+                            color = Color.Black,
+                            fontSize = 15.sp,
+                            fontWeight = FontWeight.Bold,
+                        )
+                        Divider(modifier = Modifier
+                            .height(10.dp)
+                            .width(1.dp), color = Color.Black)
+
+                        Text(
+                            "Suguindo 184",
+                            Modifier.padding(10.dp),
+                            color = Color.Black,
+                            fontSize = 15.sp,
+                            fontWeight = FontWeight.Bold,
+                        )
+                    }
+                }
+
+                Card(
+                    elevation = CardDefaults.cardElevation(defaultElevation = 6.dp),
+                    colors = CardDefaults.cardColors(
+                        containerColor = Color.White,
+                    ),
+                    modifier = Modifier
+                        .padding(10.dp, 5.dp)
+                        .fillMaxWidth(),) {
                     Column (
                         Modifier
                             .fillMaxWidth(),
                         horizontalAlignment = Alignment.CenterHorizontally,
                         verticalArrangement = Arrangement.Top) {
-
                         Text(
                             "Sobre min",
+                            Modifier.padding(5.dp),
                             color = Color.Black,
                             fontSize = 20.sp,
                             fontWeight = FontWeight.Bold,
                         )
-
                        Column(
                            Modifier
                                .fillMaxWidth()
@@ -197,31 +216,24 @@ fun Profile (modifier: Modifier = Modifier.background(Color(0xFFEBEBEB))){
                                    containerColor = Color.White
                                )
                            )
-
                            Divider(modifier = Modifier
                                .height(1.dp)
                                .fillMaxWidth(), color = Color.Black)
-
                            Column {
-
-                               Row(Modifier.padding(10.dp),
+                               Row(Modifier.padding(10.dp,0.dp),
                                verticalAlignment = Alignment.CenterVertically) {
-
-
                                Icon(
                                    painterResource(id = R.drawable.baseline_location_on_24),
                                    contentDescription = null,
                                    Modifier.size(30.dp),
                                    tint = Color(0xFFE5684A)
                                )
-
                                    Text(
-                                       "LOCAL",
+                                       "Local :",
                                        color = Color.Black,
                                        fontSize = 15.sp,
                                        fontWeight = FontWeight.Bold,
                                    )
-
                                    var local by remember { mutableStateOf("")}
                                    androidx.compose.material3.TextField(
                                        value = local,
@@ -234,13 +246,121 @@ fun Profile (modifier: Modifier = Modifier.background(Color(0xFFEBEBEB))){
                                            containerColor = Color.White
                                        )
                                    )
+                               }
 
+                               Row(Modifier.padding(10.dp,0.dp),
+                                   verticalAlignment = Alignment.CenterVertically) {
+                                   Icon(
+                                       painterResource(id = R.drawable.baseline_home_24),
+                                       contentDescription = null,
+                                       Modifier.size(30.dp),
+                                       tint = Color(0xFFE5684A)
+                                   )
+                                   Text(
+                                       "De :",
+                                       color = Color.Black,
+                                       fontSize = 15.sp,
+                                       fontWeight = FontWeight.Bold,
 
-                                   }
+                                       )
+                                   var de by remember { mutableStateOf("") }
+                                   androidx.compose.material3.TextField(
+                                       value = de,
+                                       onValueChange = { de = it },
+                                       colors = TextFieldDefaults.textFieldColors(
+                                           unfocusedIndicatorColor = Color.White,
+                                           unfocusedSuffixColor = Color.White,
+                                           focusedIndicatorColor = Color.White,
+                                           focusedSuffixColor = Color.White,
+                                           containerColor = Color.White
+                                       )
+                                   )
+                               }
+                               Row(Modifier.padding(10.dp,0.dp),
+                                   verticalAlignment = Alignment.CenterVertically) {
+                                   Icon(
+                                       painterResource(id = R.drawable.baseline_email_24),
+                                       contentDescription = null,
+                                       Modifier.size(30.dp),
+                                       tint = Color(0xFFE5684A)
+                                   )
+                                   Text(
+                                       "Email :",
+                                       color = Color.Black,
+                                       fontSize = 15.sp,
+                                       fontWeight = FontWeight.Bold,
+                                       )
+                                   var de by remember { mutableStateOf("") }
+                                   androidx.compose.material3.TextField(
+                                       value = de,
+                                       onValueChange = { de = it },
+                                       colors = TextFieldDefaults.textFieldColors(
+                                           unfocusedIndicatorColor = Color.White,
+                                           unfocusedSuffixColor = Color.White,
+                                           focusedIndicatorColor = Color.White,
+                                           focusedSuffixColor = Color.White,
+                                           containerColor = Color.White
+                                       )
+                                   )
+                               }
+                               Row(Modifier.padding(10.dp,0.dp),
+                                   verticalAlignment = Alignment.CenterVertically) {
 
-                                }
+                                   Icon(
+                                       painterResource(id = R.drawable.baseline_phone_24),
+                                       contentDescription = null,
+                                       Modifier.size(30.dp),
+                                       tint = Color(0xFFE5684A)
+                                   )
+                                   Text(
+                                       "Telefone :",
+                                       color = Color.Black,
+                                       fontSize = 15.sp,
+                                       fontWeight = FontWeight.Bold,
+                                       )
+                                   var de by remember { mutableStateOf("") }
+                                   androidx.compose.material3.TextField(
+                                       value = de,
+                                       onValueChange = { de = it },
+                                       colors = TextFieldDefaults.textFieldColors(
+                                           unfocusedIndicatorColor = Color.White,
+                                           unfocusedSuffixColor = Color.White,
+                                           focusedIndicatorColor = Color.White,
+                                           focusedSuffixColor = Color.White,
+                                           containerColor = Color.White
+                                       )
+                                   )
+                               }
+                               Row(Modifier.padding(10.dp,0.dp),
+                                   verticalAlignment = Alignment.CenterVertically) {
 
-                               Row(Modifier.padding(10.dp),
+                                   Icon(
+                                       painterResource(id = R.drawable.baseline_web_24),
+                                       contentDescription = null,
+                                       Modifier.size(30.dp),
+                                       tint = Color(0xFFE5684A)
+                                   )
+                                   Text(
+                                       "Site :",
+                                       color = Color.Black,
+                                       fontSize = 15.sp,
+                                       fontWeight = FontWeight.Bold,
+
+                                       )
+                                   var de by remember { mutableStateOf("") }
+                                   androidx.compose.material3.TextField(
+                                       value = de,
+                                       onValueChange = { de = it },
+                                       colors = TextFieldDefaults.textFieldColors(
+                                           unfocusedIndicatorColor = Color.White,
+                                           unfocusedSuffixColor = Color.White,
+                                           focusedIndicatorColor = Color.White,
+                                           focusedSuffixColor = Color.White,
+                                           containerColor = Color.White
+                                       )
+                                   )
+                               }
+                               Row(Modifier.padding(10.dp,0.dp),
                                    verticalAlignment = Alignment.CenterVertically) {
 
 
@@ -252,13 +372,13 @@ fun Profile (modifier: Modifier = Modifier.background(Color(0xFFEBEBEB))){
                                    )
 
                                    Text(
-                                       "DE",
+                                       "Link :",
                                        color = Color.Black,
                                        fontSize = 15.sp,
                                        fontWeight = FontWeight.Bold,
 
                                        )
-                                   var de by remember { mutableStateOf("")}
+                                   var de by remember { mutableStateOf("") }
                                    androidx.compose.material3.TextField(
                                        value = de,
                                        onValueChange = { de = it },
@@ -267,17 +387,14 @@ fun Profile (modifier: Modifier = Modifier.background(Color(0xFFEBEBEB))){
                                            unfocusedSuffixColor = Color.White,
                                            focusedIndicatorColor = Color.White,
                                            focusedSuffixColor = Color.White,
-                                           containerColor = Color.White))
-
-
+                                           containerColor = Color.White
+                                       )
+                                   )
+                               }
                            }
-
                        }
-
                     }
-
                 }
-
                     Card(
                         elevation = CardDefaults.cardElevation(defaultElevation = 6.dp),
                         colors = CardDefaults.cardColors(
@@ -286,50 +403,39 @@ fun Profile (modifier: Modifier = Modifier.background(Color(0xFFEBEBEB))){
                         modifier = Modifier
                             .padding(10.dp, 5.dp)
                             .fillMaxWidth(),) {
-
                         Row (
                             Modifier
                                 .fillMaxWidth(),
-                            horizontalArrangement = Arrangement.SpaceAround,
+                            horizontalArrangement = Arrangement.Start,
                             verticalAlignment = Alignment.CenterVertically) {
 
-                            Text(
-                                 " 3 Seguidores",
-                                color = Color.Black,
-                                fontSize = 15.sp,
-                                fontWeight = FontWeight.Bold,
-                            )
-
-                            Divider(modifier = Modifier
-                                .height(10.dp)
-                                .width(1.dp), color = Color.Black)
-
-                            Text(
-                                "Suguindo 184",
-                                color = Color.Black,
-                                fontSize = 15.sp,
-                                fontWeight = FontWeight.Bold,
-                            )
+                            Image(painter = painterResource(id = R.drawable.univer),
+                                contentDescription = null,
+                                Modifier.size(70.dp)
+                                    .padding(10.dp))
 
                         }
-
                     }
 
                 Row (
                     Modifier
                         .fillMaxWidth(),
                     horizontalArrangement = Arrangement.SpaceAround){
+                    Column(
+                        verticalArrangement = Arrangement.Center,
+                        horizontalAlignment = Alignment.CenterHorizontally
+                    ) {
                     Text(
                         "post",
                         color = Color(0xFFE5684A),
                         fontSize = 20.sp,
                         fontWeight = FontWeight.Bold,
                     )
-
                     Divider(modifier = Modifier
-                        .height(1.dp)
-                        .width(50.dp),
-                        color = Color.Black)
+                        .height(2.dp)
+                        .width(40.dp),
+                        color = Color(0xFFE5684A))
+                    }
 
                     Text(
                         "projetos",
@@ -340,8 +446,6 @@ fun Profile (modifier: Modifier = Modifier.background(Color(0xFFEBEBEB))){
                 }
             }
         }
-
-
             Card(
                 elevation = CardDefaults.cardElevation(defaultElevation = 6.dp),
                 colors = CardDefaults.cardColors(
@@ -366,7 +470,6 @@ fun Profile (modifier: Modifier = Modifier.background(Color(0xFFEBEBEB))){
                             contentDescription = null,
                             Modifier
                                 .size(60.dp),
-
                             )
 
                         Column(
@@ -402,7 +505,6 @@ fun Profile (modifier: Modifier = Modifier.background(Color(0xFFEBEBEB))){
                             tint = Color.Black
                         )
                     }
-
                 }
                 SliderBanner()
 //                LazyRow(
@@ -505,8 +607,82 @@ fun Profile (modifier: Modifier = Modifier.background(Color(0xFFEBEBEB))){
                     }
                 }
             }
+        }
+    }
 
-     }
+    Column(Modifier
+        .fillMaxSize(),
+        verticalArrangement = Arrangement.Bottom){
+
+        Column(){
+
+            Box(
+                modifier = Modifier
+                    .padding(10.dp,10.dp),
+                contentAlignment = Alignment.Center
+
+            ) {
+
+                IconButton(onClick = { /*TODO*/ }) {
+
+                    Icon(
+                        painterResource(id = R.drawable.baseline_circle_24),
+                        contentDescription = null,
+                        Modifier
+                            .size(80.dp),
+                        tint = Color(0xFF202020)
+                    )
+
+                    Icon(
+                        painterResource(id = R.drawable.baseline_add_24),
+                        contentDescription = null,
+                        Modifier
+                            .padding(10.dp)
+                            .size(40.dp),
+                        tint = Color(0xFFE5684A)
+                    )
+                }
+            }
+        }
+
+        Row(modifier = Modifier
+            .height(60.dp)
+            .fillMaxWidth()
+            .background(color = Color(0xFF202020)),
+            verticalAlignment = Alignment.CenterVertically,
+            horizontalArrangement = Arrangement.SpaceAround
+        ) {
+
+            IconButton(onClick = { /*TODO*/ }) {
+                Icon(
+                    painterResource(id = R.drawable.baseline_home_24),
+                    contentDescription = null,
+                    Modifier.size(30.dp),
+                    tint = Color(0xFFE5684A)
+                )
+            }
+
+
+            IconButton(onClick = { /*TODO*/ }) {
+
+                Icon(
+                    painterResource(id = R.drawable.baseline_search_24),
+                    contentDescription = null,
+                    Modifier.size(30.dp),
+                    tint = Color(0xFFE5684A)
+                )
+            }
+
+
+            IconButton(onClick = { /*TODO*/ }) {
+                Icon(
+                    painterResource(id = R.drawable.baseline_person_24),
+                    contentDescription = null,
+                    Modifier.size(30.dp),
+                    tint = Color(0xFFE5684A)
+                )
+            }
+        }
     }
 }
 
