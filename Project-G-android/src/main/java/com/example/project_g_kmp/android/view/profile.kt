@@ -415,7 +415,11 @@ fun Profile (modifier: Modifier = Modifier.background(Color(0xFFEBEBEB))){
                                     .size(70.dp)
                                     .padding(10.dp))
 
-                            Text(text = "Estudante Harvard")
+                            Text(text = "Estudante Harvard",
+                                    Modifier.padding(5.dp),
+                                color = Color.Black,
+                                fontSize = 20.sp,
+                                fontWeight = FontWeight.Bold,)
 
                         }
                     }
@@ -633,6 +637,15 @@ fun Profile (modifier: Modifier = Modifier.background(Color(0xFFEBEBEB))){
             IconButton(onClick = { /*TODO*/ }) {
                 Icon(
                     painterResource(id = R.drawable.baseline_home_24),
+                    contentDescription = null,
+                    Modifier.size(30.dp),
+                    tint = Color(0xFFE5684A)
+                )
+            }
+
+            IconButton(onClick = { /*TODO*/ }) {
+                Icon(
+                    painterResource(id = R.drawable.baseline_apartment_24),
                     contentDescription = null,
                     Modifier.size(30.dp),
                     tint = Color(0xFFE5684A)

@@ -617,6 +617,15 @@ fun Feed(modifier: Modifier = Modifier.background(Color(0xFFEBEBEB))){
             )
         }
 
+        IconButton(onClick = { /*TODO*/ }) {
+            Icon(
+                painterResource(id = R.drawable.baseline_apartment_24),
+                contentDescription = null,
+                Modifier.size(30.dp),
+                tint = Color(0xFFE5684A)
+            )
+        }
+
 
             IconButton(onClick = { /*TODO*/ }) {
 
