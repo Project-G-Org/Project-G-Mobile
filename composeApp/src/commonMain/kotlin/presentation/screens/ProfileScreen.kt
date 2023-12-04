@@ -246,7 +246,7 @@ private fun CardPosts() {
                 }
 
             }
-            SliderBanner()
+            //SliderBanner()
 //                LazyRow(
 //                    modifier = Modifier
 //                        .padding(all = 10.dp)

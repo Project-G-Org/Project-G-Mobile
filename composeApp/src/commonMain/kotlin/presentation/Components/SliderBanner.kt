@@ -8,12 +8,14 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.foundation.pager.HorizontalPager
 import androidx.compose.foundation.pager.PagerScope
 import androidx.compose.foundation.pager.PagerState
@@ -36,6 +38,10 @@ import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.IntOffset
 import androidx.compose.ui.unit.dp
+import helpers.URLS
+import helpers.URLS.POST_IMAGES_URL
+import io.kamel.image.KamelImage
+import io.kamel.image.asyncPainterResource
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.yield
 import org.jetbrains.compose.resources.ExperimentalResourceApi
@@ -45,10 +51,16 @@ import kotlin.math.roundToInt
 import kotlin.math.roundToLong
 import kotlin.math.sign
 
+sealed class ImageFonts {
+    data object Posts : ImageFonts()
+}
+
 @OptIn(ExperimentalResourceApi::class, ExperimentalFoundationApi::class)
 @Composable
 fun SliderBanner(
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
+    images: List<String?>,
+    imageFont: ImageFonts
 ) {
 
     val imageSlider = listOf(
@@ -62,16 +74,18 @@ fun SliderBanner(
         initialPage = 0,
         initialPageOffsetFraction = 0f
     ) {
-        imageSlider.size
+        images.size
     }
 
     LaunchedEffect(Unit) {
-        while (true) {
-            yield()
-            delay(2600)
-            pagerState.animateScrollToPage(
-                page = (pagerState.currentPage + 1) % (pagerState.pageCount)
-            )
+        if(pagerState.pageCount > 0) {
+            while (true) {
+                yield()
+                delay(2600)
+                pagerState.animateScrollToPage(
+                    page = (pagerState.currentPage + 1) % (pagerState.pageCount)
+                )
+            }
         }
     }
 
@@ -80,7 +94,7 @@ fun SliderBanner(
             state = pagerState,
             contentPadding = PaddingValues(horizontal = 16.dp),
             modifier = modifier
-                .height(600.dp)
+                .wrapContentHeight()
                 .fillMaxWidth()
         ) { page ->
             Card(
@@ -105,12 +119,20 @@ fun SliderBanner(
                         )
                     }
             ) {
-                Image(
-                    painter = imageSlider[page],
-                    contentDescription = "Slider",
-                    contentScale = ContentScale.Crop,
-                    modifier = Modifier.fillMaxSize()
-                )
+                when(imageFont) {
+
+                    ImageFonts.Posts -> {
+                        val formatedImage = images[page]?.replace(" ", "%20")
+                        println("${POST_IMAGES_URL}${formatedImage}")
+                        KamelImage(
+                            //asyncPainterResource(data = "${URLS.POST_IMAGES_URL}${images[page]}"),
+                            asyncPainterResource(data = "${URLS.POST_IMAGES_URL}$formatedImage"),
+                            contentDescription = "Slider",
+                            contentScale = ContentScale.Crop,
+                            modifier = Modifier.fillMaxWidth().height(400.dp) //Modifier.fillMaxWidth().aspectRatio(1.0f).height(400.dp)
+                        )
+                    }
+                }
             }
         }
 
