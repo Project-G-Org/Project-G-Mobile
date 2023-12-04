@@ -428,24 +428,27 @@ fun Profile (modifier: Modifier = Modifier.background(Color(0xFFEBEBEB))){
                         verticalArrangement = Arrangement.Center,
                         horizontalAlignment = Alignment.CenterHorizontally
                     ) {
+                        TextButton(onClick = { /*TODO*/ }) {
+
                     Text(
                         "post",
                         color = Color(0xFFE5684A),
                         fontSize = 20.sp,
                         fontWeight = FontWeight.Bold,
-                    )
+                    )}
                     Divider(modifier = Modifier
                         .height(2.dp)
                         .width(40.dp),
                         color = Color(0xFFE5684A))
                     }
 
+                    TextButton(onClick = { /*TODO*/ }) {
                     Text(
                         "projetos",
                         color = Color(0xFFE5684A),
                         fontSize = 20.sp,
                         fontWeight = FontWeight.Bold,
-                    )
+                    )}
                 }
             }
         }
