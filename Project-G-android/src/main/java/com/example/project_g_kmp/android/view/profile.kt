@@ -411,8 +411,11 @@ fun Profile (modifier: Modifier = Modifier.background(Color(0xFFEBEBEB))){
 
                             Image(painter = painterResource(id = R.drawable.univer),
                                 contentDescription = null,
-                                Modifier.size(70.dp)
+                                Modifier
+                                    .size(70.dp)
                                     .padding(10.dp))
+
+                            Text(text = "Estudante Harvard")
 
                         }
                     }
@@ -614,36 +617,7 @@ fun Profile (modifier: Modifier = Modifier.background(Color(0xFFEBEBEB))){
         .fillMaxSize(),
         verticalArrangement = Arrangement.Bottom){
 
-        Column(){
 
-            Box(
-                modifier = Modifier
-                    .padding(10.dp,10.dp),
-                contentAlignment = Alignment.Center
-
-            ) {
-
-                IconButton(onClick = { /*TODO*/ }) {
-
-                    Icon(
-                        painterResource(id = R.drawable.baseline_circle_24),
-                        contentDescription = null,
-                        Modifier
-                            .size(80.dp),
-                        tint = Color(0xFF202020)
-                    )
-
-                    Icon(
-                        painterResource(id = R.drawable.baseline_add_24),
-                        contentDescription = null,
-                        Modifier
-                            .padding(10.dp)
-                            .size(40.dp),
-                        tint = Color(0xFFE5684A)
-                    )
-                }
-            }
-        }
 
         Row(modifier = Modifier
             .height(60.dp)
