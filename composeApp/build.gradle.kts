@@ -65,6 +65,11 @@ kotlin {
 
             implementation("media.kamel:kamel-image:0.9.0")
             implementation("io.ktor:ktor-client-core:2.3.6")
+
+            // .ENV
+
+            implementation(kotlin("stdlib"))
+            implementation("io.github.cdimascio:dotenv-kotlin:6.2.2")
         }
         iosMain.dependencies {
             implementation("io.ktor:ktor-client-darwin:2.3.6")
