@@ -27,6 +27,7 @@ import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.BottomNavigation
 import androidx.compose.material.Button
 import androidx.compose.material.IconButton
+import androidx.compose.material.MaterialTheme.colors
 import androidx.compose.material.Scaffold
 import androidx.compose.material.Surface
 import androidx.compose.material.icons.Icons
@@ -96,14 +97,13 @@ fun Project(modifier: Modifier = Modifier.background(Color(0xFFEBEBEB))){
         ) {
 
             Card(
-                elevation = CardDefaults.cardElevation(defaultElevation = 6.dp),
-                colors = CardDefaults.cardColors(
-                    containerColor = Color(0xFF202020),
-                ),
                 modifier = Modifier
                     .padding(10.dp, 5.dp)
-                    .fillMaxWidth(),
-            ) {
+                    .fillMaxWidth()
+                    .clip(RoundedCornerShape(18.dp)),
+                elevation = CardDefaults.cardElevation(defaultElevation = 6.dp),
+                colors = CardDefaults.cardColors(
+                    containerColor = Color(0xFF202020))) {
                 Row(
                     modifier = Modifier
                         .padding(all = 10.dp)
@@ -161,7 +161,6 @@ fun Project(modifier: Modifier = Modifier.background(Color(0xFFEBEBEB))){
 
                 Column(
                     modifier = Modifier
-
                         .clip(RoundedCornerShape(18.dp))
                         .fillMaxWidth()
                 ) {
