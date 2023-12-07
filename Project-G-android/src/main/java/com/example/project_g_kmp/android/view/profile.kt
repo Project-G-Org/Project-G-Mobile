@@ -664,13 +664,24 @@ fun Profile (modifier: Modifier = Modifier.background(Color(0xFFEBEBEB))){
             }
 
 
-            IconButton(onClick = { /*TODO*/ }) {
-                Icon(
-                    painterResource(id = R.drawable.baseline_person_24),
-                    contentDescription = null,
-                    Modifier.size(30.dp),
-                    tint = Color(0xFFE5684A)
-                )
+            Column  (verticalArrangement = Arrangement.Center,
+                horizontalAlignment = Alignment.CenterHorizontally)
+            {
+
+                IconButton(onClick = { /*TODO*/ }) {
+                    Icon(
+                        painterResource(id = R.drawable.baseline_person_24),
+                        contentDescription = null,
+                        Modifier.size(30.dp),
+                        tint = Color(0xFFE5684A)
+                    )
+                }
+
+                Divider(modifier = Modifier
+                    .height(2.dp)
+                    .width(40.dp),
+                    color = Color(0xFFE5684A))
+
             }
         }
     }

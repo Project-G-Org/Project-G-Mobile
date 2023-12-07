@@ -41,6 +41,7 @@ import androidx.compose.material.icons.outlined.Search
 import androidx.compose.material3.BadgedBox
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
+import androidx.compose.material3.Divider
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
@@ -608,13 +609,24 @@ fun Feed(modifier: Modifier = Modifier.background(Color(0xFFEBEBEB))){
         horizontalArrangement = Arrangement.SpaceAround
     ) {
 
-        IconButton(onClick = { /*TODO*/ }) {
-            Icon(
-                painterResource(id = R.drawable.baseline_home_24),
-                contentDescription = null,
-                Modifier.size(30.dp),
-                tint = Color(0xFFE5684A)
-            )
+        Column  (verticalArrangement = Arrangement.Center,
+            horizontalAlignment = Alignment.CenterHorizontally)
+        {
+
+            IconButton(onClick = { /*TODO*/ }) {
+                Icon(
+                    painterResource(id = R.drawable.baseline_home_24),
+                    contentDescription = null,
+                    Modifier.size(30.dp),
+                    tint = Color(0xFFE5684A)
+                )
+            }
+
+            Divider(modifier = Modifier
+                .height(2.dp)
+                .width(40.dp),
+                color = Color(0xFFE5684A))
+
         }
 
         IconButton(onClick = { /*TODO*/ }) {
@@ -645,8 +657,8 @@ fun Feed(modifier: Modifier = Modifier.background(Color(0xFFEBEBEB))){
                 Modifier.size(30.dp),
                 tint = Color(0xFFE5684A)
             )
+             }
         }
-      }
     }
 }
 
