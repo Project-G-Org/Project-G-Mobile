@@ -2,6 +2,7 @@ package com.example.project_g_kmp.android.view
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -10,6 +11,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Email
@@ -26,7 +28,9 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.Color.Companion.Red
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.input.ImeAction
@@ -53,6 +57,9 @@ fun Cad(){
         Modifier
             .padding(vertical = 110.dp, horizontal = 24.dp)
             .background(Color(0xFF202020))
+            .border( width = 0.dp,
+                color = Color(0xFF202020),
+                shape = RoundedCornerShape(18.dp))
             .fillMaxSize(),
         verticalArrangement = Arrangement.spacedBy(16.dp, alignment = Alignment.CenterVertically),
         horizontalAlignment = Alignment.CenterHorizontally

@@ -13,7 +13,9 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.IconButton
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
@@ -44,7 +46,7 @@ import com.example.project_g_kmp.android.R
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun search (modifier: Modifier = Modifier.background(Color(0xFFEBEBEB))) {
+fun Search (modifier: Modifier = Modifier.background(Color(0xFFEBEBEB))) {
 
     Column(
         Modifier
@@ -52,24 +54,50 @@ fun search (modifier: Modifier = Modifier.background(Color(0xFFEBEBEB))) {
             .background(color = Color(0xFFEBEBEB))
     ) {
 
-        var pesquisa by remember { mutableStateOf("") }
-        androidx.compose.material3.TextField(
-            value = pesquisa,
-            onValueChange = { pesquisa = it },
+        Column(Modifier
+            .verticalScroll(rememberScrollState())) {
+
+        Box (
             Modifier
                 .fillMaxWidth()
                 .padding(10.dp),
-            colors = TextFieldDefaults.textFieldColors(
-                unfocusedIndicatorColor = Color.White,
-                unfocusedSuffixColor = Color.White,
-                focusedIndicatorColor = Color.White,
-                focusedSuffixColor = Color.White,
-                containerColor = Color.White
+            )   {
+
+            var pesquisa by remember { mutableStateOf("") }
+            androidx.compose.material3.TextField(
+                value = pesquisa,
+                onValueChange = { pesquisa = it },
+                modifier = Modifier
+                    .fillMaxWidth(),
+                colors = TextFieldDefaults.textFieldColors(
+                    unfocusedIndicatorColor = Color.White,
+                    unfocusedSuffixColor = Color.White,
+                    focusedIndicatorColor = Color.White,
+                    focusedSuffixColor = Color.White,
+                    containerColor = Color.White
+
+                )
             )
-        )
 
-        Column {
+            Row ( Modifier
+                .fillMaxWidth(),
+                verticalAlignment = Alignment.CenterVertically,
+                horizontalArrangement = Arrangement.End){
 
+
+
+
+            IconButton(onClick = { /*TODO*/ }, Modifier
+                .size(56.dp)) {
+                Icon(
+                    painterResource(id = R.drawable.baseline_search_24),
+                    contentDescription = null,
+                    Modifier.size(40.dp),
+                    tint = Color(0xFF202020)
+                )
+             }
+            }
+        }
 
             Card(
                 modifier = Modifier
@@ -739,5 +767,5 @@ fun search (modifier: Modifier = Modifier.background(Color(0xFFEBEBEB))) {
 @Composable
 @Preview
 private fun Preview(){
-   search()
+   Search()
 }
