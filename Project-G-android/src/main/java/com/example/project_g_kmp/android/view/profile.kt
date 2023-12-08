@@ -225,7 +225,7 @@ fun Profile (modifier: Modifier = Modifier.background(Color(0xFFEBEBEB))){
                                Icon(
                                    painterResource(id = R.drawable.baseline_location_on_24),
                                    contentDescription = null,
-                                   Modifier.size(30.dp),
+                                   Modifier.size(20.dp),
                                    tint = Color(0xFFE5684A)
                                )
                                    Text(
@@ -253,7 +253,7 @@ fun Profile (modifier: Modifier = Modifier.background(Color(0xFFEBEBEB))){
                                    Icon(
                                        painterResource(id = R.drawable.baseline_home_24),
                                        contentDescription = null,
-                                       Modifier.size(30.dp),
+                                       Modifier.size(20.dp),
                                        tint = Color(0xFFE5684A)
                                    )
                                    Text(
@@ -309,7 +309,7 @@ fun Profile (modifier: Modifier = Modifier.background(Color(0xFFEBEBEB))){
                                    Icon(
                                        painterResource(id = R.drawable.baseline_phone_24),
                                        contentDescription = null,
-                                       Modifier.size(30.dp),
+                                       Modifier.size(20.dp),
                                        tint = Color(0xFFE5684A)
                                    )
                                    Text(
@@ -337,7 +337,7 @@ fun Profile (modifier: Modifier = Modifier.background(Color(0xFFEBEBEB))){
                                    Icon(
                                        painterResource(id = R.drawable.baseline_web_24),
                                        contentDescription = null,
-                                       Modifier.size(30.dp),
+                                       Modifier.size(20.dp),
                                        tint = Color(0xFFE5684A)
                                    )
                                    Text(
@@ -367,7 +367,7 @@ fun Profile (modifier: Modifier = Modifier.background(Color(0xFFEBEBEB))){
                                    Icon(
                                        painterResource(id = R.drawable.baseline_home_24),
                                        contentDescription = null,
-                                       Modifier.size(30.dp),
+                                       Modifier.size(20.dp),
                                        tint = Color(0xFFE5684A)
                                    )
 
