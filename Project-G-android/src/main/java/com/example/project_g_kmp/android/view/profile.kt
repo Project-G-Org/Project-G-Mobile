@@ -360,7 +360,7 @@ fun Profile (modifier: Modifier = Modifier.background(Color(0xFFEBEBEB))){
                                        )
                                    )
                                }
-                               Row(Modifier.padding(10.dp,0.dp),
+                               Row(Modifier.padding(5.dp,0.dp),
                                    verticalAlignment = Alignment.CenterVertically) {
 
 
