@@ -75,7 +75,7 @@ import com.example.project_g_kmp.android.presentation.components.SliderBanner
 
 
 @Composable
-fun Project(navController: NavController, modifier: Modifier = Modifier.background(Color(0xFFEBEBEB))){
+fun Project(navController: NavController){
 
     Column(
         Modifier
