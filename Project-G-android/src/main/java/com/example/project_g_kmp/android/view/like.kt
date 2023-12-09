@@ -5,5 +5,6 @@ import androidx.lifecycle.ViewModel
 
 class like : ViewModel() {
 
-    val _num = MutableStateOf(0)
+   private val _num = mutableStateOf(0)
+    vval
 }
