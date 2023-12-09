@@ -58,6 +58,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.example.project_g_kmp.android.R
+import com.example.project_g_kmp.android.navigation.Destinations
 import com.example.project_g_kmp.android.presentation.components.SliderBanner
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -433,7 +434,7 @@ fun Profile (navController: NavController){
                         verticalArrangement = Arrangement.Center,
                         horizontalAlignment = Alignment.CenterHorizontally
                     ) {
-                        TextButton(onClick = { /*TODO*/ }) {
+                        TextButton(onClick = { navController.navigate(Destinations.PROFILE) }) {
 
                     Text(
                         "post",
@@ -447,7 +448,7 @@ fun Profile (navController: NavController){
                         color = Color(0xFFE5684A))
                     }
 
-                    TextButton(onClick = { /*TODO*/ }) {
+                    TextButton(onClick = { navController.navigate(Destinations.PROFILEP) }) {
                     Text(
                         "projetos",
                         color = Color(0xFFE5684A),
@@ -463,7 +464,7 @@ fun Profile (navController: NavController){
                     containerColor = Color.White,
                 ),
                 modifier = Modifier
-                    .padding(10.dp)
+                    .padding(10.dp,5.dp,10.dp,70.dp)
                     .fillMaxWidth(),
             ) {
                 Row(
@@ -518,65 +519,6 @@ fun Profile (navController: NavController){
                     }
                 }
                 SliderBanner()
-//                LazyRow(
-//                    modifier = Modifier
-//                        .padding(all = 10.dp)
-//                        .clip(RoundedCornerShape(18.dp))
-////                        .horizontalScroll(rememberScrollState())
-//                        .fillMaxWidth()
-//                ) {
-//                    item {
-//                        Image(
-//                            painter = painterResource(id = R.drawable.backlogin),
-//                            contentDescription = null,
-//                            contentScale = ContentScale.FillBounds,
-//                            modifier = Modifier
-//                                .width(300.dp)
-//                                .height(500.dp)
-//                                .padding(horizontal = 15.dp)
-//                        )
-//                    }
-//                    item {
-//                        Image(
-//                            painter = painterResource(id = R.drawable.backlogin),
-//                            contentDescription = null,
-//                            contentScale = ContentScale.FillBounds,
-//                            modifier = Modifier
-//                                .width(300.dp)
-//                                .height(500.dp)
-//                                .padding(horizontal = 15.dp)
-//                        )
-//                    }
-//                }
-//                Box(
-//                    modifier = Modifier
-//                        .padding(all = 10.dp)
-//                        .clip(RoundedCornerShape(18.dp))
-////                        .horizontalScroll(rememberScrollState())
-//                        .fillMaxWidth()
-//                        .scrollable(rememberScrollableState {
-//                            it
-//                        }, Orientation.Horizontal)
-//                ) {
-//                    Image(
-//                        painter = painterResource(id = R.drawable.backlogin),
-//                        contentDescription = null,
-//                        contentScale = ContentScale.FillBounds,
-//                        modifier = Modifier
-//                            .width(300.dp)
-//                            .height(500.dp)
-//                            .background(Color.Red)
-//                    )
-//                    Image(
-//                        painter = painterResource(id = R.drawable.backlogin),
-//                        contentDescription = null,
-//                        contentScale = ContentScale.FillBounds,
-//                        modifier = Modifier
-//                            .width(300.dp)
-//                            .height(500.dp)
-//                            .background(Color.Red)
-//                    )
-//                }
 
                 Row(modifier = Modifier
                     .height(50.dp)
@@ -635,7 +577,7 @@ fun Profile (navController: NavController){
             horizontalArrangement = Arrangement.SpaceAround
         ) {
 
-            IconButton(onClick = { /*TODO*/ }) {
+            IconButton(onClick = { navController.navigate(Destinations.FEED) }) {
                 Icon(
                     painterResource(id = R.drawable.baseline_home_24),
                     contentDescription = null,
@@ -644,7 +586,7 @@ fun Profile (navController: NavController){
                 )
             }
 
-            IconButton(onClick = { /*TODO*/ }) {
+            IconButton(onClick = { navController.navigate(Destinations.PROJECT) }) {
                 Icon(
                     painterResource(id = R.drawable.baseline_apartment_24),
                     contentDescription = null,
@@ -654,7 +596,7 @@ fun Profile (navController: NavController){
             }
 
 
-            IconButton(onClick = { /*TODO*/ }) {
+            IconButton(onClick = { navController.navigate(Destinations.SEARCH) }) {
 
                 Icon(
                     painterResource(id = R.drawable.baseline_search_24),
@@ -669,7 +611,7 @@ fun Profile (navController: NavController){
                 horizontalAlignment = Alignment.CenterHorizontally)
             {
 
-                IconButton(onClick = { /*TODO*/ }) {
+                IconButton(onClick = { navController.navigate(Destinations.PROFILE) }) {
                     Icon(
                         painterResource(id = R.drawable.baseline_person_24),
                         contentDescription = null,

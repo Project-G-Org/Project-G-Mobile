@@ -70,6 +70,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.example.project_g_kmp.android.R
+import com.example.project_g_kmp.android.navigation.Destinations
 import com.example.project_g_kmp.android.presentation.components.SliderBanner
 
 
@@ -258,7 +259,7 @@ fun Project(navController: NavController, modifier: Modifier = Modifier.backgrou
                     containerColor = Color(0xFF202020),
                 ),
                 modifier = Modifier
-                    .padding(10.dp, 5.dp)
+                    .padding(10.dp,5.dp,10.dp,70.dp)
                     .fillMaxWidth(),
             ) {
                 Row(
@@ -382,7 +383,7 @@ fun Project(navController: NavController, modifier: Modifier = Modifier.backgrou
             horizontalArrangement = Arrangement.SpaceAround
         ) {
 
-            IconButton(onClick = { /*TODO*/ }) {
+            IconButton(onClick = { navController.navigate(Destinations.FEED) }) {
                 Icon(
                     painterResource(id = R.drawable.baseline_home_24),
                     contentDescription = null,
@@ -395,7 +396,7 @@ fun Project(navController: NavController, modifier: Modifier = Modifier.backgrou
                     horizontalAlignment = Alignment.CenterHorizontally)
             {
 
-            IconButton(onClick = { /*TODO*/ }) {
+            IconButton(onClick = { navController.navigate(Destinations.PROJECT) }) {
                 Icon(
                     painterResource(id = R.drawable.baseline_apartment_24),
                     contentDescription = null,
@@ -411,7 +412,7 @@ fun Project(navController: NavController, modifier: Modifier = Modifier.backgrou
 
             }
 
-            IconButton(onClick = { /*TODO*/ }) {
+            IconButton(onClick = { navController.navigate(Destinations.SEARCH) }) {
 
                 Icon(
                     painterResource(id = R.drawable.baseline_search_24),
@@ -422,7 +423,7 @@ fun Project(navController: NavController, modifier: Modifier = Modifier.backgrou
             }
 
 
-            IconButton(onClick = { /*TODO*/ }) {
+            IconButton(onClick = { navController.navigate(Destinations.PROFILE) }) {
                 Icon(
                     painterResource(id = R.drawable.baseline_person_24),
                     contentDescription = null,

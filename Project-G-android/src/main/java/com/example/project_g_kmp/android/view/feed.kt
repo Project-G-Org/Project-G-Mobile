@@ -219,7 +219,7 @@ fun Feed( navController:NavController, modifier: Modifier = Modifier.background(
                     IconButton(onClick = { /*TODO*/ }) {
                         Icon(painterResource(id = R.drawable.baseline_mode_comment_24),
                             contentDescription = null,
-                            Modifier.size(30.dp),
+                            Modifier.size(25.dp),
                             tint = Color(0xFFE5684A))
                     }
 
@@ -227,7 +227,7 @@ fun Feed( navController:NavController, modifier: Modifier = Modifier.background(
                         Icon(
                             painterResource(id = R.drawable.baseline_thumb_up_24),
                             contentDescription = null,
-                            Modifier.size(10.dp),
+                            Modifier.size(25.dp),
                             tint = Color(0xFFE5684A)
                         )
                     }
@@ -236,14 +236,14 @@ fun Feed( navController:NavController, modifier: Modifier = Modifier.background(
                         Icon(
                             painterResource(id = R.drawable.baseline_share_24),
                             contentDescription = null,
-                            Modifier.size(30.dp),
+                            Modifier.size(25.dp),
                             tint = Color(0xFFE5684A))}
 
                     IconButton(onClick = { /*TODO*/ }) {
                         Icon(
                             painterResource(id = R.drawable.baseline_save_alt_24),
                             contentDescription = null,
-                            Modifier.size(30.dp),
+                            Modifier.size(25.dp),
                             tint = Color(0xFFE5684A))
                     }
                 }
@@ -348,7 +348,7 @@ fun Feed( navController:NavController, modifier: Modifier = Modifier.background(
                     IconButton(onClick = { /*TODO*/ }) {
                         Icon(painterResource(id = R.drawable.baseline_mode_comment_24),
                             contentDescription = null,
-                            Modifier.size(30.dp),
+                            Modifier.size(25.dp),
                             tint = Color(0xFFE5684A))
                     }
 
@@ -356,7 +356,7 @@ fun Feed( navController:NavController, modifier: Modifier = Modifier.background(
                         Icon(
                             painterResource(id = R.drawable.baseline_thumb_up_24),
                             contentDescription = null,
-                            Modifier.size(30.dp),
+                            Modifier.size(25.dp),
                             tint = Color(0xFFE5684A)
                         )
                     }
@@ -365,14 +365,14 @@ fun Feed( navController:NavController, modifier: Modifier = Modifier.background(
                         Icon(
                             painterResource(id = R.drawable.baseline_share_24),
                             contentDescription = null,
-                            Modifier.size(30.dp),
+                            Modifier.size(25.dp),
                             tint = Color(0xFFE5684A))}
 
                     IconButton(onClick = { /*TODO*/ }) {
                         Icon(
                             painterResource(id = R.drawable.baseline_save_alt_24),
                             contentDescription = null,
-                            Modifier.size(30.dp),
+                            Modifier.size(25.dp),
                             tint = Color(0xFFE5684A))
                     }
                 }
@@ -384,7 +384,7 @@ fun Feed( navController:NavController, modifier: Modifier = Modifier.background(
                     containerColor = Color.White,
                 ),
                 modifier = Modifier
-                    .padding(10.dp, 5.dp)
+                    .padding(10.dp,5.dp,10.dp,70.dp)
                     .fillMaxWidth(),
             ) {
                 Row(
@@ -461,7 +461,7 @@ fun Feed( navController:NavController, modifier: Modifier = Modifier.background(
                     IconButton(onClick = { /*TODO*/ }) {
                         Icon(painterResource(id = R.drawable.baseline_mode_comment_24),
                             contentDescription = null,
-                            Modifier.size(30.dp),
+                            Modifier.size(25.dp),
                             tint = Color(0xFFE5684A))
                     }
 
@@ -469,7 +469,7 @@ fun Feed( navController:NavController, modifier: Modifier = Modifier.background(
                             Icon(
                                 painterResource(id = R.drawable.baseline_thumb_up_24),
                                 contentDescription = null,
-                                Modifier.size(30.dp),
+                                Modifier.size(25.dp),
                                 tint = Color(0xFFE5684A)
                             )
                         }
@@ -478,14 +478,14 @@ fun Feed( navController:NavController, modifier: Modifier = Modifier.background(
                     Icon(
                         painterResource(id = R.drawable.baseline_share_24),
                         contentDescription = null,
-                        Modifier.size(30.dp),
+                        Modifier.size(25.dp),
                         tint = Color(0xFFE5684A))}
 
                     IconButton(onClick = { /*TODO*/ }) {
                     Icon(
                         painterResource(id = R.drawable.baseline_save_alt_24),
                         contentDescription = null,
-                        Modifier.size(30.dp),
+                        Modifier.size(25.dp),
                         tint = Color(0xFFE5684A))
                     }
                 }
@@ -541,7 +541,7 @@ fun Feed( navController:NavController, modifier: Modifier = Modifier.background(
             horizontalAlignment = Alignment.CenterHorizontally)
         {
 
-            IconButton(onClick = { navController.navigate(Destinations.PROFILE) }) {
+            IconButton(onClick = { navController.navigate(Destinations.FEED) }) {
                 Icon(
                     painterResource(id = R.drawable.baseline_home_24),
                     contentDescription = null,
@@ -557,7 +557,7 @@ fun Feed( navController:NavController, modifier: Modifier = Modifier.background(
 
         }
 
-        IconButton(onClick = { navController.navigate(Destinations.) }) {
+        IconButton(onClick = { navController.navigate(Destinations.PROJECT) }) {
             Icon(
                 painterResource(id = R.drawable.baseline_apartment_24),
                 contentDescription = null,
