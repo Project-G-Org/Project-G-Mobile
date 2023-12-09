@@ -33,27 +33,31 @@ fun MainNavigation(navController: NavHostController) {
         startDestination = FEED
     ) {
         composable(FEED) {
-            Feed()
+            Feed(navController)
+        }
+
+        composable(FEED) {
+            Feed(navController)
         }
 
         composable(PROFILE) {
-            Profile()
+            Profile(navController)
         }
 
         composable(SEARCH) {
-            Search()
+            Search(navController)
         }
 
         composable(LOGIN) {
-            Login()
+            Login(navController)
         }
 
         composable(REC) {
-            Rec()
+            Rec(navController)
         }
 
         composable(CADASTRO) {
-            Cad()
+            Cad(navController)
         }
     }
 }

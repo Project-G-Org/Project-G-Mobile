@@ -68,20 +68,13 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
 import com.example.project_g_kmp.android.R
 import com.example.project_g_kmp.android.presentation.components.SliderBanner
 
-data class BottomNavigatioItemP(
-
-    val selectedIcon: ImageVector,
-    val unselectedIcon: ImageVector,
-    val hasNews: Boolean
-)
-
-
 
 @Composable
-fun Project(modifier: Modifier = Modifier.background(Color(0xFFEBEBEB))){
+fun Project(navController: NavController, modifier: Modifier = Modifier.background(Color(0xFFEBEBEB))){
 
     Column(
         Modifier
@@ -441,9 +434,3 @@ fun Project(modifier: Modifier = Modifier.background(Color(0xFFEBEBEB))){
     }
 }
 
-
-@Composable
-@Preview
-private fun Preview(){
-    Project()
-}

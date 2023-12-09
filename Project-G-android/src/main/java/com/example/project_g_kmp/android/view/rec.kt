@@ -35,10 +35,11 @@ import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavController
 import com.example.project_g_kmp.android.R
 
 @Composable
-fun Rec(){
+fun Rec(navController: NavController,){
 
     Image(
         painter = painterResource(id = R.drawable.cadback),
@@ -113,9 +114,4 @@ sealed class InputTypeRec(
 
 }
 
-@Composable
-@Preview
-private fun TestPreview(){
 
-    Rec()
-}

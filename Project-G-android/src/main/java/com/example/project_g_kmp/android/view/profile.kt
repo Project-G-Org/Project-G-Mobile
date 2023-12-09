@@ -56,11 +56,12 @@ import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
 import com.example.project_g_kmp.android.R
 import com.example.project_g_kmp.android.presentation.components.SliderBanner
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun Profile (modifier: Modifier = Modifier.background(Color(0xFFEBEBEB))){
+fun Profile (navController: NavController){
 
     Column(
         Modifier
@@ -71,7 +72,7 @@ fun Profile (modifier: Modifier = Modifier.background(Color(0xFFEBEBEB))){
             Modifier
                 .verticalScroll(rememberScrollState())
                 .fillMaxSize(),
-            verticalArrangement = Arrangement.spacedBy(10.dp, alignment = Alignment.Top),
+            verticalArrangement = Arrangement.spacedBy(0.dp, alignment = Alignment.Top),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
         Column(modifier = Modifier
@@ -685,10 +686,4 @@ fun Profile (modifier: Modifier = Modifier.background(Color(0xFFEBEBEB))){
             }
         }
     }
-}
-
-@Composable
-@Preview
-private fun Preview(){
-    Profile()
 }

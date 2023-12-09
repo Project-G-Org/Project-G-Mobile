@@ -42,11 +42,12 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
 import com.example.project_g_kmp.android.R
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun Search (modifier: Modifier = Modifier.background(Color(0xFFEBEBEB))) {
+fun Search (navController: NavController, modifier: Modifier = Modifier.background(Color(0xFFEBEBEB))) {
 
     Column(
         Modifier
@@ -764,8 +765,3 @@ fun Search (modifier: Modifier = Modifier.background(Color(0xFFEBEBEB))) {
         }
     }
 
-@Composable
-@Preview
-private fun Preview(){
-   Search()
-}

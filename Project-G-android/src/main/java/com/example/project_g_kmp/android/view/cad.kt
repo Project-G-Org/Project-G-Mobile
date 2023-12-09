@@ -39,11 +39,12 @@ import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavController
 import com.example.project_g_kmp.android.R
 
 
 @Composable
-fun Cad(){
+fun Cad(navController: NavController,){
 
     Image(painter = painterResource(id = R.drawable.cadback),
         contentDescription = null,
@@ -146,11 +147,4 @@ sealed class InputTypeCad(
         visualTransformation = PasswordVisualTransformation()
     )
 
-}
-
-
-@Composable
-@Preview
-private fun TestPreview(){
-    Cad()
 }

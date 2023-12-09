@@ -40,6 +40,7 @@ import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavController
 import com.example.project_g_kmp.android.R
 
 @Composable
@@ -60,7 +61,7 @@ fun TextInput(inputType: InputType) {
     )
 }
 @Composable
-fun Login(){
+fun Login(navController: NavController,){
 
     Image(painter = painterResource(id = R.drawable.backlogin),
         contentDescription = null,
@@ -135,12 +136,4 @@ sealed class InputType(
     )
 
 
-}
-
-
-@Composable
-@Preview
-private fun Preview(){
-
-    Login()
 }

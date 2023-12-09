@@ -67,20 +67,13 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
 import com.example.project_g_kmp.android.R
+import com.example.project_g_kmp.android.navigation.Destinations
 import com.example.project_g_kmp.android.presentation.components.SliderBanner
 
-data class BottomNavigatioItem(
-
-    val selectedIcon: ImageVector,
-    val unselectedIcon: ImageVector,
-    val hasNews: Boolean
-)
-
-
-
 @Composable
-fun Feed(modifier: Modifier = Modifier.background(Color(0xFFEBEBEB))){
+fun Feed( navController:NavController, modifier: Modifier = Modifier.background(Color(0xFFEBEBEB)) ){
 
     Column(
         Modifier
@@ -212,66 +205,8 @@ fun Feed(modifier: Modifier = Modifier.background(Color(0xFFEBEBEB))){
                     }
 
                 }
+
                 SliderBanner()
-//                LazyRow(
-//                    modifier = Modifier
-//                        .padding(all = 10.dp)
-//                        .clip(RoundedCornerShape(18.dp))
-////                        .horizontalScroll(rememberScrollState())
-//                        .fillMaxWidth()
-//                ) {
-//                    item {
-//                        Image(
-//                            painter = painterResource(id = R.drawable.backlogin),
-//                            contentDescription = null,
-//                            contentScale = ContentScale.FillBounds,
-//                            modifier = Modifier
-//                                .width(300.dp)
-//                                .height(500.dp)
-//                                .padding(horizontal = 15.dp)
-//                        )
-//                    }
-//                    item {
-//                        Image(
-//                            painter = painterResource(id = R.drawable.backlogin),
-//                            contentDescription = null,
-//                            contentScale = ContentScale.FillBounds,
-//                            modifier = Modifier
-//                                .width(300.dp)
-//                                .height(500.dp)
-//                                .padding(horizontal = 15.dp)
-//                        )
-//                    }
-//                }
-//                Box(
-//                    modifier = Modifier
-//                        .padding(all = 10.dp)
-//                        .clip(RoundedCornerShape(18.dp))
-////                        .horizontalScroll(rememberScrollState())
-//                        .fillMaxWidth()
-//                        .scrollable(rememberScrollableState {
-//                            it
-//                        }, Orientation.Horizontal)
-//                ) {
-//                    Image(
-//                        painter = painterResource(id = R.drawable.backlogin),
-//                        contentDescription = null,
-//                        contentScale = ContentScale.FillBounds,
-//                        modifier = Modifier
-//                            .width(300.dp)
-//                            .height(500.dp)
-//                            .background(Color.Red)
-//                    )
-//                    Image(
-//                        painter = painterResource(id = R.drawable.backlogin),
-//                        contentDescription = null,
-//                        contentScale = ContentScale.FillBounds,
-//                        modifier = Modifier
-//                            .width(300.dp)
-//                            .height(500.dp)
-//                            .background(Color.Red)
-//                    )
-//                }
 
                 Row(modifier = Modifier
                     .height(50.dp)
@@ -606,7 +541,7 @@ fun Feed(modifier: Modifier = Modifier.background(Color(0xFFEBEBEB))){
             horizontalAlignment = Alignment.CenterHorizontally)
         {
 
-            IconButton(onClick = { /*TODO*/ }) {
+            IconButton(onClick = { navController.navigate(Destinations.PROFILE) }) {
                 Icon(
                     painterResource(id = R.drawable.baseline_home_24),
                     contentDescription = null,
@@ -622,7 +557,7 @@ fun Feed(modifier: Modifier = Modifier.background(Color(0xFFEBEBEB))){
 
         }
 
-        IconButton(onClick = { /*TODO*/ }) {
+        IconButton(onClick = { navController.navigate(Destinations.) }) {
             Icon(
                 painterResource(id = R.drawable.baseline_apartment_24),
                 contentDescription = null,
@@ -632,7 +567,7 @@ fun Feed(modifier: Modifier = Modifier.background(Color(0xFFEBEBEB))){
         }
 
 
-            IconButton(onClick = { /*TODO*/ }) {
+            IconButton(onClick = { navController.navigate(Destinations.SEARCH) }) {
 
                 Icon(
                     painterResource(id = R.drawable.baseline_search_24),
@@ -643,7 +578,7 @@ fun Feed(modifier: Modifier = Modifier.background(Color(0xFFEBEBEB))){
             }
 
 
-        IconButton(onClick = { /*TODO*/ }) {
+        IconButton(onClick = { navController.navigate(Destinations.PROFILE) }) {
             Icon(
                 painterResource(id = R.drawable.baseline_person_24),
                 contentDescription = null,
@@ -653,11 +588,4 @@ fun Feed(modifier: Modifier = Modifier.background(Color(0xFFEBEBEB))){
              }
         }
     }
-}
-
-
-@Composable
-@Preview
-private fun Preview(){
-    Feed()
 }

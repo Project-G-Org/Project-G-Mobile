@@ -20,10 +20,3 @@ class MainActivity : ComponentActivity() {
         }
     }
 }
-
-@Composable
-@Preview
-private fun Preview(){
-
-    Profile()
-}
