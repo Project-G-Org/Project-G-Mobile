@@ -41,6 +41,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.example.project_g_kmp.android.R
+import com.example.project_g_kmp.android.navigation.Destinations
 
 
 @Composable
@@ -93,7 +94,7 @@ fun Cad(navController: NavController,){
             mutableStateOf(Color.Red)
         }
         Button(
-            onClick = {buttonColor.value = Color.Gray },
+            onClick = {navController.navigate(Destinations.LOGIN)},
             colors = ButtonDefaults.buttonColors(
                 Color(0xFFE5684A),
             )

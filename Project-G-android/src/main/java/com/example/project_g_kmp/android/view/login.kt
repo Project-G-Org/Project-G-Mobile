@@ -42,6 +42,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.example.project_g_kmp.android.R
+import com.example.project_g_kmp.android.navigation.Destinations
 
 @Composable
 fun TextInput(inputType: InputType) {
@@ -92,7 +93,7 @@ fun Login(navController: NavController,){
             mutableStateOf(Color(0xFFE5684A))
         }
         Button(
-            onClick = {buttonColor.value = Color(0xFFE5684A) },
+            onClick = {navController.navigate(Destinations.PROFILE)},
             colors = ButtonDefaults.buttonColors(
                 Color(0xFFE5684A)
             ))
