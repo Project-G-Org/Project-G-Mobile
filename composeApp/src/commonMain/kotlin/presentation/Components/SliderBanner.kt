@@ -89,7 +89,7 @@ fun SliderBanner(
         }
     }
 
-    Column {
+    Column(modifier = Modifier.padding(top = 16.dp)) {
         HorizontalPager(
             state = pagerState,
             contentPadding = PaddingValues(horizontal = 16.dp),
@@ -128,7 +128,7 @@ fun SliderBanner(
                             //asyncPainterResource(data = "${URLS.POST_IMAGES_URL}${images[page]}"),
                             asyncPainterResource(data = "${URLS.POST_IMAGES_URL}$formatedImage"),
                             contentDescription = "Slider",
-                            contentScale = ContentScale.Crop,
+                            contentScale = ContentScale.FillBounds,
                             modifier = Modifier.fillMaxWidth().height(400.dp) //Modifier.fillMaxWidth().aspectRatio(1.0f).height(400.dp)
                         )
                     }

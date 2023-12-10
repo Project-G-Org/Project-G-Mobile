@@ -12,9 +12,8 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
-import io.github.cdimascio.dotenv.dotenv
-
-val dotenv = dotenv()
+import org.example.mybirdapp.BuildKonfig.API_KEY
+import org.example.mybirdapp.BuildKonfig.NAME_KEY
 
 data class FeedUiState(
     val posts: List<Posts> = emptyList()
@@ -47,8 +46,8 @@ class FeedScreenViewModel : ViewModel() {
         val url = "${URLS.BASE_URL}services/posts"
         val posts = httpClient.get(url) {
             header(
-                dotenv["SECRET_KEY_NAME"],
-                dotenv["SECRET_KEY"]
+                NAME_KEY,
+                API_KEY
             )
         }
             .body<Data>()
