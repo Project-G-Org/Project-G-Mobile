@@ -1,5 +1,8 @@
 package model
 
+import androidx.compose.material.ExperimentalMaterialApi
+import androidx.compose.material.ModalBottomSheetState
+import androidx.compose.material.ModalBottomSheetValue
 import dev.icerock.moko.mvvm.viewmodel.ViewModel
 import helpers.URLS
 import io.ktor.client.HttpClient
@@ -15,10 +18,14 @@ import kotlinx.coroutines.launch
 import org.example.mybirdapp.BuildKonfig.API_KEY
 import org.example.mybirdapp.BuildKonfig.NAME_KEY
 
-data class FeedUiState(
-    val posts: List<Posts> = emptyList()
+data class FeedUiState @OptIn(ExperimentalMaterialApi::class) constructor(
+    val posts: List<Posts> = emptyList(),
+    val showComments: Boolean = false,
+    val comments: List<Comment> = emptyList(),
+    val modalBottomSheetState: ModalBottomSheetValue = ModalBottomSheetValue.Hidden
 )
 
+@OptIn(ExperimentalMaterialApi::class)
 class FeedScreenViewModel : ViewModel() {
     private val _uiState = MutableStateFlow(FeedUiState())
     val uiState = _uiState.asStateFlow()
@@ -33,7 +40,22 @@ class FeedScreenViewModel : ViewModel() {
         updatePosts()
     }
 
-    fun updatePosts() {
+    fun changeCommentsVisibility(show: Boolean, comments: List<Comment>) {
+        _uiState.update {
+            it.copy(
+                comments = comments,
+                showComments = show,
+                modalBottomSheetState = if(show) {
+                    ModalBottomSheetValue.HalfExpanded
+                } else {
+                    ModalBottomSheetValue.Hidden
+                }
+            )
+        }
+    }
+
+    @OptIn(ExperimentalMaterialApi::class)
+    private fun updatePosts() {
         viewModelScope.launch {
             val posts = getPosts()
             _uiState.update {
