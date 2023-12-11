@@ -17,19 +17,23 @@ import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.BottomNavigation
 import androidx.compose.material.BottomSheetScaffold
+import androidx.compose.material.BottomSheetValue
 import androidx.compose.material.Card
 import androidx.compose.material.CircularProgressIndicator
 import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.material.Icon
 import androidx.compose.material.IconButton
 import androidx.compose.material.ModalBottomSheetLayout
+import androidx.compose.material.ModalBottomSheetValue
 import androidx.compose.material.Scaffold
 import androidx.compose.material.Text
 import androidx.compose.material.TextButton
+import androidx.compose.material.rememberModalBottomSheetState
 import androidx.compose.material.rememberScaffoldState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
@@ -48,6 +52,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import dev.icerock.moko.mvvm.compose.getViewModel
 import dev.icerock.moko.mvvm.compose.viewModelFactory
+import helpers.URLS
 import helpers.URLS.BASE_URL
 import io.kamel.image.KamelImage
 import io.kamel.image.asyncPainterResource
@@ -160,8 +165,11 @@ fun FeedScreen(component: FeedScreenComponent, modifier: Modifier = Modifier.bac
 @OptIn(ExperimentalMaterialApi::class)
 @Composable
 private fun MyBottomSheet(comments: List<Comment>) {
-    ModalBottomSheetLayout(sheetContent = {
-        LazyColumn(modifier = Modifier.fillMaxWidth()) {
+    val modalState = rememberModalBottomSheetState(initialValue = ModalBottomSheetValue.HalfExpanded)
+    ModalBottomSheetLayout(
+        sheetState = modalState,
+        sheetContent = {
+        LazyColumn(modifier = Modifier.fillMaxWidth().height(300.dp)) {
             items(comments) { comment ->
                 Row(
                     modifier = Modifier.fillMaxWidth(),
@@ -186,7 +194,8 @@ private fun MyBottomSheet(comments: List<Comment>) {
                 )
             }
         }
-    }) {
+    }
+    ) {
 
     }
 }
@@ -216,17 +225,32 @@ private fun Posts(posts: List<Posts>) {
                             .horizontalScroll(rememberScrollState())
                             .fillMaxWidth()
                     ) {
-
-                        KamelImage(
-                            resource = asyncPainterResource(data = "${post.author.image}"),
-                            contentDescription = post.author.name,
-                            contentScale = ContentScale.Crop,
-                            modifier = Modifier.size(60.dp)
-                        )
+                        if(post.author.profilePic != null) {
+                            KamelImage(
+                                resource = asyncPainterResource(data = "${URLS.POST_IMAGES_URL}${post.author.profilePic}"),
+                                contentDescription = post.author.name,
+                                contentScale = ContentScale.Crop,
+                                modifier = Modifier.size(60.dp).clip(CircleShape)
+                            )
+                        } else if (post.author.image != null) {
+                            KamelImage(
+                                resource = asyncPainterResource(data = "${URLS.POST_IMAGES_URL}${post.author.image}"),
+                                contentDescription = post.author.name,
+                                contentScale = ContentScale.Crop,
+                                modifier = Modifier.size(60.dp).clip(CircleShape)
+                            )
+                        } else {
+                            Image(
+                                painter = painterResource("no_image.jpg"),
+                                contentDescription = post.author.name,
+                                contentScale = ContentScale.Crop,
+                                modifier = Modifier.size(60.dp).clip(CircleShape)
+                            )
+                        }
 
                         Column(
                             modifier = Modifier
-                                .padding(3.dp, 10.dp)
+                                .padding(horizontal = 10.dp, vertical = 10.dp)
                         ) {
 
                             Text(
