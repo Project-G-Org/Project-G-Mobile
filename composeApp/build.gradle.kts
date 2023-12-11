@@ -1,11 +1,14 @@
 import org.jetbrains.compose.desktop.application.dsl.TargetFormat
 import org.jetbrains.compose.ExperimentalComposeLibrary
+import java.util.Properties
+import com.codingfeline.buildkonfig.compiler.FieldSpec.Type.STRING
 
 plugins {
     alias(libs.plugins.kotlinMultiplatform)
     alias(libs.plugins.androidApplication)
     alias(libs.plugins.jetbrainsCompose)
     kotlin("plugin.serialization") version "1.9.21"
+    id("com.codingfeline.buildkonfig") version "+"
 }
 
 kotlin {
@@ -66,15 +69,42 @@ kotlin {
             implementation("media.kamel:kamel-image:0.9.0")
             implementation("io.ktor:ktor-client-core:2.3.6")
 
-            // .ENV
+            // BUILDKONFIG
 
-            implementation(kotlin("stdlib"))
-            implementation("io.github.cdimascio:dotenv-kotlin:6.2.2")
         }
         iosMain.dependencies {
             implementation("io.ktor:ktor-client-darwin:2.3.6")
         }
     }
+
+    val keystoreFile = project.rootProject.file("local.properties")
+    val properties = Properties()
+    properties.load(keystoreFile.inputStream())
+
+    val apiKey = properties.getProperty("SECRET_KEY")
+
+    buildkonfig {
+        packageName = "org.example.mybirdapp"
+
+        // default config is required
+        defaultConfigs {
+            buildConfigField(STRING, "NAME_KEY", "X-API-KEY")
+            buildConfigField(STRING, "API_KEY", apiKey)
+        }
+
+        targetConfigs {
+            // names in create should be the same as target names you specified
+            create("android") {
+//                buildConfigField(STRING, "name2", "value2")
+//                buildConfigField(STRING, "nullableField", "NonNull-value", nullable = true)
+            }
+
+            create("ios") {
+//                buildConfigField(STRING, "name", "valueForNative")
+            }
+        }
+    }
+
 }
 
 android {
@@ -103,9 +133,10 @@ android {
             excludes += "/META-INF/{AL2.0,LGPL2.1}"
         }
     }
+
     buildTypes {
         getByName("release") {
-            isMinifyEnabled = false
+            isMinifyEnabled = true
         }
     }
     compileOptions {

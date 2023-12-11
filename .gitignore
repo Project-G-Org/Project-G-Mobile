@@ -2,8 +2,15 @@
 .gradle
 **/build/
 xcuserdata
+xcuserdata/
 !src/**/build/
 local.properties
+/local.properties
+*keystore.properties
+*.jks
+*yarn.lock
+*google-services.json
+*GoogleServices-Info.plist
 .idea
 .DS_Store
 captures
