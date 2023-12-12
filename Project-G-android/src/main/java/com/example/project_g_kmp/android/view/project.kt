@@ -353,7 +353,7 @@ fun Project(navController: NavController){
 
             ) {
 
-                IconButton(onClick = { /*TODO*/ }) {
+                IconButton(onClick = { navController.navigate(Destinations.POSTP) }) {
 
                     Icon(
                         painterResource(id = R.drawable.baseline_circle_24),

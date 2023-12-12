@@ -163,10 +163,12 @@ fun Feed( navController:NavController, viewModel : Like){
                     Row(verticalAlignment = Alignment.CenterVertically,) {
 
                         Image(
-                            bitmap = ImageBitmap.imageResource(id = R.drawable.carr1),
+                            bitmap = ImageBitmap.imageResource(id = R.drawable.backlogin),
                             contentDescription = null,
                             Modifier
-                                .size(60.dp),
+                                .size(60.dp)
+                                .clip(RoundedCornerShape(180.dp)),
+                            contentScale = ContentScale.FillBounds,
 
                         )
 
@@ -223,14 +225,21 @@ fun Feed( navController:NavController, viewModel : Like){
                             tint = Color(0xFFE5684A))
                     }
 
-                    IconButton(onClick = {viewModel.addLike()}) {
-                        Icon(
-                            painterResource(id = R.drawable.baseline_thumb_up_24),
-                            contentDescription = null,
-                            Modifier.size(25.dp),
-                            tint = Color(0xFFE5684A)
-                        )
+                    Row(verticalAlignment = Alignment.CenterVertically,
+                        horizontalArrangement = Arrangement.Center) {
+
+
+                        IconButton(onClick = { viewModel.addLike() }) {
+                            Icon(
+                                painterResource(id = R.drawable.baseline_thumb_up_24),
+                                contentDescription = null,
+                                Modifier.size(25.dp),
+                                tint = Color(0xFFE5684A)
+                            )
+                        }
+                        Text(text = viewModel.num.value.toString())
                     }
+
 
                     IconButton(onClick = { /*TODO*/ }) {
                         Icon(
@@ -269,10 +278,13 @@ fun Feed( navController:NavController, viewModel : Like){
                     Row {
 
                         Image(
-                            bitmap = ImageBitmap.imageResource(id = R.drawable.carr1),
+                            bitmap = ImageBitmap.imageResource(id = R.drawable.backlogin),
                             contentDescription = null,
                             Modifier
                                 .size(60.dp)
+                                .clip(RoundedCornerShape(180.dp)),
+                            contentScale = ContentScale.FillBounds,
+
                         )
 
                         Column(
@@ -384,7 +396,7 @@ fun Feed( navController:NavController, viewModel : Like){
                     containerColor = Color.White,
                 ),
                 modifier = Modifier
-                    .padding(10.dp,5.dp,10.dp,70.dp)
+                    .padding(10.dp, 5.dp, 10.dp, 70.dp)
                     .fillMaxWidth(),
             ) {
                 Row(
@@ -507,7 +519,7 @@ fun Feed( navController:NavController, viewModel : Like){
 
             ) {
 
-                IconButton(onClick = { /*TODO*/ }) {
+                IconButton(onClick = { navController.navigate(Destinations.POST) }) {
 
                 Icon(
                     painterResource(id = R.drawable.baseline_circle_24),

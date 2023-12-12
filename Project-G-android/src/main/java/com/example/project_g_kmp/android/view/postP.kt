@@ -11,10 +11,8 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.IconButton
-import androidx.compose.material3.Button
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.Divider
@@ -22,6 +20,7 @@ import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
+import androidx.compose.material3.TextField
 import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -45,7 +44,7 @@ import com.example.project_g_kmp.android.navigation.Destinations
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun Post (navController: NavController){
+fun PostP (navController: NavController){
 
     Box(
         Modifier
@@ -55,7 +54,7 @@ fun Post (navController: NavController){
         Card(
             elevation = CardDefaults.cardElevation(defaultElevation = 6.dp),
             colors = CardDefaults.cardColors(
-                containerColor = Color.White,
+                containerColor = Color(0xFF202020),
             ),
             modifier = Modifier
                 .padding(10.dp, 5.dp)
@@ -77,7 +76,7 @@ fun Post (navController: NavController){
                             painterResource(id = R.drawable.baseline_close_24),
                             contentDescription = null,
                             Modifier.size(30.dp),
-                            tint = Color.Black
+                            tint = Color(0xFFE5684A)
                         )
                     }
 
@@ -85,7 +84,7 @@ fun Post (navController: NavController){
                         Text(
                             "Post",
                             Modifier.padding(5.dp),
-                            color = Color.Black,
+                            color = Color(0xFFE5684A),
                             fontSize = 20.sp,
                             fontWeight = FontWeight.Bold,
                         )
@@ -111,16 +110,18 @@ fun Post (navController: NavController){
                             )
 
                         var post by remember { mutableStateOf("") }
-                        androidx.compose.material3.TextField(
+                        TextField(
                             value = post,
                             onValueChange = { post = it },
                             Modifier.fillMaxWidth(),
                             colors = TextFieldDefaults.textFieldColors(
-                                unfocusedIndicatorColor = Color.White,
-                                unfocusedSuffixColor = Color.White,
-                                focusedIndicatorColor = Color.White,
-                                focusedSuffixColor = Color.White,
-                                containerColor = Color.White
+                                unfocusedIndicatorColor = Color(0xFF202020),
+                                unfocusedSuffixColor = Color(0xFF202020),
+                                focusedIndicatorColor = Color(0xFF202020),
+                                focusedSuffixColor = Color(0xFF202020),
+                                containerColor = Color(0xFF202020),
+                                unfocusedTextColor = Color.White,
+                                focusedTextColor = Color.White
                             )
                         )
                     }
@@ -129,7 +130,6 @@ fun Post (navController: NavController){
                             .height(1.dp)
                             .fillMaxWidth(), color = Color.Black
                     )
-
 
                     IconButton(onClick = { /*TODO*/ }) {
 
@@ -140,7 +140,6 @@ fun Post (navController: NavController){
                             tint = Color(0xFFE5684A)
                         )
                     }
-
                 }
             }
         }

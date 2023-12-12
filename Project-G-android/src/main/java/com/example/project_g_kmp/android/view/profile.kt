@@ -216,7 +216,8 @@ fun Profile (navController: NavController){
                            )
                            Divider(modifier = Modifier
                                .height(1.dp)
-                               .fillMaxWidth(), color = Color.Black)
+                               .fillMaxWidth(), color = Color(0xFFEBEBEB))
+
                            Column {
                                Row(Modifier.padding(10.dp,0.dp),
                                verticalAlignment = Alignment.CenterVertically) {
