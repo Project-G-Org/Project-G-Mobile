@@ -73,7 +73,7 @@ import com.example.project_g_kmp.android.navigation.Destinations
 import com.example.project_g_kmp.android.presentation.components.SliderBanner
 
 @Composable
-fun Feed( navController:NavController, modifier: Modifier = Modifier.background(Color(0xFFEBEBEB)) ){
+fun Feed( navController:NavController, viewModel : Like){
 
     Column(
         Modifier
@@ -223,7 +223,7 @@ fun Feed( navController:NavController, modifier: Modifier = Modifier.background(
                             tint = Color(0xFFE5684A))
                     }
 
-                    IconButton(onClick = { /*TODO*/ }) {
+                    IconButton(onClick = {viewModel.addLike()}) {
                         Icon(
                             painterResource(id = R.drawable.baseline_thumb_up_24),
                             contentDescription = null,

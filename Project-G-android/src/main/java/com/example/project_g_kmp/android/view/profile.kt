@@ -154,10 +154,6 @@ fun Profile (navController: NavController){
                         horizontalArrangement = Arrangement.SpaceAround,
                         verticalAlignment = Alignment.CenterVertically) {
 
-                        Column {
-
-                        }
-
                         Text(
                             " 3 Seguidores",
                             Modifier.padding(10.dp),

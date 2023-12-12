@@ -57,7 +57,7 @@ import com.example.project_g_kmp.android.presentation.components.SliderBanner
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun ProfileP(navController: NavController) {
+fun ProfileP(navController: NavController,) {
 
     Column(
         Modifier

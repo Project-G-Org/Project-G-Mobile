@@ -14,6 +14,7 @@ import com.example.project_g_kmp.android.navigation.Destinations.REC
 import com.example.project_g_kmp.android.navigation.Destinations.SEARCH
 import com.example.project_g_kmp.android.view.Cad
 import com.example.project_g_kmp.android.view.Feed
+import com.example.project_g_kmp.android.view.Like
 import com.example.project_g_kmp.android.view.Login
 import com.example.project_g_kmp.android.view.Profile
 import com.example.project_g_kmp.android.view.ProfileP
@@ -33,13 +34,13 @@ object Destinations {
 }
 
 @Composable
-fun MainNavigation(navController: NavHostController) {
+fun MainNavigation(navController: NavHostController,  viewModel : Like) {
     NavHost(
         navController = navController,
         startDestination = FEED
     ) {
         composable(FEED) {
-            Feed(navController)
+            Feed(navController,viewModel)
         }
 
         composable(PROJECT) {
