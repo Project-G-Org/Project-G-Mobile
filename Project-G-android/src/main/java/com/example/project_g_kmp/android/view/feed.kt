@@ -396,7 +396,7 @@ fun Feed( navController:NavController, viewModel : Like){
                     containerColor = Color.White,
                 ),
                 modifier = Modifier
-                    .padding(10.dp, 5.dp, 10.dp, 70.dp)
+                    .padding(10.dp, 5.dp)
                     .fillMaxWidth(),
             ) {
                 Row(
@@ -502,6 +502,9 @@ fun Feed( navController:NavController, viewModel : Like){
                     }
                 }
             }
+
+            Text(text = "Ops, parece que você chegou ao fim!",
+            Modifier .padding(10.dp, 5.dp, 10.dp, 70.dp))
         }
 
     }

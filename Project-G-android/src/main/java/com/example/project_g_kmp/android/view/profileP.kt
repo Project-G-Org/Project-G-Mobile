@@ -146,7 +146,7 @@ fun ProfileP(navController: NavController,) {
                         Row (
                             Modifier
                                 .fillMaxWidth(),
-                            horizontalArrangement = Arrangement.SpaceBetween,
+                            horizontalArrangement = Arrangement.SpaceAround,
                             verticalAlignment = Alignment.CenterVertically) {
 
                             Text(

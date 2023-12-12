@@ -124,12 +124,6 @@ fun Post (navController: NavController){
                             )
                         )
                     }
-                    Divider(
-                        modifier = Modifier
-                            .height(1.dp)
-                            .fillMaxWidth(), color = Color.Black
-                    )
-
 
                     IconButton(onClick = { /*TODO*/ }) {
 

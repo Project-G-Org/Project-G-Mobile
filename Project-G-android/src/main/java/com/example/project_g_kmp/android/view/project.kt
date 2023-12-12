@@ -309,13 +309,8 @@ fun Project(navController: NavController){
                     }
                 }
 
-                Column(
-                    modifier = Modifier
-                        .padding(25.dp, 5.dp)
-                        .fillMaxWidth()
-                ) {
-
-                }
+                Text(text = "Ops, parece que você chegou ao fim!",
+                    Modifier .padding(10.dp, 5.dp, 10.dp, 70.dp))
 
                 Column(
                     modifier = Modifier

@@ -229,6 +229,7 @@ fun Profile (navController: NavController){
                                )
                                    Text(
                                        "Local :",
+                                       Modifier.padding(10.dp,0.dp,0.dp,0.dp),
                                        color = Color.Black,
                                        fontSize = 15.sp,
                                        fontWeight = FontWeight.Bold,
@@ -257,6 +258,7 @@ fun Profile (navController: NavController){
                                    )
                                    Text(
                                        "De :",
+                                       Modifier.padding(10.dp,0.dp,0.dp,0.dp),
                                        color = Color.Black,
                                        fontSize = 15.sp,
                                        fontWeight = FontWeight.Bold,
@@ -285,6 +287,7 @@ fun Profile (navController: NavController){
                                    )
                                    Text(
                                        "Email :",
+                                       Modifier.padding(10.dp,0.dp,0.dp,0.dp),
                                        color = Color.Black,
                                        fontSize = 15.sp,
                                        fontWeight = FontWeight.Bold,
@@ -313,6 +316,7 @@ fun Profile (navController: NavController){
                                    )
                                    Text(
                                        "Telefone :",
+                                       Modifier.padding(10.dp,0.dp,0.dp,0.dp),
                                        color = Color.Black,
                                        fontSize = 15.sp,
                                        fontWeight = FontWeight.Bold,
@@ -341,6 +345,7 @@ fun Profile (navController: NavController){
                                    )
                                    Text(
                                        "Site :",
+                                       Modifier.padding(10.dp,0.dp,0.dp,0.dp),
                                        color = Color.Black,
                                        fontSize = 15.sp,
                                        fontWeight = FontWeight.Bold,
@@ -372,6 +377,7 @@ fun Profile (navController: NavController){
 
                                    Text(
                                        "Link :",
+                                       Modifier.padding(10.dp,0.dp,0.dp,0.dp),
                                        color = Color.Black,
                                        fontSize = 15.sp,
                                        fontWeight = FontWeight.Bold,
@@ -394,34 +400,118 @@ fun Profile (navController: NavController){
                        }
                     }
                 }
-                    Card(
-                        elevation = CardDefaults.cardElevation(defaultElevation = 6.dp),
-                        colors = CardDefaults.cardColors(
-                            containerColor = Color.White,
-                        ),
+                Card(
+                    elevation = CardDefaults.cardElevation(defaultElevation = 6.dp),
+                    colors = CardDefaults.cardColors(
+                        containerColor = Color.White,
+                    ),
+                    modifier = Modifier
+                        .padding(10.dp, 5.dp)
+                        .fillMaxWidth(),
+                ) {
+                    Row(
                         modifier = Modifier
-                            .padding(10.dp, 5.dp)
-                            .fillMaxWidth(),) {
-                        Row (
-                            Modifier
-                                .fillMaxWidth(),
-                            horizontalArrangement = Arrangement.Start,
-                            verticalAlignment = Alignment.CenterVertically) {
+                            .padding(all = 10.dp)
+                            .fillMaxWidth(),
+                        verticalAlignment = Alignment.CenterVertically,
+                        horizontalArrangement = Arrangement.SpaceBetween
+                    ) {
 
-                            Image(painter = painterResource(id = R.drawable.univer),
+                        Row {
+
+                            Image(
+                                bitmap = ImageBitmap.imageResource(id = R.drawable.carr1),
                                 contentDescription = null,
                                 Modifier
-                                    .size(70.dp)
-                                    .padding(10.dp))
+                                    .size(60.dp)
+                            )
 
-                            Text(text = "Estudante Harvard",
-                                    Modifier.padding(5.dp),
-                                color = Color.Black,
-                                fontSize = 20.sp,
-                                fontWeight = FontWeight.Bold,)
+                            Column(
+                                modifier = Modifier
+                                    .padding(3.dp, 10.dp)
+                            ) {
 
+                                Text(
+                                    "marcelo",
+                                    color = Color(0xFFE5684A),
+                                    fontSize = 20.sp,
+                                    fontWeight = FontWeight.Bold,
+                                )
+
+                                Text(
+                                    text = "MARANHAO",
+                                    color = Color.Black,
+                                    fontSize = 12.sp,
+                                    fontWeight = FontWeight.Bold,
+                                )
+                            }
+                        }
+
+                        IconButton(onClick = { /*TODO*/ }) {
+                            Icon(
+                                painterResource(id = R.drawable.baseline_more_vert_24),
+                                contentDescription = null,
+                                Modifier.size(30.dp),
+                                tint = Color.Black
+                            )
+                        }
+
+                    }
+
+                    Column(
+                        modifier = Modifier
+                            .padding(25.dp, 5.dp)
+                            .fillMaxWidth()
+                    ) {
+
+                        Text(
+                            text = "Et eius voluptate dolorum debitis ducimus fugit molestiae dolor. Eum et dolores aut reprehenderit dignissimos nihil error. Ducimus voluptas velit laboriosam provident. Labore est quis ad eum sed. Ratione quibusdam fugiat. Qui labore quisquam dolorum maiores deserunt dolores nihil.Et eius voluptate dolorum debitis ducimus fugit molestiae dolor. Eum et dolores aut reprehenderit dignissimos nihil error. Ducimus voluptas velit laboriosam provident. Labore est quis ad eum sed. Ratione quibusdam fugiat. Qui labore quisquam dolorum maiores deserunt dolores nihil.",
+                            color = Color.Black,
+                            fontSize = 12.sp,
+                        )
+
+                    }
+
+                    Row(modifier = Modifier
+                        .height(50.dp)
+                        .fillMaxWidth()
+                        .background(color = Color.White),
+                        verticalAlignment = Alignment.Top,
+                        horizontalArrangement = Arrangement.SpaceAround
+                    ) {
+
+                        IconButton(onClick = { /*TODO*/ }) {
+                            Icon(painterResource(id = R.drawable.baseline_mode_comment_24),
+                                contentDescription = null,
+                                Modifier.size(25.dp),
+                                tint = Color(0xFFE5684A))
+                        }
+
+                        IconButton(onClick = { /*TODO*/ }) {
+                            Icon(
+                                painterResource(id = R.drawable.baseline_thumb_up_24),
+                                contentDescription = null,
+                                Modifier.size(25.dp),
+                                tint = Color(0xFFE5684A)
+                            )
+                        }
+
+                        IconButton(onClick = { /*TODO*/ }) {
+                            Icon(
+                                painterResource(id = R.drawable.baseline_share_24),
+                                contentDescription = null,
+                                Modifier.size(25.dp),
+                                tint = Color(0xFFE5684A))}
+
+                        IconButton(onClick = { /*TODO*/ }) {
+                            Icon(
+                                painterResource(id = R.drawable.baseline_save_alt_24),
+                                contentDescription = null,
+                                Modifier.size(25.dp),
+                                tint = Color(0xFFE5684A))
                         }
                     }
+                }
 
                 Row (
                     Modifier
