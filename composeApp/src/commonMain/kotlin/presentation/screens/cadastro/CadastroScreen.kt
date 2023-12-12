@@ -103,6 +103,25 @@ private fun CardFields(
 ) {
     val viewModel = getViewModel(Unit, viewModelFactory { CadastroViewModel() })
     val scope = rememberCoroutineScope()
+
+
+    var showErrorName by remember {
+        mutableStateOf(false)
+    }
+
+    var showErrorMail by remember {
+        mutableStateOf(false)
+    }
+
+    var showErrorPass by remember {
+        mutableStateOf(false)
+    }
+
+    var showErrorPassC by remember {
+        mutableStateOf(false)
+    }
+
+
     Card(
         shape = RoundedCornerShape(14.dp),
         modifier = Modifier
@@ -150,10 +169,10 @@ private fun CardFields(
 
 
 
-            CustomTextInput(inputType = InputType.Name, value = name)
-            CustomTextInput(inputType = InputType.Gmail, value = gmail)
-            CustomTextInput(inputType = InputType.Password, value = pass)
-            CustomTextInput(inputType = InputType.CPassword, value = passConfirm)
+            CustomTextInput(inputType = InputType.Name, value = name, showError = showErrorName)
+            CustomTextInput(inputType = InputType.Gmail, value = gmail, showError = showErrorMail)
+            CustomTextInput(inputType = InputType.Password, value = pass, showError = showErrorPass)
+            CustomTextInput(inputType = InputType.CPassword, value = passConfirm, showError = showErrorPassC)
 
             val buttonColor = remember {
                 mutableStateOf(Color.Red)
@@ -161,9 +180,18 @@ private fun CardFields(
             Button(
                 onClick = {
                     scope.launch {
-                        viewModel.registerUser(name = name.value, email = gmail.value, pass = pass.value)
+                        if(name.value.isNotBlank() && gmail.value.isNotBlank() && pass.value.isNotBlank() && passConfirm.value.isNotBlank()) {
+                            if(viewModel.registerUser(name = name.value, email = gmail.value, pass = pass.value)) {
+
+                            }
+                        } else {
+                            if(name.value.isBlank()) showErrorName = true
+                            if(gmail.value.isBlank()) showErrorMail = true
+                            if(pass.value.isBlank()) showErrorPass = true
+                            if(passConfirm.value.isBlank()) showErrorPassC = true
+                        }
                     }
-                          },
+                },
                 colors = ButtonDefaults.buttonColors(
                     Color(0xFFE5684A),
                 )

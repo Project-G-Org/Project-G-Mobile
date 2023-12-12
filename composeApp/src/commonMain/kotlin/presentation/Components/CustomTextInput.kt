@@ -18,7 +18,9 @@ import model.InputType
 @Composable
 fun CustomTextInput(
     inputType: InputType,
-    value: MutableState<String>
+    value: MutableState<String>,
+    showError: Boolean = false,
+    errorMessage: String = "Este campo não deve estar vazio!"
 ) {
     OutlinedTextField(
         modifier = Modifier
@@ -45,7 +47,7 @@ fun CustomTextInput(
             focusedLabelColor = Color(0xFFF06D4D),
             unfocusedLabelColor = Color(0xFFF06D4D),
             leadingIconColor = Color(0xFF74CC3D),
-
-        )
+        ),
+        isError = showError,
     )
 }
