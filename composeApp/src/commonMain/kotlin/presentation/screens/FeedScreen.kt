@@ -5,6 +5,7 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.horizontalScroll
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -16,6 +17,7 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
@@ -28,6 +30,7 @@ import androidx.compose.material.BottomSheetScaffold
 import androidx.compose.material.BottomSheetValue
 import androidx.compose.material.Card
 import androidx.compose.material.CircularProgressIndicator
+import androidx.compose.material.Divider
 import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.material.Icon
 import androidx.compose.material.IconButton
@@ -187,68 +190,13 @@ fun FeedScreen(component: FeedScreenComponent, modifier: Modifier = Modifier.bac
                         Posts(uiState.posts, viewModel)
                     }
 
-                    //StoriesTop()
-//
-//                FirstCard()
-//
-//                SecondCard()
-//
-//                ThirdCard()
                 }
             }
         }
 
-//        if(uiState.showComments) {
-//            MyBottomSheet(uiState.comments)
-//        }
+
     }
 
-//    Column(
-//        Modifier
-//        .fillMaxSize(),
-//        verticalArrangement = Arrangement.Bottom
-//    ){
-//
-//
-//
-//        Row(
-//            modifier = Modifier
-//            .height(60.dp)
-//            .fillMaxWidth()
-//            .background(color = Color(0xFF202020)),
-//            verticalAlignment = Alignment.CenterVertically,
-//            horizontalArrangement = Arrangement.SpaceAround
-//        ) {
-//
-//            Icon(
-//                painterResource("baseline_add_24.xml"),
-//                contentDescription = null,
-//                Modifier.size(30.dp),
-//                tint = Color(0xFFE5684A)
-//            )
-//
-//            Icon(
-//                painterResource("baseline_home_24.xml"),
-//                contentDescription = null,
-//                Modifier.size(30.dp),
-//                tint = Color(0xFFE5684A)
-//            )
-//
-//            Icon(
-//                painterResource("baseline_search_24.xml"),
-//                contentDescription = null,
-//                Modifier.size(30.dp),
-//                tint = Color(0xFFE5684A)
-//            )
-//
-//            Icon(
-//                painterResource("baseline_person_24.xml"),
-//                contentDescription = null,
-//                Modifier.size(30.dp),
-//                tint = Color(0xFFE5684A)
-//            )
-//        }
-//    }
 }
 
 @OptIn(ExperimentalMaterialApi::class, ExperimentalMaterial3Api::class)
@@ -373,23 +321,6 @@ private fun Posts(posts: List<Posts>, viewModel: FeedScreenViewModel) {
 
                     }
 
-//                    Column(
-//                        modifier = Modifier
-//                            .padding(15.dp)
-//                            .clip(RoundedCornerShape(18.dp))
-//                            .fillMaxWidth()
-//                    ) {
-//
-//                        Image(
-//                            painter = painterResource("post4.png"),
-//                            contentDescription = null,
-//                            contentScale = ContentScale.FillBounds,
-//                            modifier = Modifier
-//                                .fillMaxWidth()
-//                                .height(600.dp)
-//                        )
-//                    }
-
                     if(post.images.isNotEmpty()) {
                         SliderBanner(images = post.images, imageFont = ImageFonts.Posts)
                     }
@@ -448,44 +379,98 @@ private fun MyBottomNavigationBar(component: FeedScreenComponent) {
     BottomNavigation(
         elevation = 4.dp
     ) {
-        Row(
-            modifier = Modifier
+        Column(Modifier
+            .fillMaxSize(),
+            verticalArrangement = Arrangement.Bottom){
+
+            Column(){
+
+                Box(
+                    modifier = Modifier
+                        .padding(10.dp,10.dp),
+                    contentAlignment = Alignment.Center
+
+                ) {
+
+                    IconButton(onClick = {}) {
+
+                        Icon(
+                            painterResource("baseline_circle_24"),
+                            contentDescription = null,
+                            Modifier
+                                .size(80.dp),
+                            tint = Color(0xFF202020)
+                        )
+
+                        Icon(
+                            painterResource("baseline_add_24"),
+                            contentDescription = null,
+                            Modifier
+                                .padding(10.dp)
+                                .size(40.dp),
+                            tint = Color(0xFFE5684A)
+                        )
+                    }
+                }
+            }
+
+            Row(modifier = Modifier
                 .height(60.dp)
                 .fillMaxWidth()
                 .background(color = Color(0xFF202020)),
-            verticalAlignment = Alignment.CenterVertically,
-            horizontalArrangement = Arrangement.SpaceAround
-        ) {
-            Icon(
-                painterResource("baseline_add_24.xml"),
-                contentDescription = null,
-                Modifier.size(30.dp),
-                tint = Color(0xFFE5684A)
-            )
-
-            Icon(
-                painterResource("baseline_home_24.xml"),
-                contentDescription = null,
-                Modifier.size(30.dp),
-                tint = Color(0xFFE5684A)
-            )
-
-            Icon(
-                painterResource("baseline_search_24.xml"),
-                contentDescription = null,
-                Modifier.size(30.dp),
-                tint = Color(0xFFE5684A)
-            )
-
-            IconButton(
-                onClick = { component.onGoToProfileScreen() }
+                verticalAlignment = Alignment.CenterVertically,
+                horizontalArrangement = Arrangement.SpaceAround
             ) {
-                Icon(
-                    painterResource("baseline_person_24.xml"),
-                    contentDescription = null,
-                    Modifier.size(30.dp),
-                    tint = Color(0xFFE5684A)
-                )
+
+                Column  (verticalArrangement = Arrangement.Center,
+                    horizontalAlignment = Alignment.CenterHorizontally)
+                {
+
+                    IconButton(onClick = {  component.onGoToProfileScreen() }) {
+                        Icon(
+                            painterResource("baseline_home_24"),
+                            contentDescription = null,
+                            Modifier.size(30.dp),
+                            tint = Color(0xFFE5684A)
+                        )
+                    }
+
+                    Divider(modifier = Modifier
+                        .height(2.dp)
+                        .width(40.dp),
+                        color = Color(0xFFE5684A))
+
+                }
+
+                IconButton(onClick = {  component.onGoToProfileScreen() }) {
+                    Icon(
+                        painterResource("baseline_apartment_24"),
+                        contentDescription = null,
+                        Modifier.size(30.dp),
+                        tint = Color(0xFFE5684A)
+                    )
+                }
+
+
+                IconButton(onClick = {  component.onGoToProfileScreen() }) {
+
+                    Icon(
+                        painterResource("baseline_search_24"),
+                        contentDescription = null,
+                        Modifier.size(30.dp),
+                        tint = Color(0xFFE5684A)
+                    )
+                }
+
+
+                IconButton(onClick = {  component.onGoToProfileScreen() }) {
+                    Icon(
+                        painterResource("baseline_person_24"),
+                        contentDescription = null,
+                        Modifier.size(30.dp),
+                        tint = Color(0xFFE5684A)
+                    )
+                }
             }
         }
     }
@@ -815,66 +800,6 @@ private fun FirstCard() {
 
             }
         }
-
-        //                LazyRow(
-        //                    modifier = Modifier
-        //                        .padding(all = 10.dp)
-        //                        .clip(RoundedCornerShape(18.dp))
-        ////                        .horizontalScroll(rememberScrollState())
-        //                        .fillMaxWidth()
-        //                ) {
-        //                    item {
-        //                        Image(
-        //                            painter = painterResource(id = R.drawable.backlogin),
-        //                            contentDescription = null,
-        //                            contentScale = ContentScale.FillBounds,
-        //                            modifier = Modifier
-        //                                .width(300.dp)
-        //                                .height(500.dp)
-        //                                .padding(horizontal = 15.dp)
-        //                        )
-        //                    }
-        //                    item {
-        //                        Image(
-        //                            painter = painterResource(id = R.drawable.backlogin),
-        //                            contentDescription = null,
-        //                            contentScale = ContentScale.FillBounds,
-        //                            modifier = Modifier
-        //                                .width(300.dp)
-        //                                .height(500.dp)
-        //                                .padding(horizontal = 15.dp)
-        //                        )
-        //                    }
-        //                }
-        //                Box(
-        //                    modifier = Modifier
-        //                        .padding(all = 10.dp)
-        //                        .clip(RoundedCornerShape(18.dp))
-        ////                        .horizontalScroll(rememberScrollState())
-        //                        .fillMaxWidth()
-        //                        .scrollable(rememberScrollableState {
-        //                            it
-        //                        }, Orientation.Horizontal)
-        //                ) {
-        //                    Image(
-        //                        painter = painterResource(id = R.drawable.backlogin),
-        //                        contentDescription = null,
-        //                        contentScale = ContentScale.FillBounds,
-        //                        modifier = Modifier
-        //                            .width(300.dp)
-        //                            .height(500.dp)
-        //                            .background(Color.Red)
-        //                    )
-        //                    Image(
-        //                        painter = painterResource(id = R.drawable.backlogin),
-        //                        contentDescription = null,
-        //                        contentScale = ContentScale.FillBounds,
-        //                        modifier = Modifier
-        //                            .width(300.dp)
-        //                            .height(500.dp)
-        //                            .background(Color.Red)
-        //                    )
-        //                }
     }
 }
 

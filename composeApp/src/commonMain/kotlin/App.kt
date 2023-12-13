@@ -6,11 +6,13 @@ import com.arkivanov.decompose.extensions.compose.jetbrains.stack.animation.slid
 import com.arkivanov.decompose.extensions.compose.jetbrains.stack.animation.stackAnimation
 import com.arkivanov.decompose.extensions.compose.jetbrains.subscribeAsState
 import navigation.RootComponent
+import navigation.screencomponents.ProjectScreenComponent
 import org.jetbrains.compose.resources.ExperimentalResourceApi
 import presentation.screens.cadastro.CadastroScreen
 import presentation.screens.FeedScreen
 import presentation.screens.LoginScreen
 import presentation.screens.ProfileScreen
+import presentation.screens.ProjectScreen
 import presentation.screens.RecoverScreen
 import presentation.screens.ScreenA
 import presentation.screens.ScreenB
@@ -32,7 +34,10 @@ fun App(root: RootComponent) {
                 is RootComponent.Child.FeedScreen -> FeedScreen(component = instance.component)
                 is RootComponent.Child.RecoverScreen -> RecoverScreen(component = instance.component)
                 is RootComponent.Child.ProfileScreen -> ProfileScreen(component = instance.component)
+                is RootComponent.Child.ProjectScreen -> ProjectScreen(component = instance.component)
             }
         }
     }
 }
+
+

@@ -70,28 +70,9 @@ fun ProfileScreen(component: ProfileScreenComponent) {
 
         ) {
 
-//        Column(
-//            modifier = Modifier
-//            .fillMaxWidth()
-//            .height(300.dp)
-//            .background(color = Color(0xFFEBEBEB)),
-//        ) {
-
-//            Header()
-
-//            Column(
-//                verticalArrangement = Arrangement.Bottom
-//            ) {
-
                 SobreMim()
 
                 Followers()
-
-//                TabLayouts(
-//                    component,
-//                    modifier = Modifier
-//                        .fillMaxSize()
-//                )
 
                 Row (
                     modifier = Modifier
@@ -112,8 +93,6 @@ fun ProfileScreen(component: ProfileScreenComponent) {
                         fontWeight = FontWeight.Bold,
                     )
                 }
-//            }
-//        }
 
         Column(
             modifier = Modifier
@@ -246,66 +225,6 @@ private fun CardPosts() {
                 }
 
             }
-            //SliderBanner()
-//                LazyRow(
-//                    modifier = Modifier
-//                        .padding(all = 10.dp)
-//                        .clip(RoundedCornerShape(18.dp))
-////                        .horizontalScroll(rememberScrollState())
-//                        .fillMaxWidth()
-//                ) {
-//                    item {
-//                        Image(
-//                            painter = painterResource(id = R.drawable.backlogin),
-//                            contentDescription = null,
-//                            contentScale = ContentScale.FillBounds,
-//                            modifier = Modifier
-//                                .width(300.dp)
-//                                .height(500.dp)
-//                                .padding(horizontal = 15.dp)
-//                        )
-//                    }
-//                    item {
-//                        Image(
-//                            painter = painterResource(id = R.drawable.backlogin),
-//                            contentDescription = null,
-//                            contentScale = ContentScale.FillBounds,
-//                            modifier = Modifier
-//                                .width(300.dp)
-//                                .height(500.dp)
-//                                .padding(horizontal = 15.dp)
-//                        )
-//                    }
-//                }
-//                Box(
-//                    modifier = Modifier
-//                        .padding(all = 10.dp)
-//                        .clip(RoundedCornerShape(18.dp))
-////                        .horizontalScroll(rememberScrollState())
-//                        .fillMaxWidth()
-//                        .scrollable(rememberScrollableState {
-//                            it
-//                        }, Orientation.Horizontal)
-//                ) {
-//                    Image(
-//                        painter = painterResource(id = R.drawable.backlogin),
-//                        contentDescription = null,
-//                        contentScale = ContentScale.FillBounds,
-//                        modifier = Modifier
-//                            .width(300.dp)
-//                            .height(500.dp)
-//                            .background(Color.Red)
-//                    )
-//                    Image(
-//                        painter = painterResource(id = R.drawable.backlogin),
-//                        contentDescription = null,
-//                        contentScale = ContentScale.FillBounds,
-//                        modifier = Modifier
-//                            .width(300.dp)
-//                            .height(500.dp)
-//                            .background(Color.Red)
-//                    )
-//                }
 
             Row(
                 modifier = Modifier

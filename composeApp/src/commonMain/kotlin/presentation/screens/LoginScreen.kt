@@ -115,7 +115,6 @@ fun LoginScreen(component: LoginScreenComponent) {
                 CustomTextInput(inputType = InputType.Password, value = valuePass)
                 Button(
                     onClick = {
-                        //buttonColor.value = Color(0xFFE5684A)
                         showProgressBar = true
                         coroutineScope.launch {
                             delay(2000)

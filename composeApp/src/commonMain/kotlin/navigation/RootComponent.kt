@@ -14,6 +14,7 @@ import navigation.screencomponents.CadastroScreenComponent
 import navigation.screencomponents.FeedScreenComponent
 import navigation.screencomponents.LoginScreenComponent
 import navigation.screencomponents.ProfileScreenComponent
+import navigation.screencomponents.ProjectScreenComponent
 import navigation.screencomponents.RecoverScreenComponent
 import presentation.screens.FeedScreen
 
@@ -79,6 +80,9 @@ class RootComponent(
                     componentContext = context,
                     goToProfileScreen = {
                         navigation.pushNew(Configuration.ProfileScreen)
+                    },
+                    goToProjectScreen = {
+                        navigation.pushNew(Configuration.ProjectScreen)
                     }
                 )
             )
@@ -106,6 +110,20 @@ class RootComponent(
                     }
                 )
             )
+
+            Configuration.ProjectScreen -> Child.ProjectScreen(
+                ProjectScreenComponent(
+                    componentContext = context,
+                    goToProjectScreen = {
+                        Configuration.ProjectScreen
+
+                    },
+                    goToProfileScreen = {
+                                Configuration.ProfileScreen
+
+                    }
+                )
+            )
         }
     }
 
@@ -117,6 +135,7 @@ class RootComponent(
         data class FeedScreen(val component: FeedScreenComponent) : Child()
         data class RecoverScreen(val component: RecoverScreenComponent) : Child()
         data class ProfileScreen(val component: ProfileScreenComponent) : Child()
+        data class ProjectScreen(val component: ProjectScreenComponent) : Child()
     }
 
     @Serializable
@@ -142,5 +161,9 @@ class RootComponent(
 
         @Serializable
         data object ProfileScreen: Configuration()
+
+        @Serializable
+        data object ProjectScreen: Configuration()
+
     }
 }
