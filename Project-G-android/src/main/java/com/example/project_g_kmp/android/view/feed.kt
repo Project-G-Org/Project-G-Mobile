@@ -237,7 +237,6 @@ fun Feed( navController:NavController, viewModel : Like){
                                 tint = Color(0xFFE5684A)
                             )
                         }
-                        Text(text = viewModel.num.value.toString())
                     }
 
 

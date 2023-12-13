@@ -389,34 +389,7 @@ fun ProfileP(navController: NavController,) {
                             }
                         }
                     }
-                    Card(
-                        elevation = CardDefaults.cardElevation(defaultElevation = 6.dp),
-                        colors = CardDefaults.cardColors(
-                            containerColor = Color.White,
-                        ),
-                        modifier = Modifier
-                            .padding(10.dp, 5.dp)
-                            .fillMaxWidth(),) {
-                        Row (
-                            Modifier
-                                .fillMaxWidth(),
-                            horizontalArrangement = Arrangement.Start,
-                            verticalAlignment = Alignment.CenterVertically) {
 
-                            Image(painter = painterResource(id = R.drawable.univer),
-                                contentDescription = null,
-                                Modifier
-                                    .size(70.dp)
-                                    .padding(10.dp))
-
-                            Text(text = "Estudante Harvard",
-                                Modifier.padding(5.dp),
-                                color = Color.Black,
-                                fontSize = 20.sp,
-                                fontWeight = FontWeight.Bold,)
-
-                        }
-                    }
 
                     Row (
                         Modifier
@@ -451,81 +424,28 @@ fun ProfileP(navController: NavController,) {
             Card(
                 elevation = CardDefaults.cardElevation(defaultElevation = 6.dp),
                 colors = CardDefaults.cardColors(
-                    containerColor = Color(0xFF202020),
+                    containerColor = Color.White,
                 ),
                 modifier = Modifier
                     .padding(10.dp, 5.dp)
-                    .fillMaxWidth(),
-            ) {
-                Row(
-                    modifier = Modifier
-                        .padding(all = 10.dp)
+                    .fillMaxWidth(),) {
+                Row (
+                    Modifier
                         .fillMaxWidth(),
-                    verticalAlignment = Alignment.CenterVertically,
-                    horizontalArrangement = Arrangement.SpaceBetween
-                ) {
+                    horizontalArrangement = Arrangement.Start,
+                    verticalAlignment = Alignment.CenterVertically) {
 
-                    Row {
-
-                        Image(
-                            bitmap = ImageBitmap.imageResource(id = R.drawable.carr1),
-                            contentDescription = null,
-                            Modifier
-                                .size(60.dp)
-                        )
-
-                        Column(
-                            modifier = Modifier
-                                .padding(3.dp, 10.dp)
-                        ) {
-
-                            Text(
-                                "marcelo",
-                                color = Color(0xFFE5684A),
-                                fontSize = 20.sp,
-                                fontWeight = FontWeight.Bold,
-                            )
-
-                            Text(
-                                text = "MARANHAO",
-                                color = Color.White,
-                                fontSize = 12.sp,
-                                fontWeight = FontWeight.Bold,
-                            )
-                        }
-                    }
-                    IconButton(onClick = { /*TODO*/ }) {
-                        Icon(
-                            painterResource(id = R.drawable.baseline_more_vert_24),
-                            contentDescription = null,
-                            Modifier.size(30.dp),
-                            tint = Color.White
-                        )
-                    }
-                }
-
-                Column(
-                    modifier = Modifier
-                        .padding(25.dp, 5.dp)
-                        .fillMaxWidth()
-                ) {
-
-                }
-
-                Column(
-                    modifier = Modifier
-                        .clip(RoundedCornerShape(0.dp,0.dp,18.dp,.18.dp))
-                        .fillMaxWidth()
-                ) {
-
-                    Image(
-                        painter = painterResource(id = R.drawable.post4),
+                    Image(painter = painterResource(id = R.drawable.univer),
                         contentDescription = null,
-                        contentScale = ContentScale.FillBounds,
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .height(600.dp)
-                    )
+                        Modifier
+                            .size(70.dp)
+                            .padding(10.dp))
+
+                    Text(text = "Estudante Harvard",
+                        Modifier.padding(5.dp),
+                        color = Color.Black,
+                        fontSize = 20.sp,
+                        fontWeight = FontWeight.Bold,)
 
                 }
             }
