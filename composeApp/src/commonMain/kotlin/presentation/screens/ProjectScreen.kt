@@ -132,7 +132,7 @@ fun ProjectScreen(component: ProjectScreenComponent) {
                     ) {
 
                         Image(
-                            painter = painterResource("post3"),
+                            painter = painterResource("post3.png"),
                             contentDescription = null,
                             contentScale = ContentScale.FillBounds,
                             modifier = Modifier
@@ -164,7 +164,7 @@ fun ProjectScreen(component: ProjectScreenComponent) {
                             Row {
 
                                 Image(
-                                    painter = painterResource("post3"),
+                                    painter = painterResource("post3.png"),
                                     contentDescription = null,
                                     Modifier
                                         .size(60.dp)
@@ -194,7 +194,7 @@ fun ProjectScreen(component: ProjectScreenComponent) {
                             }
                             IconButton(onClick = { /*TODO*/ }) {
                                 Icon(
-                                    painterResource("baseline_more_vert_24"),
+                                    painterResource("baseline_more_vert_24.xml"),
                                     contentDescription = null,
                                     Modifier.size(30.dp),
                                     tint = Color.White
@@ -217,7 +217,7 @@ fun ProjectScreen(component: ProjectScreenComponent) {
                         ) {
 
                             Image(
-                                painter = painterResource("post4"),
+                                painter = painterResource("post4.png"),
                                 contentDescription = null,
                                 contentScale = ContentScale.FillBounds,
                                 modifier = Modifier
@@ -249,7 +249,7 @@ fun ProjectScreen(component: ProjectScreenComponent) {
                         Row {
 
                             Image(
-                                painter = painterResource("carr1"),
+                                painter = painterResource("carr1.png"),
                                 contentDescription = null,
                                 Modifier
                                     .size(60.dp)
@@ -277,7 +277,7 @@ fun ProjectScreen(component: ProjectScreenComponent) {
                         }
                         IconButton(onClick = { /*TODO*/ }) {
                             Icon(
-                                painterResource("baseline_more_vert_24"),
+                                painterResource("baseline_more_vert_24.xml"),
                                 contentDescription = null,
                                 Modifier.size(30.dp),
                                 tint = Color.White
@@ -298,7 +298,7 @@ fun ProjectScreen(component: ProjectScreenComponent) {
                     ) {
 
                         Image(
-                            painter = painterResource("post4"),
+                            painter = painterResource("post4.png"),
                             contentDescription = null,
                             contentScale = ContentScale.FillBounds,
                             modifier = Modifier
@@ -329,7 +329,7 @@ fun ProjectScreen(component: ProjectScreenComponent) {
                 IconButton(onClick = {  component.onGoToProfileScreen() }) {
 
                     Icon(
-                        painterResource("baseline_circle_24"),
+                        painterResource("baseline_circle_24.xml"),
                         contentDescription = null,
                         Modifier
                             .size(80.dp),
@@ -337,7 +337,7 @@ fun ProjectScreen(component: ProjectScreenComponent) {
                     )
 
                     Icon(
-                        painterResource("baseline_add_24"),
+                        painterResource("baseline_add_24.xml"),
                         contentDescription = null,
                         Modifier
                             .padding(10.dp)
@@ -356,9 +356,9 @@ fun ProjectScreen(component: ProjectScreenComponent) {
             horizontalArrangement = Arrangement.SpaceAround
         ) {
 
-            IconButton(onClick = {  component.onGoToProfileScreen() }) {
+            IconButton(onClick = {  component.onGoToFeedScreen() }) {
                 Icon(
-                    painterResource("baseline_home_24"),
+                    painterResource("baseline_home_24.xml"),
                     contentDescription = null,
                     Modifier.size(30.dp),
                     tint = Color(0xFFE5684A)
@@ -371,7 +371,7 @@ fun ProjectScreen(component: ProjectScreenComponent) {
 
                 IconButton(onClick = {  component.onGoToProfileScreen() }) {
                     Icon(
-                        painterResource("baseline_apartment_24"),
+                        painterResource("baseline_apartment_24.xml"),
                         contentDescription = null,
                         Modifier.size(30.dp),
                         tint = Color(0xFFE5684A)
@@ -388,7 +388,7 @@ fun ProjectScreen(component: ProjectScreenComponent) {
             IconButton(onClick = { component.onGoToProfileScreen() }) {
 
                 Icon(
-                    painterResource("baseline_search_24"),
+                    painterResource("baseline_search_24.xml"),
                     contentDescription = null,
                     Modifier.size(30.dp),
                     tint = Color(0xFFE5684A)
@@ -398,7 +398,7 @@ fun ProjectScreen(component: ProjectScreenComponent) {
 
             IconButton(onClick = { component.onGoToProfileScreen() }) {
                 Icon(
-                    painterResource("baseline_person_24"),
+                    painterResource("baseline_person_24.xml"),
                     contentDescription = null,
                     Modifier.size(30.dp),
                     tint = Color(0xFFE5684A)

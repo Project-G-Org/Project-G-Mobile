@@ -3,6 +3,7 @@ package navigation
 import com.arkivanov.decompose.ComponentContext
 import com.arkivanov.decompose.ExperimentalDecomposeApi
 import com.arkivanov.decompose.router.stack.StackNavigation
+import com.arkivanov.decompose.router.stack.bringToFront
 import com.arkivanov.decompose.router.stack.childStack
 import com.arkivanov.decompose.router.stack.navigate
 import com.arkivanov.decompose.router.stack.pop
@@ -101,8 +102,8 @@ class RootComponent(
 //                        navigation.push(Configuration.CadastroScreen)
                     },
                     onGoToFeed = {
-//                                 Configuration.FeedScreen
-                        //navigation.push(Configuration.FeedScreen)
+                       //navigation.push(Configuration.FeedScreen)
+                        //navigation.bringToFront(Configuration.FeedScreen)
                     },
                     onGoToLogin = {
                         Configuration.LoginScreen
@@ -116,11 +117,12 @@ class RootComponent(
                     componentContext = context,
                     goToProjectScreen = {
                         Configuration.ProjectScreen
-
                     },
                     goToProfileScreen = {
-                                Configuration.ProfileScreen
-
+                        Configuration.ProfileScreen
+                    },
+                    goToFeedScreen = {
+                        navigation.bringToFront(Configuration.FeedScreen)
                     }
                 )
             )

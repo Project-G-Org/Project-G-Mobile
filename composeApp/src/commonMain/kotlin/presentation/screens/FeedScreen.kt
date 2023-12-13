@@ -1,6 +1,7 @@
 package presentation.screens
 
 import androidx.compose.animation.AnimatedVisibility
+import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.horizontalScroll
@@ -69,6 +70,7 @@ import helpers.URLS.BASE_URL
 import io.kamel.image.KamelImage
 import io.kamel.image.asyncPainterResource
 import kotlinx.coroutines.launch
+import model.Author
 import model.Comment
 import model.FeedScreenViewModel
 import model.Posts
@@ -78,7 +80,9 @@ import org.jetbrains.compose.resources.painterResource
 import presentation.Components.ImageFonts
 import presentation.Components.SliderBanner
 
-@OptIn(ExperimentalResourceApi::class, ExperimentalMaterialApi::class)
+@OptIn(ExperimentalResourceApi::class, ExperimentalMaterialApi::class,
+    ExperimentalFoundationApi::class
+)
 @Composable
 fun FeedScreen(component: FeedScreenComponent, modifier: Modifier = Modifier.background(Color(0xFFEBEBEB))){
     val viewModel = getViewModel(Unit, viewModelFactory { FeedScreenViewModel() })
@@ -110,53 +114,41 @@ fun FeedScreen(component: FeedScreenComponent, modifier: Modifier = Modifier.bac
                             Text(text = "Nenhum comentário cadastrado!!")
                         }
                     } else {
-                        LazyColumn(modifier = Modifier.fillMaxSize().padding(all = 12.dp)) {
+                        LazyColumn(
+                            modifier = Modifier.fillMaxSize().padding(all = 12.dp),
+                            verticalArrangement = Arrangement.spacedBy(16.dp)
+                        ) {
+//                            stickyHeader {
+//                                Column(modifier = Modifier.padding(bottom = 12.dp)) {
+//                                    loadImage(uiState.comments[0].author)
+//                                }
+//                            }
+
                             items(uiState.comments) { comment ->
                                 Column(
                                     modifier = Modifier.fillMaxSize(),
-                                    verticalArrangement = Arrangement.Center
                                 ) {
                                     Row(
                                         modifier = Modifier.fillMaxWidth(),
                                         verticalAlignment = Alignment.CenterVertically
                                     ) {
-                                        if(comment.author.profilePic != null) {
-                                            KamelImage(
-                                                resource = asyncPainterResource(data = "${URLS.POST_IMAGES_URL}${comment.author.profilePic}"),
-                                                contentDescription = comment.author.name,
-                                                contentScale = ContentScale.Crop,
-                                                modifier = Modifier.size(60.dp).clip(CircleShape)
-                                            )
-                                        } else if (comment.author.image != null) {
-                                            KamelImage(
-                                                resource = asyncPainterResource(data = "${comment.author.image}"),
-                                                contentDescription = comment.author.name,
-                                                contentScale = ContentScale.Crop,
-                                                modifier = Modifier.size(60.dp).clip(CircleShape)
-                                            )
-                                        } else {
-                                            Image(
-                                                painter = painterResource("no_image.jpg"),
-                                                contentDescription = comment.author.name,
-                                                contentScale = ContentScale.Crop,
-                                                modifier = Modifier.size(60.dp).clip(CircleShape)
-                                            )
-                                        }
+                                        loadImage(comment.author)
 
                                         Text(
                                             text = comment.author.name,
-                                            fontSize = 16.sp,
+                                            fontSize = 18.sp,
                                             fontWeight = FontWeight.Bold,
                                             color = Color.Black,
                                             modifier = Modifier.padding(start = 12.dp)
                                         )
                                     }
-                                    Spacer(modifier = Modifier.height(12.dp))
+                                    //Spacer(modifier = Modifier.height(6.dp))
 
                                     Text(
                                         comment.content,
-                                        fontSize = 22.sp,
-                                        color = Color.Black
+                                        fontSize = 16.sp,
+                                        color = Color.Black,
+                                        modifier = Modifier.padding(start = 8.dp, top = 6.dp)
                                     )
                                 }
                             }
@@ -189,14 +181,38 @@ fun FeedScreen(component: FeedScreenComponent, modifier: Modifier = Modifier.bac
                         StoriesTop()
                         Posts(uiState.posts, viewModel)
                     }
-
                 }
             }
         }
-
-
     }
 
+}
+
+@OptIn(ExperimentalResourceApi::class)
+@Composable
+private fun loadImage(author: Author) {
+    return if(author.profilePic != null) {
+        KamelImage(
+            resource = asyncPainterResource(data = "${URLS.POST_IMAGES_URL}${author.profilePic}"),
+            contentDescription = author.name,
+            contentScale = ContentScale.Crop,
+            modifier = Modifier.size(60.dp).clip(CircleShape)
+        )
+    } else if (author.image != null) {
+        KamelImage(
+            resource = asyncPainterResource(data = "${author.image}"),
+            contentDescription = author.name,
+            contentScale = ContentScale.Crop,
+            modifier = Modifier.size(60.dp).clip(CircleShape)
+        )
+    } else {
+        Image(
+            painter = painterResource("no_image.jpg"),
+            contentDescription = author.name,
+            contentScale = ContentScale.Crop,
+            modifier = Modifier.size(60.dp).clip(CircleShape)
+        )
+    }
 }
 
 @OptIn(ExperimentalMaterialApi::class, ExperimentalMaterial3Api::class)
@@ -208,7 +224,9 @@ private fun MyBottomSheet(comments: List<Comment>, viewModel: FeedScreenViewMode
         sheetShape = MaterialTheme.shapes.large,
         sheetState = modalState,
         sheetContent = {
-            LazyColumn(modifier = Modifier.fillMaxWidth().wrapContentHeight()) {
+            LazyColumn(
+                modifier = Modifier.fillMaxWidth().wrapContentHeight()
+            ) {
                 items(comments) { comment ->
                     Row(
                         modifier = Modifier.fillMaxWidth(),
@@ -222,14 +240,14 @@ private fun MyBottomSheet(comments: List<Comment>, viewModel: FeedScreenViewMode
 
                         Text(
                             text = comment.author.name,
-                            fontSize = 16.sp,
+                            fontSize = 18.sp,
                             fontWeight = FontWeight.Bold
                         )
                     }
 
                     Text(
                         comment.content,
-                        fontSize = 22.sp
+                        fontSize = 16.sp
                     )
                 }
             }
@@ -383,36 +401,36 @@ private fun MyBottomNavigationBar(component: FeedScreenComponent) {
             .fillMaxSize(),
             verticalArrangement = Arrangement.Bottom){
 
-            Column(){
-
-                Box(
-                    modifier = Modifier
-                        .padding(10.dp,10.dp),
-                    contentAlignment = Alignment.Center
-
-                ) {
-
-                    IconButton(onClick = {}) {
-
-                        Icon(
-                            painterResource("baseline_circle_24"),
-                            contentDescription = null,
-                            Modifier
-                                .size(80.dp),
-                            tint = Color(0xFF202020)
-                        )
-
-                        Icon(
-                            painterResource("baseline_add_24"),
-                            contentDescription = null,
-                            Modifier
-                                .padding(10.dp)
-                                .size(40.dp),
-                            tint = Color(0xFFE5684A)
-                        )
-                    }
-                }
-            }
+//            Column(){
+//
+//                Box(
+//                    modifier = Modifier
+//                        .padding(10.dp,10.dp),
+//                    contentAlignment = Alignment.Center
+//
+//                ) {
+//
+//                    IconButton(onClick = {}) {
+//
+//                        Icon(
+//                            painterResource("baseline_circle_24.xml"),
+//                            contentDescription = null,
+//                            Modifier
+//                                .size(80.dp),
+//                            tint = Color(0xFF202020)
+//                        )
+//
+//                        Icon(
+//                            painterResource("baseline_add_24.xml"),
+//                            contentDescription = null,
+//                            Modifier
+//                                .padding(10.dp)
+//                                .size(40.dp),
+//                            tint = Color(0xFFE5684A)
+//                        )
+//                    }
+//                }
+//            }
 
             Row(modifier = Modifier
                 .height(60.dp)
@@ -428,7 +446,7 @@ private fun MyBottomNavigationBar(component: FeedScreenComponent) {
 
                     IconButton(onClick = {  component.onGoToProfileScreen() }) {
                         Icon(
-                            painterResource("baseline_home_24"),
+                            painterResource("baseline_home_24.xml"),
                             contentDescription = null,
                             Modifier.size(30.dp),
                             tint = Color(0xFFE5684A)
@@ -442,9 +460,9 @@ private fun MyBottomNavigationBar(component: FeedScreenComponent) {
 
                 }
 
-                IconButton(onClick = {  component.onGoToProfileScreen() }) {
+                IconButton(onClick = {  component.onGoToProjectScreen() }) {
                     Icon(
-                        painterResource("baseline_apartment_24"),
+                        painterResource("baseline_apartment_24.xml"),
                         contentDescription = null,
                         Modifier.size(30.dp),
                         tint = Color(0xFFE5684A)
@@ -455,7 +473,7 @@ private fun MyBottomNavigationBar(component: FeedScreenComponent) {
                 IconButton(onClick = {  component.onGoToProfileScreen() }) {
 
                     Icon(
-                        painterResource("baseline_search_24"),
+                        painterResource("baseline_search_24.xml"),
                         contentDescription = null,
                         Modifier.size(30.dp),
                         tint = Color(0xFFE5684A)
@@ -465,7 +483,7 @@ private fun MyBottomNavigationBar(component: FeedScreenComponent) {
 
                 IconButton(onClick = {  component.onGoToProfileScreen() }) {
                     Icon(
-                        painterResource("baseline_person_24"),
+                        painterResource("baseline_person_24.xml"),
                         contentDescription = null,
                         Modifier.size(30.dp),
                         tint = Color(0xFFE5684A)
